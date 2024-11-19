@@ -22,5 +22,6 @@ export default [
       ],
       'security/detect-object-injection': 'off',
     },
+    // Ignore patterns for flat config
   },
 ];
