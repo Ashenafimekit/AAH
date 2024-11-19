@@ -11,7 +11,7 @@ This project is designed for a hotel in Harar to streamline operations and enhan
 
 ## Authors
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [@dawitYenew12](https://github.com/dawitYenew12)
 - [@octokatherine](https://www.github.com/octokatherine)
 
 ## Color Reference
