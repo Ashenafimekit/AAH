@@ -6,7 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint .",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js",
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -20,6 +26,9 @@
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-security": "^3.0.1",
     "globals": "^15.12.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
