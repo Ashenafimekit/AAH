@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .email-header {
+      background: #4CAF50;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .email-body {
+      padding: 20px;
+      line-height: 1.6;
+      color: #333333;
+    }
+    .email-body h2 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+    .email-footer {
+      background: #ce3a3a;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #666666;
+    }
+    .email-footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    {{{body}}}
+  </div>
+</body>
+</html>

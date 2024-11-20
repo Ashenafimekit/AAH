@@ -3,6 +3,7 @@ import http from 'http';
 import loader from './loader/index.js';
 import config from './config/config.js';
 import logger from './config/logger.js';
+import { handlebars } from './loader/handlebars.js';
 
 function exitHandler(server) {
   if (server) {
@@ -24,6 +25,7 @@ function unExpectedHandler(server) {
 const startServer = async () => {
   const app = express();
   await loader(app);
+  await handlebars(app);
   const server = http.createServer(app).listen(config.port, () => {
     logger.info(`Server is running on port ${config.port}`);
   });

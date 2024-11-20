@@ -28,12 +28,12 @@ export const errorHandler = (err, req, res, next) => {
     error: true,
     code: statusCode,
     message: message,
-    ...ApiError(config.env === 'development' && { stack: err.stack }),
+    ...(config.env === 'development' && { stack: err.stack }),
   };
 
   res.locals.errorMessage = err.message;
   if (config.env === 'development') {
-    logger.log(err);
+    logger.error(err);
   }
-  res.status(statucCode).json(response);
+  res.status(statusCode).json(response);
 };

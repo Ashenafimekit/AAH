@@ -4,17 +4,17 @@ import httpstatus from 'http-status';
 
 export const createBooking = catchAsync(async (req, res) => {
   const booking = await bookingService.createBooking(req.body);
-  res.status(httpstatus.CREATED).json({ booking });
+  res.status(httpstatus.CREATED).json({ success: true, bookingData: booking });
 });
 
 export const getBookings = catchAsync(async (req, res) => {
   const bookings = await bookingService.getBookings();
-  res.status(httpstatus.OK).json({ bookings });
+  res.status(httpstatus.OK).json({ success: true, lists: bookings });
 });
 
 export const getBooking = catchAsync(async (req, res) => {
   const booking = await bookingService.getBooking(req.params.bookingId);
-  res.status(httpstatus.OK).json({ booking });
+  res.status(httpstatus.OK).json({ success: true, list: booking });
 });
 
 export const updateBooking = catchAsync(async (req, res) => {
@@ -22,7 +22,7 @@ export const updateBooking = catchAsync(async (req, res) => {
     req.params.bookingId,
     req.body,
   );
-  res.status(httpstatus.OK).json({ booking });
+  res.status(httpstatus.OK).json({ success: true, updatedData: booking });
 });
 
 export const deleteBooking = catchAsync(async (req, res) => {

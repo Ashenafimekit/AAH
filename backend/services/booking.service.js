@@ -3,7 +3,7 @@ import Booking from '../models/booking.model.js';
 import Room from '../models/room.model.js';
 import httpStatus from 'http-status';
 
-export const createBooking = async (bookingData) => {
+const createBooking = async (bookingData) => {
   try {
     const room = await Room.findById(bookingData.room);
     if (!room) {
@@ -16,7 +16,7 @@ export const createBooking = async (bookingData) => {
   }
 };
 
-export const getBookings = async () => {
+const getBookings = async () => {
   try {
     const bookings = await Booking.find();
     return bookings;
@@ -25,7 +25,7 @@ export const getBookings = async () => {
   }
 };
 
-export const getBooking = async (bookingId) => {
+const getBooking = async (bookingId) => {
   try {
     const booking = await Booking.findById(bookingId);
     if (!booking) {
@@ -37,7 +37,7 @@ export const getBooking = async (bookingId) => {
   }
 };
 
-export const updateBooking = async (bookingId, updateData) => {
+const updateBooking = async (bookingId, updateData) => {
   try {
     const booking = await Booking.findByIdAndUpdate(bookingId, updateData, {
       new: true,
@@ -51,7 +51,7 @@ export const updateBooking = async (bookingId, updateData) => {
   }
 };
 
-export const deleteBooking = async (bookingId) => {
+const deleteBooking = async (bookingId) => {
   try {
     const booking = await Booking.findByIdAndDelete(bookingId);
     if (!booking) {
@@ -60,4 +60,12 @@ export const deleteBooking = async (bookingId) => {
   } catch (error) {
     throw new ApiError(httpStatus.NOT_FOUND, error.message);
   }
+};
+
+export default {
+  createBooking,
+  getBookings,
+  getBooking,
+  updateBooking,
+  deleteBooking,
 };

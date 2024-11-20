@@ -58,9 +58,14 @@ const getRoom = async (roomId) => {
  */
 const updateRoom = async (roomId, updateBody) => {
   try {
-    const room = await Room.findByIdAndUpdate(roomId, updateBody, {
-      new: true,
-    });
+    const room = await Room.findByIdAndUpdate(
+      roomId,
+      { $set: updateBody }, // to update only the provided fields
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!room) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Room not found');
     }

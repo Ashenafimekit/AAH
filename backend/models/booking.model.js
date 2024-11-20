@@ -34,11 +34,6 @@ const bookingSchema = new Schema({
     type: String,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: false,
-  },
 });
 
 export default model('Booking', bookingSchema);
