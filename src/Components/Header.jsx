@@ -24,7 +24,7 @@ const Header = () => {
           <div className="bg-[#E0B973] py-2 px-10 sm:py-2 sm:px-10 md:py-2 md:px-10 rounded-b-2xl flex flex-col items-center font-bold text-[#14274A]">
             <h1>Arab Ali</h1>
             <h1 className="-mt-2 text-xs">Hotel</h1>
-            <hr className="border border-[#14274A] :w-14 -mt-1 text-xs" />
+            <hr className="border border-[#14274A] w-12 mb-1 text-xs" />
             <h1 className="-mt-1 text-xs">فندق عرب علي</h1>
           </div>
           <div className="flex flex-row gap-3">
