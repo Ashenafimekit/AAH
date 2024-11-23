@@ -6,7 +6,7 @@ import Footer from '../Components/Footer';
 
 const Contact_Page = () => {
   return (
-    <div className="flex flex-col gap-24">
+    <div className="flex flex-col gap-[32px]">
       <Header />
       <Body />
       <Location />
