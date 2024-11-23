@@ -6,6 +6,7 @@ export default {
       colors: {
         golden: "#E0B973",
         blueBlack: "#14274A",
+        tealGreen: "#0d2026", 
       },
       screens: {
         'sm': '640px',

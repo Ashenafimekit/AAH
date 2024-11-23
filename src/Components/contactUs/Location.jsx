@@ -3,12 +3,12 @@ function Location() {
     <div className="flex items-center justify-center">
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1000px] xl:max-w-[1200px] mx-auto">
         <div className="px-8 lg:p-2">
-          <div className="h-[380] p-2 bg-gray-100 border rounded-md shadow-md overflow-hidden">
+          <div className="h-[380] p-2 bg-gray-100 border rounded-sm shadow-md overflow-hidden">
             <iframe
               width="100%"
               height="350"
               style={{
-                borderRadius: "5px",
+                borderRadius: "3px",
                 border: "none",
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
               }}

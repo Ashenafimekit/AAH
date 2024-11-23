@@ -15,7 +15,7 @@ function Body() {
   return (
     <div className="flex flex-col items-center mt-24">
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px] mx-auto">
-        <div className="flex border">
+        <div className="flex">
           <div className="flex flex-col px-8 lg:p-2">
             <h2 className="text-4xl lg:text-5xl font-Alata text-[#0d2026]">
               WE ARE HERE FOR YOU
@@ -65,7 +65,7 @@ function Body() {
                   Full name
                   <input
                     id="name"
-                    className="shadow-sm outline-none py-2 px-3 border-2 border-golden font-normal rounded-sm placeholder:font-normal"
+                    className="shadow-sm outline-none py-2 px-3 border-2 border-gray-200 focus:border-golden font-normal rounded-sm placeholder-gray-300"
                     type="text"
                     placeholder="Full name"
                     value={name}
@@ -76,7 +76,7 @@ function Body() {
                   Email
                   <input
                     id="email"
-                    className="shadow-sm  outline-none py-2 px-3 rounded-sm border-2 font-normal border-golden placeholder:font-normal"
+                    className="shadow-sm outline-none py-2 px-3 rounded-sm border-2 font-normal border-gray-200 focus:border-golden placeholder-gray-300"
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -86,7 +86,7 @@ function Body() {
                 <label className="flex flex-col font-medium" htmlFor="message">
                   Message
                   <textarea
-                    className="h-32 outline-none py-2 px-3 rounded-sm shadow-sm border-2 border-golden resize-none overflow-auto font-normal placeholder:font-normal"
+                    className="h-32 outline-none py-2 px-3 rounded-sm shadow-sm border-2 border-gray-200 focus:border-golden resize-none overflow-auto font-normal placeholder-gray-300"
                     placeholder="write your message here..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
