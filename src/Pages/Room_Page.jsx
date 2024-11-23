@@ -3,9 +3,6 @@ import Header2 from '../Components/Header2'
 import Room from '../Components/Room'
 import Testimonial from '../Components/Testimonial'
 import Footer from '../Components/Footer'
-import React from "react";
-import Header2 from "../Components/Header2";
-import Body from "../Components/room/Body";
 
 const Room_Page = () => {
   return (
