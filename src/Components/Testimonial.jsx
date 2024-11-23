@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Testimonial = () => {
+  const [testimony, setTestimony] = useState([]);
+
+  useEffect(()=>{
+
+  },[])
+
+
   return (
     <div className="flex items-center justify-center w-full ">
       <div className="flex flex-col items-center justify-center gap-5 w-3/4 p-14 shadow-lg rounded-md border border-gray-300">

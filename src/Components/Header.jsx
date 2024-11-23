@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import hotel from "../assets/images/hotel.jpg";
-import { Link } from "react-router-dom";
+import bedroom from "../assets/images/bedroom.jpg"
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 
+
 const Header = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const Images = {
+    "/" : hotel,
+    "/room" : bedroom,
+  }
+
+  const currentImage = Images[location.pathname] || hotel;
+
   return (
     <div className="w-full relative">
       <div className="w-full">
         <img
-          src={hotel}
+          src={currentImage}
           alt="Arab Ali Hotel image"
           className="w-full object-cover h-[67vh] sm:h-[67vh] md:h-[67vh] lg:h-[70vh] xl:h-[90vh] 2xl:h[90vh] "
         />
