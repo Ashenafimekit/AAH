@@ -29,17 +29,17 @@ function Body() {
         </div>
 
         <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex flex-auto justify-center p-2 px-8 lg:p-2 -ml-10">
+          <div className="flex flex-auto justify-center p-2 px-8 lg:p-2">
             <div className="text-[#0d2026] leading-relaxed flex flex-col mt-8">
               <address className="not-italic">
-                <p className="text-shadow-small text-2xl lg:text-2xl tracking-wide">
+                <p className="text-shadow-small text-md md:text-2xl lg:text-2xl tracking-wide">
                   497 Evergreen Rd. Roseville, <br />
                   CA 95673
                 </p>
               </address>
 
               <div>
-                <p className="text-shadow-small text-2xl lg:text-2xl mt-10 tracking-wide">
+                <p className="text-shadow-small text-md md:text-2xl lg:text-2xl mt-10 tracking-wide">
                   <strong>Phone:</strong> +44 345 678 903
                   <br />
                   <strong>Email:</strong>{" "}
@@ -52,7 +52,7 @@ function Body() {
                 </p>
               </div>
 
-              <div className="flex items-center space-x-2 cursor-pointer text-[#0d2026] hover:underline font-bold text-2xl mt-4">
+              <div className="flex items-center space-x-2 cursor-pointer text-[#0d2026] hover:underline font-bold text-xl md:text-2xl mt-4">
                 <span>View on map</span>
                 <ArrowDownwardIcon />
               </div>
