@@ -55,6 +55,9 @@ const Header = () => {
                 <Link to="/room">ROOM</Link>
               </h1>
               <h1>
+                <Link to="/room_clicked">ROOM-CLICKED</Link>
+              </h1>
+              <h1>
                 <Link to="/service">SERVICE</Link>
               </h1>
               <h1>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header2 from '../Components/Header2'
-import Room from '../Components/Room'
+import RoomClicked_page from '../Components/roomClicked'
 import Testimonial from '../Components/Testimonial'
 import Footer from '../Components/Footer'
 
@@ -8,8 +8,7 @@ const RoomClicked_Page = () => {
   return (
     <div className='flex flex-col gap-5'>
       <Header2 title={'single room'}/>
-      <Room/>
-      <Testimonial/>
+      <RoomClicked_Page/>
       <Footer/>   
     </div>
   )
