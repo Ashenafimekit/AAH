@@ -6,7 +6,9 @@ export default {
       colors: {
         golden: "#E0B973",
         blueBlack: "#14274A",
+        
       },
+
     },
   },
   plugins: [],
