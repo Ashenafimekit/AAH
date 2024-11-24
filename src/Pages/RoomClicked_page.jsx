@@ -1,7 +1,7 @@
 import React from 'react'
 import Header2 from '../Components/Header2'
-import Body from '../Components/roomClicked/Body';
 import Footer from '../Components/Footer'
+import Body from '../Components/RoomClicked/Body'
 
 const RoomClicked_Page = () => {
   return (
