@@ -11,6 +11,6 @@ This repository contains the frontend code for the Arab Ali Hotel website, desig
 
 ### Tech Stack:
 - **Framework**: React.js (or relevant framework/library if different)  
-- **Styling**: Tailwind CSS/Bootstrap/Custom CSS (adjust as applicable)  
+- **Styling**: Tailwind CSS/Custom CSS (adjust as applicable)  
 - **API Integration**: Axios for connecting to backend services.  
 

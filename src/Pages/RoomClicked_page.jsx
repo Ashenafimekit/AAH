@@ -1,18 +1,16 @@
 import React from 'react'
 import Header2 from '../Components/Header2'
-import Room from '../Components/Room'
-import Testimonial from '../Components/Testimonial'
+import Body from '../Components/roomClicked/Body';
 import Footer from '../Components/Footer'
 
-const Room_Page = () => {
+const RoomClicked_Page = () => {
   return (
     <div className='flex flex-col gap-5'>
       <Header2 title={'single room'}/>
-      <Room/>
-      <Testimonial/>
+      <Body />
       <Footer/>   
     </div>
   )
-};
+}
 
-export default Room_Page;
+export default RoomClicked_Page;

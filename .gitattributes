@@ -1,0 +1,14 @@
+# Ensure LF for all text files
+* text=auto
+
+# Force LF for specific files
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Prevent conversion for binary files
+*.png binary
+*.jpg binary
+
+node_modules/
+.vite/

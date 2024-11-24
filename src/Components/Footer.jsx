@@ -28,10 +28,10 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center md:justify-around  gap-5 bg-[#14274A] text-white h-full ">
-      <div className="flex flex-col items-center justify-center gap-4">
+    <div className="flex flex-col md:flex-row h-full gap-10 md:gap-5 items-center justify-around bg-[#14274A] text-white">
+      <div className="flex flex-col gap-4 mt-8 md:mt-0">
         <div className="text-golden">
-          <h1 className="font-bold text-xl ">Arab Ali Hotel</h1>
+          <h1 className="font-bold text-xl">Arab Ali Hotel</h1>
           <h1 className="font-semibold text-lg">فندق عرب علي</h1>
         </div>
         <div className="flex flex-col items-center justify-center">
