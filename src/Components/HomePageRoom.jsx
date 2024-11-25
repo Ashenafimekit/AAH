@@ -2,12 +2,16 @@ import React from "react";
 import bedroom1 from "../assets/images/bedroom.jpg";
 import bedroom2 from "../assets/images/bedroom2.jpg";
 import bedroom3 from "../assets/images/bedroom3.jpg";
+import Body from "./contactUs/Body";
+import { Link } from "react-router-dom";
 
 const HomePageRoom = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="bg-[#D9D9D9] p-4 rounded-lg">
-        <h1 className="font-bold text-2xl sm:text-4xl text-center">Our Room Types</h1>
+        <h1 className="font-bold text-2xl sm:text-4xl text-center">
+          Our Room Types
+        </h1>
       </div>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-10">
         <div className="flex flex-col items-center justify-center gap-1 shadow-xl rounded-lg w-3/4 sm:w-1/4">
@@ -22,7 +26,11 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <button className="bg-black p-2 text-white rounded-lg mb-4">See More</button>
+          <Link to="/room-detail">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+              See More
+            </button>
+          </Link>
         </div>
         <div className="flex flex-col items-center justify-center gap-1 shadow-xl rounded-lg w-3/4 sm:w-1/4">
           <img
@@ -36,7 +44,11 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <button className="bg-black p-2 text-white rounded-lg mb-4">See More</button>
+          <Link to="/room-detail">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+              See More
+            </button>
+          </Link>
         </div>
         <div className="flex flex-col items-center justify-center gap-1 shadow-xl rounded-lg w-3/4 sm:w-1/4">
           <img
@@ -50,7 +62,11 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <button className="bg-black p-2 text-white rounded-lg mb-4">See More</button>
+          <Link to="/room-detail">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+              See More
+            </button>
+          </Link>
         </div>
       </div>
     </div>

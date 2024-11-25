@@ -11,7 +11,7 @@ function Header2(props) {
   };
 
   return (
-    <div className="bg-[#0d2026] h-48 h-72">
+    <div className="bg-[#0d2026] h-48 md:h-72">
       <div className="flex flex-row gap-5 items-start justify-between">
         <div className="py-2 px-10 sm:py-2 sm:px-10 md:py-2 ml-20 mt-2 md:px-10 flex flex-col items-center font-bold text-[#deae54] hover:cursor-pointer">
           <h1 className="text-[#deae54] text-xl">Arab Ali</h1>
@@ -38,9 +38,6 @@ function Header2(props) {
             </h1>
             <h1 className="header">
               <Link to="/room">ROOM</Link>
-            </h1>
-            <h1 className="header">
-                <Link to="/room_clicked">ROOM-CLICKED</Link>
             </h1>
             <h1 className="header">
               <Link to="/service">SERVICE</Link>
