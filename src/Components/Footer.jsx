@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Facebook, Instagram, YouTube } from "@mui/icons-material";
-import { message } from "antd";
+import axios from "axios";
 
 const Footer = () => {
   const [testimony, setTestimony] = useState({
@@ -19,6 +19,12 @@ const Footer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(testimony);
+
+    try {
+      axios.post('http://localhost:3000/testimonial/create',testimony)
+    } catch (error) {
+      console.log("Server not found")
+    }
 
     setTestimony({
       fullName: "",
