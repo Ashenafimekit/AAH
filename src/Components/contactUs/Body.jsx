@@ -13,7 +13,7 @@ function Body() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-24">
+    <div className="flex flex-col items-center mt-5 ">
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px] mx-auto">
         <div className="flex">
           <div className="flex flex-col px-8 lg:p-2">

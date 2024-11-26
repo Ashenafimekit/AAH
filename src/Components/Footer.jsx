@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Facebook, Instagram, YouTube } from "@mui/icons-material";
-import { message } from "antd";
+import axios from "axios";
 
 const Footer = () => {
   const [testimony, setTestimony] = useState({
@@ -16,9 +16,15 @@ const Footer = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(testimony);
+
+    try {
+     await axios.post('http://localhost:3000/testimonial/create',testimony)
+    } catch (error) {
+      console.log("Server not found")
+    }
 
     setTestimony({
       fullName: "",
@@ -40,7 +46,7 @@ const Footer = () => {
           <h1>arabalihotel@gmail.com</h1>
         </div>
       </div>
-      <div className="flex flex-row  md:flex-col gap-3 text-white">
+      <div className="flex flex-row  md:flex-col gap-3 text-white p-3 md:p-0">
         <h1 className="text-lg font-semibold">Our Social Medias</h1>
         <a href="" className="hover:text-[#E0B973]">
           <Facebook /> Facebook
@@ -52,7 +58,7 @@ const Footer = () => {
           <YouTube /> Youtube
         </a>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4 p-5">
         <h1>Leave Your Testimonial Here</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input

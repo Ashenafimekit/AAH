@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import hotel from "../assets/images/hotel.jpg";
 import bedroom from "../assets/images/bedroom.jpg"
+import reception from "../assets/images/receptionists.jpg"
 import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -16,6 +17,7 @@ const Header = () => {
   const Images = {
     "/" : hotel,
     "/room" : bedroom,
+    "/service" : reception, 
   }
 
   const currentImage = Images[location.pathname] || hotel;
@@ -55,9 +57,6 @@ const Header = () => {
                 <Link to="/room">ROOM</Link>
               </h1>
               <h1>
-                <Link to="/room_clicked">ROOM-CLICKED</Link>
-              </h1>
-              <h1>
                 <Link to="/service">SERVICE</Link>
               </h1>
               <h1>
@@ -65,6 +64,9 @@ const Header = () => {
               </h1>
               <h1>
                 <Link to="/contact">CONTACT US</Link>
+              </h1>
+              <h1>
+                <Link to="/admin">ADMIN</Link>
               </h1>
             </div>
           </div>
