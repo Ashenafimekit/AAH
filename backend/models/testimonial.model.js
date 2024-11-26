@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const testimonialSchema = new Schema({
-  Name: {
+  fullName: {
     type: String,
     required: true,
   },

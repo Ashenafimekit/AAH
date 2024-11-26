@@ -1,56 +1,56 @@
 import { Schema, model } from 'mongoose';
 
 const bookingSchema = new Schema({
-  Name: {
+  fullName: {
     type: String,
     required: true,
   },
   room: {
     type: Schema.Types.ObjectId,
     ref: 'Room',
-    required: true,
+    required: false,
   },
-  checkIn: {
+  chekInDate: {
     type: Date,
     required: true,
   },
-  checkOut: {
+  checkOutDate: {
     type: Date,
     required: true,
   },
-  durationOfStay: {
+  duration: {
     type: Number,
     required: false,
   },
-  NumberOfRoom: {
+  roomNo: {
     type: Number,
     required: true,
   },
   Adults: {
     type: Number,
-    required: true,
+    required: false,
   },
   children: {
     type: Number,
-    required: true,
+    required: false,
   },
   notes: {
     type: String,
-    required: true,
+    required: false,
   },
-  identificationCardNumber: {
+  id: {
     type: String,
     required: false,
   },
-  phoneNumber: {
+  mobile: {
     type: String,
     required: true,
   },
-  tinNumber: {
+  tinNo: {
     type: String,
     required: false,
   },
-  Nationality: {
+  nationality: {
     type: String,
     required: false,
   },

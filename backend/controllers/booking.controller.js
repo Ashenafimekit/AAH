@@ -1,9 +1,12 @@
 import catchAsync from '../utils/catchAsync.js';
 import bookingService from '../services/booking.service.js';
 import httpstatus from 'http-status';
+import logger from '../config/logger.js';
 
 export const createBooking = catchAsync(async (req, res) => {
   const booking = await bookingService.createBooking(req.body);
+  logger.info(booking);
+  logger.info('booked successfully');
   res.status(httpstatus.CREATED).json({ success: true, bookingData: booking });
 });
 
