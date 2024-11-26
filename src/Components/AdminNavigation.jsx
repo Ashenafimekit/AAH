@@ -12,12 +12,7 @@ const AdminNavigation = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center gap-10 ">
-        <Link to="/admin-dashboard">
-          <h1 className="text-center text-xl text-white hover:text-golden">
-            DASHBOARD
-          </h1>
-        </Link>
-        <Link>
+        <Link to='/admin-room'>
           <h1 className="text-center text-xl text-white hover:text-golden">
             ROOM
           </h1>
@@ -27,9 +22,14 @@ const AdminNavigation = () => {
             BOOKING
           </h1>
         </Link>
-        <Link>
+        <Link to='/admin-testimonial'>
           <h1 className="text-center text-xl text-white hover:text-golden">
             TESTIMONY
+          </h1>
+        </Link>
+        <Link to="/admin-contact">
+          <h1 className="text-center text-xl text-white hover:text-golden">
+             CONTACT
           </h1>
         </Link>
       </div>

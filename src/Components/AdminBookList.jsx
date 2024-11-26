@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const AdminBookList = () => {
   const [formData, setFormData] = useState([]);
@@ -8,7 +10,7 @@ const AdminBookList = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/book/list"
+          `${apiUrl}/book/list`
         );
         setFormData(response.data.lists);
         console.log("check : ",response.data.lists);

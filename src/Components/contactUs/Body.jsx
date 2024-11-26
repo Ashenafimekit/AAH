@@ -1,16 +1,10 @@
-import { useState } from "react";
+import react from "react";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import "../../index.css";
+import ContactForm from "./ContactForm";
 
 function Body() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, email, message);
-  };
+ 
 
   return (
     <div className="flex flex-col items-center mt-5 ">
@@ -58,49 +52,7 @@ function Body() {
               </div>
             </div>
           </div>
-          <div className="flex-auto flex justify-center">
-            <div className="w-2/3 md:w-5/6">
-              <form onSubmit={handleSubmit} className="flex flex-col p-4 gap-3">
-                <label htmlFor="name" className="flex flex-col font-medium">
-                  Full name
-                  <input
-                    id="name"
-                    className="shadow-sm outline-none py-2 px-3 border-2 border-gray-200 focus:border-golden font-normal rounded-sm placeholder-gray-300"
-                    type="text"
-                    placeholder="Full name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </label>
-                <label className="flex flex-col font-medium" htmlFor="email">
-                  Email
-                  <input
-                    id="email"
-                    className="shadow-sm outline-none py-2 px-3 rounded-sm border-2 font-normal border-gray-200 focus:border-golden placeholder-gray-300"
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
-                <label className="flex flex-col font-medium" htmlFor="message">
-                  Message
-                  <textarea
-                    className="h-32 outline-none py-2 px-3 rounded-sm shadow-sm border-2 border-gray-200 focus:border-golden resize-none overflow-auto font-normal placeholder-gray-300"
-                    placeholder="write your message here..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </label>
-                <button
-                  type="submit"
-                  className="bg-[#deae54] text-white text-lg px-3 py-2 rounded-sm hover:bg-[#e3b359]"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
+          <ContactForm/>
         </div>
       </div>
     </div>
