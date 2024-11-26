@@ -18,6 +18,10 @@ const bookingSchema = new Schema({
     type: Date,
     required: true,
   },
+  durationOfStay: {
+    type: Number,
+    required: false,
+  },
   NumberOfRoom: {
     type: Number,
     required: true,
@@ -33,6 +37,22 @@ const bookingSchema = new Schema({
   notes: {
     type: String,
     required: true,
+  },
+  identificationCardNumber: {
+    type: String,
+    required: false,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+  tinNumber: {
+    type: String,
+    required: false,
+  },
+  Nationality: {
+    type: String,
+    required: false,
   },
 });
 

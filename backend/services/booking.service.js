@@ -6,9 +6,17 @@ import httpStatus from 'http-status';
 const createBooking = async (bookingData) => {
   try {
     const room = await Room.findById(bookingData.room);
-    if (!room) {
-      throw new ApiError(404, 'Room not found');
+    // if (!room) {
+    //   throw new ApiError(404, 'Room not found');
+    // }
+    const checkInDate = new Date(bookingData.checkIn);
+    const checkOutDate = new Date(bookingData.checkOut);
+    if (checkOutDate <= checkInDate) {
+      throw new ApiError(400, 'Check-out date must be after check-in date');
     }
+    const durationOfStayInDays =
+      Math.ceil(checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
+    bookingData.durationOfStay = durationOfStayInDays;
     const booking = await Booking.create(bookingData);
     return booking;
   } catch (error) {
