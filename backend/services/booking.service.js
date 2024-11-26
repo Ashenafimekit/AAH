@@ -7,25 +7,28 @@ import dayjs from 'dayjs';
 
 const createBooking = async (bookingData) => {
   try {
-    const room = await Room.findById(bookingData.room);
-    // if (!room) {
-    //   throw new ApiError(404, 'Room not found');
-    // }
     const checkInDate = new Date(bookingData.checkInDate);
     const checkOutDate = new Date(bookingData.checkOutDate);
-    const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
-    const formattedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
-    logger.info(`Formatted Check-in Date: ${formattedCheckInDate}`);
+
     if (checkOutDate <= checkInDate) {
       throw new ApiError(400, 'Check-out date must be after check-in date');
     }
-    const durationOfStayInDays =
-      Math.ceil(checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
-    bookingData.durationOfStay = durationOfStayInDays;
-    bookingData.checkInDate = formattedCheckInDate;
-    bookingData.checkOutDate = formattedCheckOutDate;
-    const booking = await Booking.create(bookingData);
-    return booking;
+    const durationOfStayInDays = Math.ceil(
+      (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24),
+    );
+
+    const booking = await Booking.create({
+      ...bookingData,
+      durationOfStay: durationOfStayInDays,
+      checkInDate,
+      checkOutDate,
+    });
+
+    return {
+      ...booking.toObject(),
+      formattedCheckInDate: dayjs(checkInDate).format('MM/DD/YY'),
+      formattedCheckOutDate: dayjs(checkOutDate).format('MM/DD/YY'),
+    };
   } catch (error) {
     throw new ApiError(httpStatus.NOT_FOUND, error.message);
   }
