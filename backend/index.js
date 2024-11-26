@@ -4,6 +4,8 @@ import loader from './loader/index.js';
 import config from './config/config.js';
 import logger from './config/logger.js';
 import { handlebars } from './loader/handlebars.js';
+import ApiError from './utils/ApiError.js';
+import httpStatus from 'http-status';
 
 function exitHandler(server) {
   if (server) {
@@ -45,6 +47,9 @@ const startServer = async () => {
     await startServer();
   } catch (error) {
     // process.exit(1);
-    throw new Error(error);
+    throw new ApiError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'internal server error',
+    );
   }
 })();

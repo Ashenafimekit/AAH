@@ -16,8 +16,8 @@ export default async (app) => {
     app.use(cors({ origin: url }));
     app.options('*', cors({ origin: url }));
   } else {
-    app.use(cors());
-    app.options('*', cors());
+    app.use(cors({ origin: config.url }));
+    app.options('*', cors({ origin: config.url }));
   }
 
   //routers

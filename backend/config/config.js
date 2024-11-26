@@ -14,4 +14,5 @@ export default {
   refreshToken: envVars.REFRESH_TOKEN,
   senderEmail: envVars.SENDER_EMAIL,
   env: envVars.NODE_ENV,
+  url: envVars.URL,
 };
