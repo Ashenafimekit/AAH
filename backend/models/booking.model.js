@@ -18,6 +18,14 @@ const bookingSchema = new Schema({
     type: Date,
     required: true,
   },
+  formattedCheckInDate: {
+    type: String,
+    required: true,
+  },
+  formattedCheckOutDate: {
+    type: String,
+    required: true,
+  },
   duration: {
     type: Number,
     required: false,

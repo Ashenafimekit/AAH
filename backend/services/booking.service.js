@@ -9,6 +9,8 @@ const createBooking = async (bookingData) => {
   try {
     const checkInDate = new Date(bookingData.checkInDate);
     const checkOutDate = new Date(bookingData.checkOutDate);
+    const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
+    const formattedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
 
     if (checkOutDate <= checkInDate) {
       throw new ApiError(400, 'Check-out date must be after check-in date');
@@ -16,19 +18,11 @@ const createBooking = async (bookingData) => {
     const durationOfStayInDays = Math.ceil(
       (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24),
     );
+    bookingData.formattedCheckInDate = formattedCheckInDate;
+    bookingData.formattedCheckOutDate = formattedCheckOutDate;
 
-    const booking = await Booking.create({
-      ...bookingData,
-      durationOfStay: durationOfStayInDays,
-      checkInDate,
-      checkOutDate,
-    });
-
-    return {
-      ...booking.toObject(),
-      formattedCheckInDate: dayjs(checkInDate).format('MM/DD/YY'),
-      formattedCheckOutDate: dayjs(checkOutDate).format('MM/DD/YY'),
-    };
+    const booking = await Booking.create(bookingData);
+    return booking;
   } catch (error) {
     throw new ApiError(httpStatus.NOT_FOUND, error.message);
   }
