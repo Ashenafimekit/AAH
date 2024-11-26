@@ -10,7 +10,7 @@ const bookingSchema = new Schema({
     ref: 'Room',
     required: false,
   },
-  chekInDate: {
+  checkInDate: {
     type: Date,
     required: true,
   },

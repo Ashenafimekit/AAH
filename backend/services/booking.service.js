@@ -2,6 +2,7 @@ import ApiError from '../utils/ApiError.js';
 import Booking from '../models/booking.model.js';
 import Room from '../models/room.model.js';
 import httpStatus from 'http-status';
+import logger from '../config/logger.js';
 import dayjs from 'dayjs';
 
 const createBooking = async (bookingData) => {
@@ -10,18 +11,19 @@ const createBooking = async (bookingData) => {
     // if (!room) {
     //   throw new ApiError(404, 'Room not found');
     // }
-    const checkInDate = new Date(bookingData.checkIn);
-    const checkOutDate = new Date(bookingData.checkOut);
-    const formatedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
-    const formatedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
+    const checkInDate = new Date(bookingData.checkInDate);
+    const checkOutDate = new Date(bookingData.checkOutDate);
+    const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
+    const formattedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
+    logger.info(`Formatted Check-in Date: ${formattedCheckInDate}`);
     if (checkOutDate <= checkInDate) {
       throw new ApiError(400, 'Check-out date must be after check-in date');
     }
     const durationOfStayInDays =
       Math.ceil(checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
     bookingData.durationOfStay = durationOfStayInDays;
-    bookingData.checkIn = formatedCheckInDate;
-    bookingData.checkOut = formatedCheckOutDate;
+    bookingData.checkInDate = formattedCheckInDate;
+    bookingData.checkOutDate = formattedCheckOutDate;
     const booking = await Booking.create(bookingData);
     return booking;
   } catch (error) {
