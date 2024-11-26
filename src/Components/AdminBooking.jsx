@@ -21,21 +21,29 @@ const AdminBooking = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
-    setFormData({
-      fullName: "",
-      chekInDate: "",
-      checkOutDate: "",
-      duration: "",
-      id: "",
-      roomNo: "",
-      tinNo: "",
-      mobile: "",
-      nationality: "",
-    });
+    try {
+      await axios.post("http://localhost:3000/book", formData);
+      console.log(formData);
+
+      setFormData({
+        fullName: "",
+        chekInDate: "",
+        checkOutDate: "",
+        duration: "",
+        id: "",
+        roomNo: "",
+        tinNo: "",
+        mobile: "",
+        nationality: "",
+      });
+    } catch (error) {
+        console.log("Error: ", error)
+    }
+
+    
   };
 
   return (
