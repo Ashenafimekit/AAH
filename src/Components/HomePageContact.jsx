@@ -1,29 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import ContactForm from "./contactUs/ContactForm";
 
 const HomePageContact = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    setFormData({
-      fullName: "",
-      email: "",
-      message: "",
-    });
-  };
-
   return (
     <div className="w-full flex items-center justify-center">
       <div className="flex flex-col md:flex-row items-start justify-center w-3/4 border border-gray-400 shadow-lg rounded-lg">
@@ -39,39 +17,8 @@ const HomePageContact = () => {
             ></iframe>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-4 md:gap-10 w-full md:w-1/2 mt-5">
-          <h1 className="text-center font-bold text-2xl">Contact Us</h1>
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col items-start justify-center gap-1 w-3/4 "
-          >
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              className="border border-black w-3/4"
-              onChange={handleChange}
-            />
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              className="border border-black w-3/4"
-              onChange={handleChange}
-            />
-            <label>Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              className="border border-black w-3/4 h-28"
-              onChange={handleChange}
-            ></textarea>
-            <button type="submit" className="bg-[#E0B973] px-8 py-2 mt-2 mb-4 ">
-              Submit
-            </button>
-          </form>
+        <div className="md:w-1/2 mt-5">
+          <ContactForm/>
         </div>
       </div>
     </div>

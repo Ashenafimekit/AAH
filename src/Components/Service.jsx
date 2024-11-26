@@ -96,42 +96,7 @@ const Service = () => {
         </div>
         <div className="bg-white px-8 py-2 font-bold text-xl">THE GYM</div>
       </div>
-      <div className="flex flex-col items-center justify-center gap-3 bg-blueBlack w-3/4">
-        <div className="flex flex-col items-center justify-center gap-5 p-8 w-full">
-          <div className="w-full md:w-3/4 h-1/4">
-            <img
-              src={spa}
-              alt="Arab Ali spa"
-              className="rounded-lg sm:h-[50vh] w-full object-cover"
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-3/4 p-5 bg-white rounded-lg">
-            <h1 className="font-semibold text-2xl text-center">
-              Relax & Rejuvenate at Our Hotel Spa
-            </h1>
-            <p className="text-justify text-sm">
-              Unwind and recharge in our luxurious spa, where relaxation and
-              rejuvenation await. Choose from a variety of treatments designed
-              to soothe the body and mind, all provided by skilled therapists in
-              a serene setting.
-              <li>
-                Massages: Therapeutic, deep-tissue, and hot stone massages to
-                relieve stress and tension.
-              </li>
-              <li>
-                Facials: Custom facials to refresh and revitalize your skin.
-              </li>
-              <li>
-                Body Treatments: Scrubs and wraps that leave your skin feeling
-                nourished and renewed.
-              </li>
-              Book Your Experience: Reserve your spa session by calling [Phone
-              Number] or visiting our front desk.
-            </p>
-          </div>
-        </div>
-        <div className="bg-white px-8 py-2 font-bold text-xl">THE SPA</div>
-      </div>
+      
       <div className="flex flex-col items-center justify-center gap-3 bg-blueBlack w-3/4">
         <div className="flex flex-col items-center justify-center gap-5 p-8 w-full">
           <div className="w-full md:w-3/4 h-1/4">
@@ -168,81 +133,6 @@ const Service = () => {
           </div>
         </div>
         <div className="bg-white px-8 py-2 font-bold text-xl">MEETING ROOM</div>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-3 bg-blueBlack w-3/4">
-        <div className="flex flex-col items-center justify-center gap-5 p-8 w-full">
-          <div className="w-full md:w-3/4 h-1/4">
-            <img
-              src={bar}
-              alt="Arab Ali bar"
-              className="rounded-lg sm:h-[50vh] w-full object-cover"
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-3/4 p-5 bg-white rounded-lg">
-            <h1 className="font-semibold text-2xl text-center">
-              Bars & Lounges at Our Hotel
-            </h1>
-            <p className="text-justify text-sm">
-              Unwind in style at our inviting bars and lounges, perfect for
-              casual gatherings, evening relaxation, or celebrating special
-              moments. Enjoy a curated selection of wines, cocktails, and local
-              brews crafted by our expert bartenders, all within a sophisticated
-              and cozy atmosphere.
-              <li>
-                Signature Cocktails: Handcrafted cocktails featuring fresh
-                ingredients and unique flavors.
-              </li>
-              <li>
-                Wine & Spirits: A premium selection of wines, spirits, and local
-                beverages.
-              </li>
-              <li>
-                Light Bites: A variety of appetizers and snacks to pair with
-                your drink.
-              </li>
-              Opening Hours: Open daily from 4:00 PM to midnight.
-            </p>
-          </div>
-        </div>
-        <div className="bg-white px-8 py-2 font-bold text-xl">BARS AND LOUNGES</div>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-3 bg-blueBlack w-3/4">
-        <div className="flex flex-col items-center justify-center gap-5 p-8 w-full">
-          <div className="w-full md:w-3/4 h-1/4">
-            <img
-              src={car}
-              alt="Arab Ali transportation"
-              className="rounded-lg sm:h-[50vh] w-full object-cover"
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-3/4 p-5 bg-white rounded-lg">
-            <h1 className="font-semibold text-2xl text-center">
-              Transportation Services at Our Hotel
-            </h1>
-            <p className="text-justify text-sm">
-              Enjoy stress-free travel with our convenient transportation
-              services, designed to make your journey as smooth as possible.
-              Whether you’re arriving, departing, or exploring nearby
-              attractions, our team is here to assist with reliable and
-              comfortable options.
-              <li>
-                Airport Transfers: Seamless pick-up and drop-off services to and
-                from the airport.
-              </li>
-              <li>
-                Local Shuttle Service: Complimentary shuttles to popular local
-                destinations and attractions.
-              </li>
-              <li>
-                Car Rental Assistance: Convenient car rental options available
-                on-site or through our partners
-              </li>
-              Reserve Your Ride: Contact our front desk at [Phone Number] for
-              scheduling and rates.
-            </p>
-          </div>
-        </div>
-        <div className="bg-white px-8 py-2 font-bold text-xl">Transportation</div>
       </div>
     </div>
   );

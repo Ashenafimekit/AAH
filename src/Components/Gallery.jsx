@@ -60,14 +60,7 @@ const Gallery = () => {
             <img className="rounded-md" src={meeting} alt="Arab Ali Hotel Images" />
             <img className="rounded-md" src={car} alt="Arab Ali Hotel Images" />
           </div>
-        </TabPane>
-        <TabPane tab="SPA" key="2">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 shadow-lg rounded-lg p-5">
-            <img className="rounded-md" src={restaurant} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={gym} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={spa} alt="Arab Ali Hotel Images" />
-          </div>
-        </TabPane>
+        </TabPane>  
       </Tabs>
     </div>
   );

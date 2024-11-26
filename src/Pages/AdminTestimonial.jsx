@@ -1,8 +1,16 @@
 import React from 'react'
+import AdminNavigation from '../Components/AdminNavigation'
+import AdminTestimony from '../Components/AdminTestimony'
 
 const AdminTestimonial = () => {
   return (
-    <div>AdminTestimonial</div>
+    <div className='flex flex-row'>
+      <AdminNavigation/>
+      <div className="w-full">
+        <AdminTestimony/>
+      </div>
+      
+    </div>
   )
 }
 

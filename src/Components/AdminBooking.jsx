@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const AdminBooking = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    chekInDate: "",
+    checkInDate: "",
     checkOutDate: "",
     duration: "",
     id: "",
@@ -21,21 +23,30 @@ const AdminBooking = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
-    setFormData({
-      fullName: "",
-      chekInDate: "",
-      checkOutDate: "",
-      duration: "",
-      id: "",
-      roomNo: "",
-      tinNo: "",
-      mobile: "",
-      nationality: "",
-    });
+
+    try {
+      await axios.post(`${apiUrl}/book`, formData);
+      console.log(formData);
+
+      setFormData({
+        fullName: "",
+        checkInDate: "",
+        checkOutDate: "",
+        duration: "",
+        id: "",
+        roomNo: "",
+        tinNo: "",
+        mobile: "",
+        nationality: "",
+      });
+    } catch (error) {
+        console.log("Error: ", error)
+    }
+
+    
   };
 
   return (
@@ -70,8 +81,8 @@ const AdminBooking = () => {
             />
             <input
               type="date"
-              name="chekInDate"
-              value={formData.chekInDate}
+              name="checkInDate"
+              value={formData.checkInDate}
               onChange={handleChange}
               className="border border-black rounded-md w-52 text-center font-semibold h-8"
             />

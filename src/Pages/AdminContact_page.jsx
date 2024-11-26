@@ -1,12 +1,12 @@
 import React from 'react'
 import AdminNavigation from '../Components/AdminNavigation'
-import AdminDashboard from '../Components/AdminDashboard'
+import AdminDashboard from '../Components/AdminContact'
 
 const AdminDashboard_page = () => {
   return (
     <div className='flex flex-row gap-20'>
         <AdminNavigation/>
-        <div>
+        <div className='w-full'>
             <AdminDashboard/>
         </div>
 
