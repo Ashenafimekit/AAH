@@ -2,6 +2,7 @@ import ApiError from '../utils/ApiError.js';
 import Booking from '../models/booking.model.js';
 import Room from '../models/room.model.js';
 import httpStatus from 'http-status';
+import dayjs from 'dayjs';
 
 const createBooking = async (bookingData) => {
   try {
@@ -11,12 +12,16 @@ const createBooking = async (bookingData) => {
     // }
     const checkInDate = new Date(bookingData.checkIn);
     const checkOutDate = new Date(bookingData.checkOut);
+    const formatedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
+    const formatedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
     if (checkOutDate <= checkInDate) {
       throw new ApiError(400, 'Check-out date must be after check-in date');
     }
     const durationOfStayInDays =
       Math.ceil(checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
     bookingData.durationOfStay = durationOfStayInDays;
+    bookingData.checkIn = formatedCheckInDate;
+    bookingData.checkOut = formatedCheckOutDate;
     const booking = await Booking.create(bookingData);
     return booking;
   } catch (error) {
