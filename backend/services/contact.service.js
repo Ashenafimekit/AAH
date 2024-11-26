@@ -7,9 +7,27 @@ import logger from '../config/logger.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import exphbs from 'express-handlebars';
+import Contact from '../models/contact.model.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const createContactMessage = async (reqBody) => {
+  try {
+    const { name, email, message } = reqBody;
+    const contact = await Contact.create({
+      name,
+      email,
+      message,
+    });
+    return contact;
+  } catch (error) {
+    throw new ApiError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'Error creating contact message',
+    );
+  }
+};
 
 const sendMessage = async (reqBody) => {
   try {
@@ -33,7 +51,6 @@ const sendMessage = async (reqBody) => {
       message,
       layout: 'main',
     });
-    logger.info(emailHtml);
     const accessToken = await getAccessToken();
     const transporter = createTransport({
       service: 'gmail',
@@ -63,4 +80,16 @@ const sendMessage = async (reqBody) => {
   }
 };
 
-export default { sendMessage };
+const getMessages = async () => {
+  try {
+    const messages = await Contact.find();
+    return messages;
+  } catch (error) {
+    throw new ApiError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'Error fetching messages',
+    );
+  }
+};
+
+export default { createContactMessage, getMessages, sendMessage };
