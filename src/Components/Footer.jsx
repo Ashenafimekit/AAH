@@ -16,12 +16,12 @@ const Footer = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(testimony);
 
     try {
-      axios.post('http://localhost:3000/testimonial/create',testimony)
+     await axios.post('http://localhost:3000/testimonial/create',testimony)
     } catch (error) {
       console.log("Server not found")
     }

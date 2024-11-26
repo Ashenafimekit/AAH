@@ -14,7 +14,7 @@ const AdminNavigation = () => {
       <div className="flex flex-col items-center justify-center gap-10 ">
         <Link to="/admin-dashboard">
           <h1 className="text-center text-xl text-white hover:text-golden">
-            DASHBOARD{" "}
+            DASHBOARD
           </h1>
         </Link>
         <Link>
@@ -22,7 +22,7 @@ const AdminNavigation = () => {
             ROOM
           </h1>
         </Link>
-        <Link>
+        <Link to='/admin-booking'>
           <h1 className="text-center text-xl text-white hover:text-golden">
             BOOKING
           </h1>

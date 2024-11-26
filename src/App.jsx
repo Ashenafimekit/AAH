@@ -8,7 +8,9 @@ import Room_Page from "./Pages/Room_Page";
 import Service_Page from "./Pages/Service_Page";
 import Body from "./Components/roomClicked/Body";
 import Admin_Page from "./Pages/Admin_Page";
-import AdminDashboard from "./Components/AdminDashboard";
+import AdminDashboard_page from "./Pages/AdminDashboard_page";
+import AdminBooking_Page from "./Pages/AdminBooking_Page";
+import AdminTestimonial from "./Pages/AdminTestimonial";
 
 const App = () => {
   return (
@@ -23,7 +25,9 @@ const App = () => {
           <Route path="/service" element={<Service_Page />} />
           <Route path="/room-detail" element={<Body />} />
           <Route path="/admin" element={<Admin_Page />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard_page />} />
+          <Route path="/admin-booking" element={<AdminBooking_Page/>} />
+          <Route path="/admin-testimonial" element={<AdminTestimonial/>} />
         </Routes>
       </Router>
     </div>
