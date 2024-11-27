@@ -81,11 +81,11 @@ const RoomTypeEdit = () => {
   };
 
   return (
-    <div className="max-w-xl w-full h-full">
+    <div className="w-full h-full">
       <h2 className="flex justify-center text-2xl font-semibold text-blueBlack">
         Edit single room
       </h2>
-      <div className="mx-auto my-4 w-2/3 mt-8">
+      <div className="mx-auto my-4 w-full mt-8">
         <form onSubmit={handleEdit}>
           <div>
             <label className="text-medium font-medium text-blueBlack">

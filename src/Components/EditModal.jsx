@@ -10,7 +10,7 @@ const EditModal = ({ show, onHandleClose, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-white rounded-lg shadow p-6 transition-all ${
+        className={` bg-white rounded-lg shadow p-6 transition-all ${
           open ? "scale-100 opacity-100" : "scale-120 opacity-0"
         }`}
       >
