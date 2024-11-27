@@ -25,8 +25,8 @@ const AdminContact = () => {
   const columns = [
     
     { field: "fullName", headreName: "fullName", width: 150 },
-    { field: "email", headreName: "email", width: 250 },
-    { field: "message", headreName: "message", width: 250 },
+    { field: "email", headreName: "email", width: 300 },
+    { field: "message", headreName: "message", width: 400 },
     {
       field: "Delete",
       headerName: "Delete",
@@ -53,8 +53,8 @@ const AdminContact = () => {
         </h1>
       </div>
 
-      <div className="w-5/6">
-        <Paper sx={{ height: 400, width: "100%" }}>
+      <div className="w-11/12">
+        <Paper sx={{ height: 500, width: "100%" }}>
           <DataGrid
             rows={data}
             columns={columns}

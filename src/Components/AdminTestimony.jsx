@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import Paper from "@mui/material/Paper";
 const apiUrl = import.meta.env.VITE_API_URL;
-
 
 const AdminTestimony = () => {
   const [data, setData] = useState([]);
@@ -9,9 +10,7 @@ const AdminTestimony = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${apiUrl}/testimonial/lists`
-        );
+        const response = await axios.get(`${apiUrl}/testimonial/lists`);
         setData(response.data.testimonials);
         console.log("incoming data : ", response.data.testimonials);
       } catch (error) {
@@ -23,6 +22,41 @@ const AdminTestimony = () => {
 
   const handleApprove = (data) => {};
   const handleDecline = (data) => {};
+
+  const columns = [
+    { field: "fullName", headreName: "fullName", width: 150 },
+    { field: "email", headreName: "email", width: 300 },
+    { field: "message", headreName: "message", width: 400 },
+    {
+      field: "Approve",
+      headerName: "Approve",
+      width: 80,
+      renderCell: (params) => (
+        <button
+          className="bg-green-600 text-white px-2 rounded"
+          onClick={() => handleApprove(params.row)}
+        >
+          Approve
+        </button>
+      ),
+    },
+    {
+      field: "Decline",
+      headerName: "Decline",
+      width: 80,
+      renderCell: (params) => (
+        <button
+          className="bg-red-600 text-white px-2 rounded"
+          onClick={() => handleDecline(params.row)}
+        >
+          Decline
+        </button>
+      ),
+    },
+  ];
+
+  const paginationModel = { page: 0, pageSize: 5 };
+
   return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="py-5">
@@ -30,46 +64,18 @@ const AdminTestimony = () => {
           Testimonial Approval Table
         </h1>
       </div>
-
-      <div className="w-3/4 overflow-auto max-w-full max-h-[450px] ">
-        <table className="">
-          <thead className="sticky top-0">
-            <tr className="border border-black bg-golden ">
-              <th className="border-2 border-black p-2 w-10">No.</th>
-              <th className="border-2 border-black p-2 w-40">Full Name</th>
-              <th className="border-2 border-black p-2 w-40">Email</th>
-              <th className="border-2 border-black p-2 w-72">Message</th>
-              <th className="border-2 border-black p-2 ">Approve</th>
-              <th className="border-2 border-black p-2 ">Decline</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((data, index) => (
-              <tr key={index} className="bg-blueBlack text-white ">
-                <td className="border-2 border-black p-2">{index + 1}</td>
-                <td className="border-2 border-black p-2">{data.fullName}</td>
-                <td className="border-2 border-black p-2">{data.email}</td>
-                <td className="border-2 border-black p-2">{data.message}</td>
-                <td className="border-2 border-black p-2">
-                  <button
-                    className="bg-green-500 p-1 text-black rounded-sm"
-                    onClick={() => handleApprove(data)}
-                  >
-                    Approve
-                  </button>
-                </td>
-                <td className="border-2 border-black p-2">
-                  <button
-                    className="bg-red-500 p-1 text-black rounded-sm"
-                    onClick={() => handleDecline(data)}
-                  >
-                    Decline
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="w-11/12">
+        <Paper sx={{ height: 500, width: "100%" }}>
+          <DataGrid
+            rows={data}
+            columns={columns}
+            initialState={{ pagination: { paginationModel } }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+            sx={{ border: 0 }}
+            getRowId={(row) => row._id}
+          />
+        </Paper>
       </div>
     </div>
   );
