@@ -9,7 +9,7 @@ const HomePageRoom = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="bg-[#D9D9D9] p-4 rounded-lg">
-        <h1 className="font-bold text-2xl sm:text-4xl text-center">
+        <h1 className="font-bold text-2xl sm:text-3xl text-center">
           Our Room Types
         </h1>
       </div>
@@ -20,7 +20,7 @@ const HomePageRoom = () => {
             alt="Arab Ali Hotel Room Type one"
             className="rounded-t-lg "
           />
-          <h1 className="font-semibold text-lg">Room Type one</h1>
+          <h1 className="font-bold text-lg">SINGLE</h1>
           <p className="text-sm text-center p-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
@@ -38,7 +38,7 @@ const HomePageRoom = () => {
             alt="Arab Ali Hotel Room Type one"
             className="rounded-t-lg "
           />
-          <h1 className="font-semibold text-lg">Room Type one</h1>
+          <h1 className="font-bold text-lg">KING</h1>
           <p className="text-sm text-center p-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
@@ -56,7 +56,7 @@ const HomePageRoom = () => {
             alt="Arab Ali Hotel Room Type one"
             className="rounded-t-lg "
           />
-          <h1 className="font-semibold text-lg">Room Type one</h1>
+          <h1 className="font-bold text-lg">TWIN</h1>
           <p className="text-sm text-center p-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla

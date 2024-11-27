@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import Paper from "@mui/material/Paper";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const AdminContact = () => {
@@ -20,46 +22,49 @@ const AdminContact = () => {
 
   const handleDelete = (data) => {};
 
+  const columns = [
+    
+    { field: "fullName", headerName: "Full Name", width: 150 },
+    { field: "email", headerName: "Email", width: 300 },
+    { field: "message", headerName: "Message", width: 400 },
+    {
+      field: "Delete",
+      headerName: "Delete",
+      width: 100,
+      renderCell: (params) => (
+        <button
+          className="bg-red-600 text-white px-4 py-1 rounded "
+          onClick={() => handleDelete(params.row)}
+        >
+          Click Me
+        </button>
+      ),
+    },
 
+  ];
+
+  const paginationModel = { page: 0, pageSize: 5 };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5">
+    <div className="flex flex-col items-center justify-center gap-5 ">
       <div className="py-5">
         <h1 className="text-2xl text-center font-semibold">
           Contact Message From Customers
         </h1>
       </div>
 
-      <div className="w-3/4 overflow-auto max-w-full max-h-[450px] ">
-        <table className="">
-          <thead className="sticky top-0">
-            <tr className="border border-black bg-golden ">
-              <th className="border-2 border-black p-2 w-10">No.</th>
-              <th className="border-2 border-black p-2 w-40">Full Name</th>
-              <th className="border-2 border-black p-2 w-40">Email</th>
-              <th className="border-2 border-black p-2 w-72">Message</th>
-              <th className="border-2 border-black p-2 w-28 text-center">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((data, index) => (
-              <tr key={index} className="bg-blueBlack text-white ">
-                <td className="border-2 border-black p-2">{index + 1}</td>
-                <td className="border-2 border-black p-2">{data.fullName}</td>
-                <td className="border-2 border-black p-2">{data.email}</td>
-                <td className="border-2 border-black p-2">{data.message}</td>
-                <td className="border-2 border-black p-2 text-center">
-                  <button
-                    className="bg-red-500 p-1 text-black rounded-sm"
-                    onClick={() => handleDelete(data)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="w-11/12">
+        <Paper sx={{ height: 500, width: "100%" }}>
+          <DataGrid
+            rows={data}
+            columns={columns}
+            initialState={{ pagination: { paginationModel } }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+            sx={{ border: 0 }}
+            getRowId={(row) => row._id}          
+          />
+        </Paper>
       </div>
     </div>
   );

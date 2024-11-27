@@ -1,16 +1,13 @@
 import React from "react";
-import bar from "../assets/images/bar.jpg";
 import gym from "../assets/images/gym.png";
 import meeting from "../assets/images/meeting.png";
 import restaurant from "../assets/images/restaurant.jpg";
-import cars from "../assets/images/cars.jpg";
-import spa from "../assets/images/spa.jpg";
 
 const HomePageService = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="bg-[#D9D9D9] p-4 rounded-lg">
-        <h1 className="font-bold text-2xl sm:text-4xl text-center">
+        <h1 className="font-bold text-2xl sm:text-3xl text-center">
           Our Services
         </h1>
       </div>
@@ -47,8 +44,6 @@ const HomePageService = () => {
             </p>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-10">
         <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
           <img
             src={meeting}

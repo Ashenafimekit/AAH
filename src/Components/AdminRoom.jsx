@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import bedroom from "../assets/images/bedroom.jpg";
 import EditModal from "./EditModal";
 import "../index.css";

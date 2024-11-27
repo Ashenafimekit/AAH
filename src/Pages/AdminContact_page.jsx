@@ -4,7 +4,7 @@ import AdminDashboard from '../Components/AdminContact'
 
 const AdminDashboard_page = () => {
   return (
-    <div className='flex flex-row gap-20'>
+    <div className='flex flex-row gap-5'>
         <AdminNavigation/>
         <div className='w-full'>
             <AdminDashboard/>

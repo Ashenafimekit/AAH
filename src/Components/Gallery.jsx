@@ -23,42 +23,42 @@ const Gallery = () => {
       </h1>
       <Tabs defaultActiveKey="1" centered className="">
         <TabPane tab="ALL" key="1">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 shadow-lg rounded-lg p-5">
-            <img className="rounded-md" src={restaurant} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={gym} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={spa} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={lobby} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={meeting} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={car} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bar} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bedroom} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bedroom2} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bedroom3} alt="Arab Ali Hotel Images" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 shadow-lg rounded-lg p-5">
+            <img className="rounded-md h-72 object-cover  " src={restaurant} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={gym} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={spa} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={lobby} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={meeting} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={car} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bar} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bedroom} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bedroom2} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bedroom3} alt="Arab Ali Hotel Images" />
           </div>
         </TabPane>
         <TabPane tab="ROOM" key="5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 shadow-lg rounded-lg p-5">
-            <img className="rounded-md" src={bedroom} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bedroom2} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={bedroom3} alt="Arab Ali Hotel Images" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 shadow-lg rounded-lg p-5">
+            <img className="rounded-md h-72 object-cover" src={bedroom} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bedroom2} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={bedroom3} alt="Arab Ali Hotel Images" />
           </div>
         </TabPane>
         <TabPane tab="RESTAURANT" key="4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 shadow-lg rounded-lg p-5">
-            <img className="rounded-md" src={restaurant} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={gym} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={spa} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={lobby} alt="Arab Ali Hotel Images" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 shadow-lg rounded-lg p-5">
+            <img className="rounded-md h-72 object-cover" src={restaurant} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={gym} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={spa} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={lobby} alt="Arab Ali Hotel Images" />
           </div>
         </TabPane>
         <TabPane tab="GYM" key="6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 shadow-lg rounded-lg p-5">
-            <img className="rounded-md" src={restaurant} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={gym} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={spa} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={lobby} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={meeting} alt="Arab Ali Hotel Images" />
-            <img className="rounded-md" src={car} alt="Arab Ali Hotel Images" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 shadow-lg rounded-lg p-5">
+            <img className="rounded-md h-72 object-cover" src={restaurant} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={gym} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={spa} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={lobby} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={meeting} alt="Arab Ali Hotel Images" />
+            <img className="rounded-md h-72 object-cover" src={car} alt="Arab Ali Hotel Images" />
           </div>
         </TabPane>  
       </Tabs>

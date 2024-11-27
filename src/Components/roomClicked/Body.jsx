@@ -37,10 +37,10 @@ function Body() {
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px] mx-auto">
         <div className="flex">
           <div className="flex flex-col px-8 lg:p-2">
-            <h2 className="text-4xl lg:text-5xl font-Alata text-[#0d2026]">
+            <h2 className="text-4xl lg:text-5xl text-[#0d2026]">
               WE ARE HERE FOR YOU
             </h2>
-            <p className="text-lg font-Montserrat text-[#0d2026]">
+            <p className="text-lg text-[#0d2026]">
               At Luxury Hotels, we take our customers seriously. Do you have any
               enquiries, complaints or requests, please forward it to our
               support desk and we will get back to you as soon as possible.

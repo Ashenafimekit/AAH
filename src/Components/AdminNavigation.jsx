@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AdminNavigation = () => {
   return (
-    <div className="flex flex-col gap-20 bg-blueBlack w-64 h-[100vh]">
+    <div className="flex flex-col gap-20 bg-blueBlack min-w-64 h-[100vh] overflow-y-auto">
       <div className="flex flex-col items-center justify-center bg-golden rounded-b-2xl">
         <Link to='/'>
           <h1 className="font-semibold text-2xl">Arab Ali</h1>
