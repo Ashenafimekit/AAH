@@ -13,6 +13,12 @@ const testimonialSchema = new Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    enum: ['approved', 'pending'],
+    default: 'pending',
+    required: true,
+  },
 });
 
 export default model('Testimonial', testimonialSchema);

@@ -3,9 +3,13 @@ import { Schema, model } from 'mongoose';
 const roomSchema = new Schema({
   roomType: {
     type: String,
-    enum: ['Single', 'Double', 'Queen', 'King', 'Suite'],
+    enum: ['Single', 'King', 'Twin'],
   },
-  beds: {
+  roomNumber: {
+    type: Number,
+    requried: true,
+  },
+  numberOfBeds: {
     type: Number,
     required: true,
   },
@@ -15,6 +19,12 @@ const roomSchema = new Schema({
   },
   price: {
     type: Number,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ['available', 'taken', 'pending'],
+    default: 'available',
     required: true,
   },
 });

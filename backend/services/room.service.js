@@ -1,6 +1,7 @@
 import ApiError from '../utils/ApiError.js';
 import httpStatus from 'http-status';
 import Room from '../models/room.model.js';
+import logger from '../config/logger.js';
 
 /**
  * Creates a new room in the database.
@@ -31,6 +32,90 @@ const getRooms = async () => {
   }
 };
 
+const getRoomTypes = async () => {
+  try {
+    const rooms = await Room.aggregate([
+      {
+        $group: {
+          _id: '$roomType',
+          price: { $first: '$price' },
+          amenities: { $addToSet: '$amenities' },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          roomType: '$_id',
+          price: 1,
+          amenities: {
+            $reduce: {
+              input: '$amenities',
+              initialValue: [],
+              in: { $setUnion: ['$$value', '$$this'] },
+            },
+          },
+        },
+      },
+    ]);
+    return rooms;
+  } catch (error) {
+    logger.info('logging error');
+    logger.error(error);
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Room retrieval failed');
+  }
+};
+
+/**
+ * Retrieves room counts by type and status.
+ * @returns {Promise<Array>} Aggregated room data with counts by type and status.
+ */
+const getRoomSummaryByType = async () => {
+  try {
+    const summary = await Room.aggregate([
+      {
+        $group: {
+          _id: { roomType: '$roomType', status: '$status' },
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $group: {
+          _id: '$_id.roomType',
+          total: { $sum: '$count' },
+          available: {
+            $sum: {
+              $cond: [{ $eq: ['$_id.status', 'available'] }, '$count', 0],
+            },
+          },
+          taken: {
+            $sum: {
+              $cond: [{ $eq: ['$_id.status', 'taken'] }, '$count', 0],
+            },
+          },
+          pending: {
+            $sum: {
+              $cond: [{ $eq: ['$_id.status', 'pending'] }, '$count', 0],
+            },
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          roomType: '$_id',
+          total: 1,
+          available: 1,
+          taken: 1,
+          pending: 1,
+        },
+      },
+    ]);
+    return summary;
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Room summary retrieval failed');
+  }
+};
+
 /**
  * Retrieves a specific room by its ID.
  * @param {string} roomId - The ID of the room to retrieve.
@@ -46,6 +131,30 @@ const getRoom = async (roomId) => {
     return room;
   } catch (error) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Room retrieval failed');
+  }
+};
+
+const updateRoomType = async (roomType, updateBody) => {
+  try {
+    const updatedRoom = await Room.findOneAndUpdate(
+      { roomType: roomType },
+      { $set: updateBody },
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+
+    if (!updatedRoom) {
+      throw new ApiError(
+        httpStatus.NOT_FOUND,
+        `Room type "${roomType}" not found.`,
+      );
+    }
+
+    return updatedRoom;
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Room update failed');
   }
 };
 
@@ -92,4 +201,13 @@ const deleteRoom = async (roomId) => {
   }
 };
 
-export default { createRoom, getRooms, getRoom, updateRoom, deleteRoom };
+export default {
+  createRoom,
+  getRooms,
+  getRoom,
+  updateRoom,
+  deleteRoom,
+  getRoomTypes,
+  getRoomSummaryByType,
+  updateRoomType,
+};

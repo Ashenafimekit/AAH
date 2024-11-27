@@ -27,6 +27,20 @@ export const updateBooking = catchAsync(async (req, res) => {
   res.status(httpstatus.OK).json({ success: true, updatedData: booking });
 });
 
+export const updateBookingStatus = catchAsync(async (req, res) => {
+  const booking = await bookingService.updateBookingStatus(
+    req.params.bookingId,
+    req.body.status,
+  );
+  if (booking.status === 'cancelled') {
+    //send booking cancellation email to user
+    logger.info('Booking cancelled successfully');
+  }
+  logger.info('Booking updated successfully');
+  //send success booking email to user
+  res.status(httpstatus.OK).json({ success: true, updatedData: booking });
+});
+
 export const deleteBooking = catchAsync(async (req, res) => {
   await bookingService.deleteBooking(req.params.bookingId);
   res.status(httpstatus.NO_CONTENT).send();

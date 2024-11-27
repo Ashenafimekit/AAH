@@ -62,6 +62,12 @@ const bookingSchema = new Schema({
     type: String,
     required: false,
   },
+  status: {
+    type: String,
+    enum: ['pending', 'confirmed', 'checkedIn', 'checkedOut'],
+    default: 'pending',
+    required: true,
+  },
 });
 
 export default model('Booking', bookingSchema);

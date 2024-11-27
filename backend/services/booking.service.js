@@ -20,6 +20,7 @@ const createBooking = async (bookingData) => {
     );
     bookingData.formattedCheckInDate = formattedCheckInDate;
     bookingData.formattedCheckOutDate = formattedCheckOutDate;
+    bookingData.durationOfStayInDays = durationOfStayInDays;
 
     const booking = await Booking.create(bookingData);
     return booking;
@@ -63,6 +64,22 @@ const updateBooking = async (bookingId, updateData) => {
   }
 };
 
+const updateBookingStatus = async (bookingId, status) => {
+  try {
+    const booking = await Booking.findByIdAndUpdate(
+      bookingId,
+      { status },
+      { new: true },
+    );
+    if (!booking) {
+      throw new ApiError(404, 'Booking not found');
+    }
+    return booking;
+  } catch (error) {
+    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+  }
+};
+
 const deleteBooking = async (bookingId) => {
   try {
     const booking = await Booking.findByIdAndDelete(bookingId);
@@ -80,4 +97,5 @@ export default {
   getBooking,
   updateBooking,
   deleteBooking,
+  updateBookingStatus,
 };
