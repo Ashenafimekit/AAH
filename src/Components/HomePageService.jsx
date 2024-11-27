@@ -32,27 +32,14 @@ const HomePageService = () => {
         </div>
         <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
           <img
-            src={spa}
-            alt="Arab Ali Hotel Room Type one"
-            className="rounded-t-lg "
-          />
-          <div className="bg-[#14274A] text-white rounded-b-lg p-3">
-            <h1 className="font-semibold text-lg text-center">Spa Services</h1>
-            <p className="text-sm text-justify p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-              impedit dolores maiores esse molestiae dolor nemo suscipit nulla
-              sapiente quae?
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
-          <img
             src={gym}
             alt="Arab Ali Hotel Room Type one"
             className="rounded-t-lg object-cover"
           />
           <div className="bg-[#14274A] text-white rounded-b-lg p-3">
-            <h1 className="font-semibold text-lg text-center">Fitness Center</h1>
+            <h1 className="font-semibold text-lg text-center">
+              Fitness Center
+            </h1>
             <p className="text-sm text-justify p-2">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
               impedit dolores maiores esse molestiae dolor nemo suscipit nulla
@@ -69,37 +56,9 @@ const HomePageService = () => {
             className="rounded-t-lg "
           />
           <div className="bg-[#14274A] text-white rounded-b-lg p-3">
-            <h1 className="font-semibold text-lg text-center">Meeting Rooms and Conference Halls</h1>
-            <p className="text-sm text-justify p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-              impedit dolores maiores esse molestiae dolor nemo suscipit nulla
-              sapiente quae?
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
-          <img
-            src={bar}
-            alt="Arab Ali Hotel Room Type one"
-            className="rounded-t-lg "
-          />
-          <div className="bg-[#14274A] text-white rounded-b-lg p-3">
-            <h1 className="font-semibold text-lg text-center">Bars and Lounges</h1>
-            <p className="text-sm text-justify p-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
-              impedit dolores maiores esse molestiae dolor nemo suscipit nulla
-              sapiente quae?
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
-          <img
-            src={cars}
-            alt="Arab Ali Hotel Room Type one"
-            className="rounded-t-lg "
-          />
-          <div className="bg-[#14274A] text-white rounded-b-lg p-3">
-            <h1 className="font-semibold text-lg text-center">Transportation Services</h1>
+            <h1 className="font-semibold text-lg text-center">
+              Meeting Rooms and Conference Halls
+            </h1>
             <p className="text-sm text-justify p-2">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim
               impedit dolores maiores esse molestiae dolor nemo suscipit nulla
