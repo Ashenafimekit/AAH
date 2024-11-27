@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        golden: "#E0B973",
+        golden: "#deae54",
         blueBlack: "#14274A",
         tealGreen: "#0d2026", 
       },
       screens: {
         'sm': '640px',
-        'md': '768px',
+        'md': '780px',
         'lg': '1140px',
         'xl': '1280px',
       },
