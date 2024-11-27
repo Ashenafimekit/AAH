@@ -14,24 +14,21 @@ const __dirname = path.dirname(__filename);
 
 const createContactMessage = async (reqBody) => {
   try {
-    const { name, email, message } = reqBody;
+    const { fullName, email, message } = reqBody;
     const contact = await Contact.create({
-      name,
+      fullName,
       email,
       message,
     });
     return contact;
   } catch (error) {
-    throw new ApiError(
-      httpStatus.INTERNAL_SERVER_ERROR,
-      'Error creating contact message',
-    );
+    throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }
 };
 
 const sendMessage = async (reqBody) => {
   try {
-    const { name, email, message } = reqBody;
+    const { fullName, email, message } = reqBody;
 
     // Set up Handlebars rendering
     // Set up Handlebars rendering with layout
@@ -46,7 +43,7 @@ const sendMessage = async (reqBody) => {
     );
     logger.info('here');
     const emailHtml = await hbs.render(emailTemplatePath, {
-      name,
+      fullName,
       email,
       message,
       layout: 'main',
@@ -67,7 +64,7 @@ const sendMessage = async (reqBody) => {
     const mailOptions = {
       from: config.senderEmail,
       to: 'wizdevaxo.06464@gmail.com',
-      subject: `Contact message from ${name}`,
+      subject: `Contact message from ${fullName}`,
       text: 'hello',
       html: emailHtml,
       replyTo: email,

@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const contactSchema = new Schema({
-  name: {
+  fullName: {
     type: String,
     required: true,
   },
