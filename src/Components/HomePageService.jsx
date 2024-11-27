@@ -47,8 +47,6 @@ const HomePageService = () => {
             </p>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-10">
         <div className="flex flex-col items-center justify-center shadow-xl rounded-lg w-3/4 md:w-1/3">
           <img
             src={meeting}
