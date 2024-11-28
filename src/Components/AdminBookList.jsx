@@ -12,7 +12,6 @@ const AdminBookList = () => {
       try {
         const response = await axios.get(`${apiUrl}/book/list`);
         setFormData(response.data.lists);
-        console.log("check : ", response.data.lists);
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -21,7 +20,17 @@ const AdminBookList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = (data) => {};
+  const handleDelete = async(data) => {
+    console.log("deleted data : ", data)
+
+    try{
+      await axios.delete(`${apiUrl}/book/delete/${data._id}`,data)
+      console.log("deleted data : ", data)
+      window.location.reload();
+    } catch(error){
+      console.log("Error : ", error)
+    }
+  };
 
   const handleEdit = (data) => {};
 

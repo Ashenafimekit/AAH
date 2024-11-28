@@ -21,7 +21,15 @@ const AdminTestimony = () => {
   }, []);
 
   const handleApprove = (data) => {};
-  const handleDecline = (data) => {};
+  const handleDecline = async(data) => {
+    try {
+      await axios.delete(`${apiUrl}/testimonial/cancel/${data._id}`,data)
+      console.log("Declined Testimony : ",data)
+      window.location.reload();
+    } catch (error) {
+      console.log("Error : ", error)
+    }
+  };
 
   const columns = [
     { field: "fullName", headerName: "Full Name", width: 150 },

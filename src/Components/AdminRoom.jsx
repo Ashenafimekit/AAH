@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import bedroom from "../assets/images/bedroom.jpg";
 import bedroom2 from "../assets/images/bedroom2.jpg";
 import bedroom3 from "../assets/images/bedroom3.jpg";
 
 const AdminRoom = () => {
+  const [singleRoomPrice, setSingleRoomPrice] = useState(0);
+  const [kingRoomPrice, setKingRoomPrice] = useState(0);
+  const [twinRoomPrice, setTwinRoomPrice] = useState(0);
+
+  const singleRoom = () => {};
+
+  const kingRoom = () => {};
+
+  const twinRoom = () => {};
+
   return (
     <div className="flex flex-col items-center justify-center py-10 border">
       <div className="text-center text-3xl">
@@ -11,13 +21,18 @@ const AdminRoom = () => {
       </div>
 
       <div className="flex flex-row items-center justify-center gap-5 w-5/6 py-10">
-        <div className="card  flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
+        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
           <div className="">
             <img
               src={bedroom}
               alt="Arab Ali Hotel Room Type"
               className="rounded-t-lg"
             />
+          </div>
+          <div>
+            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+              <p>{singleRoomPrice}ETB</p>
+            </button>
           </div>
 
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
@@ -29,15 +44,35 @@ const AdminRoom = () => {
               <h1>Available : </h1>
               <h1>Taken :</h1>
             </div>
+            <div>
+              <form className="flex flex-col gap-2 mb-1">
+                <input
+                  type="text"
+                  name="singleRoomPrice"
+                  value={singleRoomPrice}
+                  placeholder="Enter Price"
+                  onChange={(e) => setSingleRoomPrice(e.target.value)}
+                  className="border border-black rounded-md w-52 text-center font-semibold h-8"
+                />
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold">
+                  Update Price
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-        <div className="card flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
+        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
           <div className="">
             <img
               src={bedroom3}
               alt="Arab Ali Hotel Room Type"
               className="rounded-t-lg"
             />
+          </div>
+          <div>
+            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+              <p>{kingRoomPrice}ETB</p>
+            </button>
           </div>
 
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
@@ -49,15 +84,35 @@ const AdminRoom = () => {
               <h1>Available : </h1>
               <h1>Taken :</h1>
             </div>
+            <div>
+              <form className="flex flex-col gap-2 mb-1">
+                <input
+                  type="text"
+                  name="kingRoomPrice"
+                  value={kingRoomPrice}
+                  onChange={(e) => setKingRoomPrice(e.target.value)}
+                  placeholder="Enter Price"
+                  className="border border-black rounded-md w-52 text-center font-semibold h-8"
+                />
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
+                  Update Price
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-        <div className="card flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3 ">
+        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3 ">
           <div className="">
             <img
               src={bedroom2}
               alt="Arab Ali Hotel Room Type"
               className="rounded-t-lg"
             />
+          </div>
+          <div>
+            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+              <p>{twinRoomPrice}ETB</p>
+            </button>
           </div>
 
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
@@ -68,6 +123,21 @@ const AdminRoom = () => {
               <h1>Total Rooms : </h1>
               <h1>Available : </h1>
               <h1>Taken :</h1>
+            </div>
+            <div>
+              <form className="flex flex-col gap-2 mb-1">
+                <input
+                  type="text"
+                  name="twinRoomPrice"
+                  value={twinRoomPrice}
+                  onChange={(e) => setTwinRoomPrice(e.target.value)}
+                  placeholder="Enter Price"
+                  className="border border-black rounded-md w-52 text-center font-semibold h-8"
+                />
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
+                  Update Price
+                </button>
+              </form>
             </div>
           </div>
         </div>

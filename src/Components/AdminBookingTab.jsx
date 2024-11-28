@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 const AdminBookingTab = () => {
   return (
     <div className="w-full">
-      <Tabs defaultActiveKey="1" centered className="">
+      <Tabs defaultActiveKey="2" centered className="">
         <TabPane tab="Book" key="1">
           <AdminBooking />
         </TabPane>
