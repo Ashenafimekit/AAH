@@ -15,20 +15,30 @@ const AdminBooking = () => {
     mobile: "",
     nationality: "",
   });
+  const [status, setStatus] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setMessage("")
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     try {
-      await axios.post(`${apiUrl}/book`, formData);
-      console.log(formData);
-
+      await axios.post(`${apiUrl}/book`, formData).then((res) => {
+        setStatus(res.data.success);
+       // console.log("Status : ", status)
+        if (status === true) {
+          setMessage("Successfully Booked");
+        } else {
+          setMessage("Please try again!");
+        }
+      });
+      //console.log(formData);
       setFormData({
         fullName: "",
         roomType: "",
@@ -43,6 +53,7 @@ const AdminBooking = () => {
       });
     } catch (error) {
       console.log("Error: ", error);
+      setMessage("Please try again!");
     }
   };
 
@@ -50,6 +61,13 @@ const AdminBooking = () => {
     <div className="flex flex-col justify-center items-center gap-5 w-full ">
       <div className="">
         <h1 className="text-2xl text-center">GUEST REGISTRATION FORM</h1>
+        <p
+          className={`text-center text-xl -mb-3 ${
+            status ? "text-green-500" : "text-red-500"
+          }`}
+        >
+          {message}
+        </p>
       </div>
       <form
         onSubmit={handleSubmit}

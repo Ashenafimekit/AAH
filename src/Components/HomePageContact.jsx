@@ -17,7 +17,7 @@ const HomePageContact = () => {
             ></iframe>
           </div>
         </div>
-        <div className="md:w-1/2 mt-5">
+        <div className="w-full md:w-1/2 mt-5">
           <ContactForm/>
         </div>
       </div>

@@ -15,7 +15,7 @@ const Testimonial = () => {
           `${apiUrl}/testimonial/lists`
         );
         setTestimony(response.data.testimonials);
-        console.log("incoming data : ", testimony);
+        // console.log("incoming data : ", testimony);
       } catch (error) {
         console.log("Error : ", error);
       }

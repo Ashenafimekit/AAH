@@ -8,22 +8,39 @@ const Footer = () => {
     email: "",
     message: "",
   });
+  const [status ,setStatus] = useState(false)
+  const [message, setMessage] = useState("");
+
 
   const handleChange = (e) => {
     setTestimony({
       ...testimony,
       [e.target.name]: e.target.value,
     });
+    setMessage("")
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(testimony);
 
     try {
-     await axios.post('http://localhost:3000/testimonial/create',testimony)
+      await axios
+        .post("http://localhost:3000/testimonial/create", testimony)
+        .then((res) => {
+          setStatus(res.data.sucess)
+          if (status == true) {
+            setMessage("Succesfully submited!")
+          }
+          else{
+            setMessage("Please try again!")
+          }
+          //console.log("sucess : ", success)
+        });
     } catch (error) {
-      console.log("Server not found")
+      console.log("Error : ",error);
+      setMessage("Please try again!")
+
     }
 
     setTestimony({
@@ -34,9 +51,9 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-full gap-10 md:gap-5 items-center justify-around bg-[#14274A] text-white">
+    <div className="flex flex-col md:flex-row h-full md:gap-5 items-center justify-around bg-[#14274A] text-white">
       <div className="flex flex-col gap-4 mt-8 md:mt-0">
-        <div className="text-golden">
+        <div className="text-golden text-center">
           <h1 className="font-bold text-xl">Arab Ali Hotel</h1>
           <h1 className="font-semibold text-lg">فندق عرب علي</h1>
         </div>
@@ -60,6 +77,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col gap-4 p-5">
         <h1>Leave Your Testimonial Here</h1>
+        <p className={`-mt-5 text-center ${status ? "text-green-500" : "text-red-500"}`}>{message}</p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
             type="text"
@@ -84,7 +102,9 @@ const Footer = () => {
             placeholder="Message"
             className="border-2 border-golden bg-blueBlack rounded-md text-center p-2"
           ></textarea>
-          <button type="submit" className="bg-golden p-2 rounded-lg">Submit</button>
+          <button type="submit" className="bg-golden p-2 rounded-lg">
+            Submit
+          </button>
         </form>
       </div>
     </div>

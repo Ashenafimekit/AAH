@@ -36,10 +36,13 @@ const AdminRoom = () => {
         const response = await axios.get(
           "http://localhost:3000/room/roomTypeSummary"
         );
-        console.log("Response", response);
+        console.log("Response1", response);
         const data = await response.data;
-        const singleRoom = data.roomSummary.find((room) => room.roomType === "Single");
+        const singleRoom = data.roomSummary.find(
+          (room) => room.roomType === "Single"
+        );
         setRoomTypeSummary(singleRoom);
+        console.log("check : ", roomTypeSummary);
       } catch (error) {
         console.error("Error fetching room type summary", error);
       }
@@ -279,22 +282,30 @@ const AdminRoom = () => {
             <div className="flex flex-col px-4 py-4 text-sm md:text-base font-medium bg-white rounded-lg space-y-1">
               <div className="flex justify-between items-center p-2 rounded-md bg-blue-50">
                 <h2 className="text-gray-700">Total Rooms</h2>
-                <h2 className="text-blue-700 font-semibold">{roomTypeSummary.total}</h2>
+                <h2 className="text-blue-700 font-semibold">
+                  {roomTypeSummary.total ?? "N/A"}
+                </h2>
               </div>
 
               <div className="flex justify-between items-center p-2 rounded-md bg-green-50">
                 <h2 className="text-gray-700">Available</h2>
-                <h2 className="text-green-700 font-semibold">{roomTypeSummary.available}</h2>
+                <h2 className="text-green-700 font-semibold">
+                  {roomTypeSummary.available}
+                </h2>
               </div>
 
               <div className="flex justify-between items-center p-2 rounded-md bg-yellow-50">
                 <h2 className="text-gray-700">Pending</h2>
-                <h2 className="text-yellow-700 font-semibold">{roomTypeSummary.pending}</h2>
+                <h2 className="text-yellow-700 font-semibold">
+                  {roomTypeSummary.pending}
+                </h2>
               </div>
 
               <div className="flex justify-between items-center p-2 rounded-md bg-red-50">
                 <h2 className="text-gray-700">Taken</h2>
-                <h2 className="text-red-700 font-semibold">{roomTypeSummary.taken}</h2>
+                <h2 className="text-red-700 font-semibold">
+                  {roomTypeSummary.taken}
+                </h2>
               </div>
             </div>
 
