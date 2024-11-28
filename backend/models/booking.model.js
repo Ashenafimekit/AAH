@@ -5,9 +5,8 @@ const bookingSchema = new Schema({
     type: String,
     required: true,
   },
-  room: {
-    type: Schema.Types.ObjectId,
-    ref: 'Room',
+  roomType: {
+    type: String,
     required: false,
   },
   checkInDate: {
