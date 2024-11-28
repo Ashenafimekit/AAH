@@ -12,6 +12,7 @@ import AdminContact_page from "./Pages/AdminContact_page";
 import AdminBooking_Page from "./Pages/AdminBooking_Page";
 import AdminTestimonial from "./Pages/AdminTestimonial";
 import AdminRoom_Page from "./Pages/AdminRoom_Page";
+import Login_page from "./Pages/Login_Page";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
           <Route path="/room" element={<Room_Page />} />
           <Route path="/service" element={<Service_Page />} />
           <Route path="/room-detail" element={<Body />} />
-          <Route path="/admin" element={<Admin_Page />} />
+          <Route path="/admin" element={<Login_page />} />
+          <Route path="/adminPage" element={<Admin_Page key={window.location.pathname} />} />
           <Route path="/admin-contact" element={<AdminContact_page />} />
           <Route path="/admin-booking" element={<AdminBooking_Page/>} />
           <Route path="/admin-testimonial" element={<AdminTestimonial/>} />

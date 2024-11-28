@@ -12,23 +12,24 @@ const AdminBookList = () => {
       try {
         const response = await axios.get(`${apiUrl}/book/list`);
         setFormData(response.data.lists);
+        console.log(formData);
       } catch (error) {
         console.log("Error : ", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [formData]);
 
-  const handleDelete = async(data) => {
-    console.log("deleted data : ", data)
+  const handleDelete = async (data) => {
+    console.log("deleted data : ", data);
 
-    try{
-      await axios.delete(`${apiUrl}/book/delete/${data._id}`,data)
-      console.log("deleted data : ", data)
+    try {
+      await axios.delete(`${apiUrl}/book/delete/${data._id}`, data);
+      console.log("deleted data : ", data);
       window.location.reload();
-    } catch(error){
-      console.log("Error : ", error)
+    } catch (error) {
+      console.log("Error : ", error);
     }
   };
 
@@ -49,10 +50,10 @@ const AdminBookList = () => {
     {
       field: "Edit",
       headerName: "Edit",
-      width: 70,
+      width: 60, // Reduce width to match smaller button
       renderCell: (params) => (
         <button
-          className="bg-green-600 text-white px-4 rounded"
+          className="bg-green-600 text-white text-xs px-2 py-1 rounded-sm"
           onClick={() => handleEdit(params.row)}
         >
           Edit
@@ -62,13 +63,13 @@ const AdminBookList = () => {
     {
       field: "Delete",
       headerName: "Delete",
-      width: 80,
+      width: 60, // Reduce width for consistency
       renderCell: (params) => (
         <button
-          className="bg-red-600 text-white px-2 rounded"
+          className="bg-red-600 text-white text-xs px-2 py-1 rounded-sm"
           onClick={() => handleDelete(params.row)}
         >
-          Delete
+          Del
         </button>
       ),
     },
@@ -82,14 +83,18 @@ const AdminBookList = () => {
         <h1 className="text-2xl">GUEST LIST</h1>
       </div>
       <div className="w-11/12 ">
-        <Paper sx={{ height: 450, width: "100%"}}>
+        <Paper sx={{ height: 450, width: "100%" }}>
           <DataGrid
             rows={formData}
             columns={columns}
             initialState={{ pagination: { paginationModel } }}
             pageSizeOptions={[5, 10]}
             checkboxSelection
-            sx={{ border: 0 }}
+            sx={{
+              border: 0,
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: "#ebf8ff !important",
+              },}}
             getRowId={(row) => row._id}
           />
         </Paper>
