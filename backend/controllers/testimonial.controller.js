@@ -20,3 +20,15 @@ export const getTestimonial = catchAsync(async (req, res) => {
   );
   res.status(httpstatus.OK).json({ success: true, testimonial });
 });
+
+export const approveTestimonial = catchAsync(async (req, res) => {
+  const testimonial = await testimonialService.approveTestimonial(
+    req.params.testimonialId,
+  );
+  res.status(httpstatus.OK).json({ success: true, testimonial });
+});
+
+export const cancelTestimonial = catchAsync(async (req, res) => {
+  await testimonialService.cancelTestimonial(req.params.testimonialId);
+  res.status(httpstatus.NO_CONTENT).send();
+});

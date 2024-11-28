@@ -32,4 +32,37 @@ const getTestimonial = async (testimonialId) => {
   }
 };
 
-export default { createTestimonial, getTestimonials, getTestimonial };
+const approveTestimonial = async (testimonialId) => {
+  try {
+    const testimonial = await Testimonial.findByIdAndUpdate(
+      testimonialId,
+      { approved: true },
+      { new: true },
+    );
+    if (!testimonial) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Testimonial not found');
+    }
+    return testimonial;
+  } catch (error) {
+    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+  }
+};
+
+const cancelTestimonial = async (testimonialId) => {
+  try {
+    const testimonial = await Testimonial.findByIdAndDelete(testimonialId);
+    if (!testimonial) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Testimonial not found');
+    }
+  } catch (error) {
+    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+  }
+};
+
+export default {
+  createTestimonial,
+  getTestimonials,
+  getTestimonial,
+  approveTestimonial,
+  cancelTestimonial,
+};
