@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import axios from "axios";
 import { Carousel } from "antd";
 import '../css/carousel.css'

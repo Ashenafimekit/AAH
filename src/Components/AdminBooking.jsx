@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
 const AdminBooking = () => {
   const [formData, setFormData] = useState({
     fullName: "",
+    roomType: "SINGLE",
     checkInDate: "",
     checkOutDate: "",
     duration: "",
@@ -24,15 +24,14 @@ const AdminBooking = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-
+    // e.preventDefault();
     try {
       await axios.post(`${apiUrl}/book`, formData);
       console.log(formData);
 
       setFormData({
         fullName: "",
+        roomType: "",
         checkInDate: "",
         checkOutDate: "",
         duration: "",
@@ -43,16 +42,13 @@ const AdminBooking = () => {
         nationality: "",
       });
     } catch (error) {
-        console.log("Error: ", error)
+      console.log("Error: ", error);
     }
-
-    
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5 w-full">
+    <div className="flex flex-col justify-center items-center gap-5 w-full ">
       <div className="">
-        <h1 className="text-3xl text-center">ARAB ALI HOTEL</h1>
         <h1 className="text-2xl text-center">GUEST REGISTRATION FORM</h1>
       </div>
       <form
@@ -62,6 +58,7 @@ const AdminBooking = () => {
         <div className="flex flex-row items-center justify-center gap-3">
           <div className="flex flex-col gap-2 text-lg text-white">
             <label className="">Full Name of Guest </label>
+            <label className="">Room Type </label>
             <label className="">Check in Date </label>
             <label className="">Check Out Date </label>
             <label className="">Duration of Stay </label>
@@ -79,6 +76,16 @@ const AdminBooking = () => {
               onChange={handleChange}
               className="border border-black rounded-md w-52 text-center font-semibold h-8"
             />
+            <select
+              value={formData.roomType}
+              name="roomType"
+              onChange={handleChange}
+              className="border border-black rounded-md w-52 text-center font-semibold h-8"
+            >
+              <option value="Single">SINGLE</option>
+              <option value="king">KING</option>
+              <option value="Twin">TWIN</option>
+            </select>
             <input
               type="date"
               name="checkInDate"

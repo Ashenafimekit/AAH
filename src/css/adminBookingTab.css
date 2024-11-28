@@ -1,0 +1,13 @@
+.ant-tabs-tab {
+    font-size: x-large;
+    font-weight: bold;
+    color: red;
+}
+
+.ant-tabs-nav-wrap {
+ padding: 5px;
+}
+
+.ant-tabs-nav-list {
+    padding: 5px;
+}

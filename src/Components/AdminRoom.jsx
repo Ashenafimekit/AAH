@@ -6,7 +6,7 @@ import bedroom3 from "../assets/images/bedroom3.jpg";
 const AdminRoom = () => {
   return (
     <div className="flex flex-col items-center justify-center py-10 border">
-      <div className="text-center font-semibold text-4xl">
+      <div className="text-center text-3xl">
         <h1>Room Statistics</h1>
       </div>
 

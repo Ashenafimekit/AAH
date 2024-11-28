@@ -24,16 +24,16 @@ const AdminContact = () => {
 
   const columns = [
     
-    { field: "fullName", headreName: "fullName", width: 150 },
-    { field: "email", headreName: "email", width: 300 },
-    { field: "message", headreName: "message", width: 400 },
+    { field: "fullName", headerName: "Full Name", width: 150 },
+    { field: "email", headerName: "Email", width: 300 },
+    { field: "message", headerName: "Message", width: 400 },
     {
       field: "Delete",
       headerName: "Delete",
       width: 100,
       renderCell: (params) => (
         <button
-          className="bg-red-600 text-white px-4 py-1 rounded"
+          className="bg-red-600 text-white px-4 py-1 rounded "
           onClick={() => handleDelete(params.row)}
         >
           Click Me
@@ -46,7 +46,7 @@ const AdminContact = () => {
   const paginationModel = { page: 0, pageSize: 5 };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5">
+    <div className="flex flex-col items-center justify-center gap-5 ">
       <div className="py-5">
         <h1 className="text-2xl text-center font-semibold">
           Contact Message From Customers

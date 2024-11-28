@@ -24,9 +24,9 @@ const AdminTestimony = () => {
   const handleDecline = (data) => {};
 
   const columns = [
-    { field: "fullName", headreName: "fullName", width: 150 },
-    { field: "email", headreName: "email", width: 300 },
-    { field: "message", headreName: "message", width: 400 },
+    { field: "fullName", headerName: "Full Name", width: 150 },
+    { field: "email", headerName: "Email", width: 300 },
+    { field: "message", headerName: "Message", width: 400 },
     {
       field: "Approve",
       headerName: "Approve",
