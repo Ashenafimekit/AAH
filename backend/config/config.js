@@ -15,4 +15,9 @@ export default {
   senderEmail: envVars.SENDER_EMAIL,
   env: envVars.NODE_ENV,
   url: envVars.URL,
+  jwt: {
+    secretKey: envVars.JWT_SECRET_KEY,
+    accessTokenMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,
+    refreshTokenDays: envVars.JWT_REFRESS_EXPIRATION_DAYS,
+  },
 };

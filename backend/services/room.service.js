@@ -110,7 +110,18 @@ const getRoomSummaryByType = async () => {
         },
       },
     ]);
-    return summary;
+
+    const result = summary.reduce((acc, item) => {
+      acc[item.roomType] = {
+        total: item.total,
+        available: item.available,
+        taken: item.taken,
+        pending: item.pending,
+      };
+      return acc;
+    }, {});
+
+    return result;
   } catch (error) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Room summary retrieval failed');
   }

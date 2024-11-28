@@ -8,6 +8,7 @@ import roomRouter from '../routes/room.route.js';
 import bookingRouter from '../routes/booking.route.js';
 import testimonialRouter from '../routes/testimonial.route.js';
 import contactRouter from '../routes/contact.route.js';
+import userRouter from '../routes/user.route.js';
 
 export default async (app) => {
   app.use(express.json());
@@ -20,6 +21,7 @@ export default async (app) => {
   }
 
   //routers
+  app.use(userRouter);
   app.use(roomRouter);
   app.use(bookingRouter);
   app.use(testimonialRouter);

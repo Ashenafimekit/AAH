@@ -41,7 +41,6 @@ const sendMessage = async (reqBody) => {
       __dirname,
       '../templates/emails/contactEmail.handlebars',
     );
-    logger.info('here');
     const emailHtml = await hbs.render(emailTemplatePath, {
       fullName,
       email,
