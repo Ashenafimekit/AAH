@@ -23,7 +23,7 @@ const AdminBooking = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setMessage("")
+    setMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -31,14 +31,14 @@ const AdminBooking = () => {
     try {
       await axios.post(`${apiUrl}/book`, formData).then((res) => {
         setStatus(res.data.success);
-       // console.log("Status : ", status)
+        console.log("Status : ", status);
         if (status === true) {
           setMessage("Successfully Booked");
         } else {
           setMessage("Please try again!");
         }
       });
-      //console.log(formData);
+      console.log(formData);
       setFormData({
         fullName: "",
         roomType: "",

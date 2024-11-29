@@ -26,7 +26,7 @@ const AdminBookList = () => {
     try{
       await axios.delete(`${apiUrl}/book/delete/${data._id}`,data)
       console.log("deleted data : ", data)
-      window.location.reload();
+     // window.location.reload();
     } catch(error){
       console.log("Error : ", error)
     }

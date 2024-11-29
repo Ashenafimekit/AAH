@@ -36,7 +36,7 @@ const AdminContact = () => {
           className="bg-red-600 text-white px-4 py-1 rounded "
           onClick={() => handleDelete(params.row)}
         >
-          Click Me
+          Delete
         </button>
       ),
     },
