@@ -31,7 +31,8 @@ const AdminBooking = () => {
     try {
       await axios.post(`${apiUrl}/book`, formData).then((res) => {
         setStatus(res.data.success);
-        console.log("Status : ", status);
+       // console.log("Status : ", status);
+       // console.log(res.data.success)
         if (status === true) {
           setMessage("Successfully Booked");
         } else {
@@ -52,8 +53,15 @@ const AdminBooking = () => {
         nationality: "",
       });
     } catch (error) {
-      console.log("Error: ", error);
-      setMessage("Please try again!");
+      if (error.response) {
+      //  console.log(error.response.status, ": status code");
+        if (error.response.status === 400) {
+          setMessage("Checkout Date must be greater than Checkin Date");
+        } else {
+          console.log("Error: ", error);
+          setMessage("Server Error");
+        }
+      }
     }
   };
 
@@ -66,7 +74,7 @@ const AdminBooking = () => {
             status ? "text-green-500" : "text-red-500"
           }`}
         >
-          {message}
+          {message} 
         </p>
       </div>
       <form
