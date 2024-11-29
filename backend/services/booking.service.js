@@ -5,6 +5,35 @@ import httpStatus from 'http-status';
 import logger from '../config/logger.js';
 import dayjs from 'dayjs';
 
+let clients = [];
+const sendNewBookingCreatedEvent = async (req, res) => {
+  //set headers for server-sent events
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  //add new connection to clients array
+  const newClient = {
+    id: Date.now(),
+    res,
+  };
+  clients.push(newClient);
+
+  //remove client when connection closes
+  req.on('close', () => {
+    clients = clients.filter((client) => client.id !== newClient.id);
+    res.end();
+  });
+};
+
+const sendBookingUpdates = (newBooking) => {
+  clients.forEach((client) => {
+    client.res.write(`data: ${JSON.stringify(newBooking)}\n\n`);
+  });
+  logger.info('booking updates sent');
+};
+
 const createBooking = async (bookingData) => {
   try {
     const checkInDate = new Date(bookingData.checkInDate);
@@ -22,8 +51,9 @@ const createBooking = async (bookingData) => {
     bookingData.formattedCheckOutDate = formattedCheckOutDate;
     bookingData.durationOfStayInDays = durationOfStayInDays;
 
-    const booking = await Booking.create(bookingData);
-    return booking;
+    const newBooking = await Booking.create(bookingData);
+    sendBookingUpdates(newBooking);
+    return newBooking;
   } catch (error) {
     throw new ApiError(httpStatus.NOT_FOUND, error.message);
   }
@@ -98,4 +128,5 @@ export default {
   updateBooking,
   deleteBooking,
   updateBookingStatus,
+  sendNewBookingCreatedEvent,
 };

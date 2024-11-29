@@ -3,6 +3,10 @@ import bookingService from '../services/booking.service.js';
 import httpstatus from 'http-status';
 import logger from '../config/logger.js';
 
+export const sendNewBookingCreatedEvent = catchAsync(async (req, res) => {
+  await bookingService.sendNewBookingCreatedEvent(req, res);
+});
+
 export const createBooking = catchAsync(async (req, res) => {
   const booking = await bookingService.createBooking(req.body);
   logger.info('booked successfully');
