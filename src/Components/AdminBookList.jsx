@@ -71,7 +71,7 @@ const AdminBookList = () => {
     { field: "roomNo", headerName: "Room No.", width: 70 },
     { field: "tinNo", headerName: "Tin No.", width: 150 },
     { field: "mobile", headerName: "Phone", width: 150 },
-    { field: "nationality", headerName: "Nationality", width: 150 },
+    { field: "nationality", headerName: "Nationality", width: 100 },
 
     {
       field: "Edit",
