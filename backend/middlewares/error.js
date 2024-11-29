@@ -23,7 +23,6 @@ export const errorHandler = (err, req, res, next) => {
     (statusCode = httpstatus.INTERNAL_SERVER_ERROR),
       (message = httpstatus[statusCode]);
   }
-
   const response = {
     error: true,
     code: statusCode,

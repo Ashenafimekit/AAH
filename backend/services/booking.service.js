@@ -42,7 +42,10 @@ const createBooking = async (bookingData) => {
     const formattedCheckOutDate = dayjs(checkOutDate).format('MM/DD/YY');
 
     if (checkOutDate <= checkInDate) {
-      throw new ApiError(400, 'Check-out date must be after check-in date');
+      throw new ApiError(
+        httpStatus.BAD_REQUEST,
+        'Check-out date must be after check-in date',
+      );
     }
     const durationOfStayInDays = Math.ceil(
       (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24),
@@ -55,7 +58,11 @@ const createBooking = async (bookingData) => {
     sendBookingUpdates(newBooking);
     return newBooking;
   } catch (error) {
-    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    }
   }
 };
 
@@ -76,7 +83,11 @@ const getBooking = async (bookingId) => {
     }
     return booking;
   } catch (error) {
-    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    }
   }
 };
 
@@ -90,7 +101,11 @@ const updateBooking = async (bookingId, updateData) => {
     }
     return booking;
   } catch (error) {
-    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    }
   }
 };
 
@@ -106,7 +121,11 @@ const updateBookingStatus = async (bookingId, status) => {
     }
     return booking;
   } catch (error) {
-    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    }
   }
 };
 
@@ -117,7 +136,11 @@ const deleteBooking = async (bookingId) => {
       throw new ApiError(404, 'Booking not found');
     }
   } catch (error) {
-    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(httpStatus.NOT_FOUND, error.message);
+    }
   }
 };
 

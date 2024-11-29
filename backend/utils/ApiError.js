@@ -1,3 +1,4 @@
+import logger from '../config/logger.js';
 class ApiError extends Error {
   constructor(statusCode, message, isOprational = true, stack = '') {
     super(message);
