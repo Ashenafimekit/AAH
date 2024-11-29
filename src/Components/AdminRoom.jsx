@@ -4,10 +4,9 @@ import EditModal from "./EditModal";
 import "../index.css";
 import axios from "axios";
 import Alert from "./Alert";
-import RoomTypeEdit from "./RoomTypeEdit";
+import RoomTypeComp from './RoomtypeComp'
 
 const AdminRoom = () => {
-  const [showSingleModal, setShowSingleModal] = React.useState(false);
   const [showAddRoomModal, setShowAddRoomModal] = React.useState(false);
   const [roomType, setRoomType] = React.useState("Single");
   const [roomNumber, setRoomNumber] = React.useState("");
@@ -17,7 +16,7 @@ const AdminRoom = () => {
   const [error, setError] = React.useState("");
   const [formError, setFormError] = React.useState("");
   const [alert, setAlert] = React.useState(null);
-  const [roomTypeSummary, setRoomTypeSummary] = React.useState([]);
+  const [roomTypeSummary, setRoomTypeSummary] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [formState, setFormState] = React.useState({
     currentAmenity: "",
@@ -140,7 +139,7 @@ const AdminRoom = () => {
           show={showAddRoomModal}
           onHandleClose={() => setShowAddRoomModal(false)}
         >
-          <div className="max-w-xl h-full">
+          <div className="max-w-lg h-full">
             <h2 className="flex justify-center text-2xl font-semibold text-blueBlack">
               Add Room
             </h2>

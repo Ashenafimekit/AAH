@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const RoomTypeEdit = () => {
+const RoomTypeEdit = ({ roomType, alert, onSetAlert }) => {
   const [formState, setFormState] = useState({
     amenities: [],
     currentAmenity: "",
@@ -14,31 +14,29 @@ const RoomTypeEdit = () => {
         const response = await axios.get(
           "http://localhost:3000/room/roomTypes"
         );
-        console.log("Response", response);
         const data = response.data;
         console.log("Data", data);
 
-        // Check if data is valid and find the "Single" room
         if (data.success) {
-          const singleRoom = data.rooms.find(
-            (room) => room.roomType === "Single"
+          const selectedRoom = data.rooms.find(
+            (room) => room.roomType === roomType
           );
-          if (singleRoom) {
-            // Populate the form state with amenities and price for the "Single" room
+          if (selectedRoom) {
             setFormState({
-              amenities: singleRoom.amenities,
-              price: singleRoom.price,
-              currentAmenity: "", // Reset the current amenity input
+              amenities: selectedRoom.amenities,
+              price: selectedRoom.price,
+              currentAmenity: "",
             });
           }
         }
+        // console.log(formState)
       } catch (error) {
         console.log("Error fetching roomtype data", error);
       }
     };
 
     fetchRoomTypeData();
-  }, []);
+  }, [ roomType ]);
 
   const handleAddAmenity = () => {
     setFormState({
@@ -69,11 +67,24 @@ const RoomTypeEdit = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      const response = await axios.put(`http://localhost:3000/update/Single`, {
-        amenities: formState.amenities,
-        price: formState.price,
-      });
-
+      const response = await axios.put(
+        `http://localhost:3000/update/${roomType}`,
+        {
+          amenities: formState.amenities,
+          price: formState.price,
+        }
+      );
+      if (response.data.success) {
+        onSetAlert({
+          message: "updated successfully!",
+          type: "success",
+        });
+      } else {
+        onSetAlert({
+          message: "update failed. Please try again.",
+          type: "error",
+        });
+      }
       console.log("Room updated", response.data);
     } catch (error) {
       console.log("Error updating room", error);
@@ -81,9 +92,9 @@ const RoomTypeEdit = () => {
   };
 
   return (
-    <div className="w-full h-full">
-      <h2 className="flex justify-center text-2xl font-semibold text-blueBlack">
-        Edit single room
+    <div className="max-w-lg h-full">
+      <h2 className="flex justify-center text-2xl font-semibold text-blueBlack capitalize">
+        Edit {roomType} room
       </h2>
       <div className="mx-auto my-4 w-full mt-8">
         <form onSubmit={handleEdit}>
@@ -96,7 +107,7 @@ const RoomTypeEdit = () => {
                 className="flex items-center space-x-2 overflow-auto max-h-20 w-full snap-x snap-mandatory scrollbar-hide"
                 style={{ WebkitOverflowScrolling: "touch" }}
               >
-                {formState.amenities.map((item, index) => (
+                {formState.amenities?.map((item, index) => (
                   <span
                     key={index}
                     className="bg-blue-200 text-blue-800 px-2 py-1 rounded-full text-xs flex items-center snap-start whitespace-nowrap max-w-xs overflow-hidden text-ellipsis"
