@@ -12,14 +12,28 @@ const AdminBookList = () => {
       try {
         const response = await axios.get(`${apiUrl}/book/list`);
         setFormData(response.data.lists);
-        console.log(formData);
       } catch (error) {
         console.log("Error : ", error);
       }
     };
 
     fetchData();
-  }, [formData]);
+
+    const eventSource = new EventSource(`${apiUrl}/events`);
+    eventSource.onmessage = (event) => {
+      const newBooking = JSON.parse(event.data);
+      setFormData((prevData) => [...prevData, newBooking]);
+    }
+
+    eventSource.onerror = (error) => {
+      console.log("Error : ", error);
+      eventSource.close();
+    };
+
+    return () => {
+      eventSource.close();
+    }
+  }, []);
 
   const handleDelete = async (data) => {
     console.log("deleted data : ", data);

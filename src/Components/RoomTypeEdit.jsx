@@ -14,11 +14,9 @@ const RoomTypeEdit = ({ roomType, alert, onSetAlert }) => {
         const response = await axios.get(
           "http://localhost:3000/room/roomTypes"
         );
-        console.log("Response", response);
         const data = response.data;
         console.log("Data", data);
 
-        // Check if data is valid and find the "Single" room
         if (data.success) {
           const selectedRoom = data.rooms.find(
             (room) => room.roomType === roomType
@@ -31,6 +29,7 @@ const RoomTypeEdit = ({ roomType, alert, onSetAlert }) => {
             });
           }
         }
+        // console.log(formState)
       } catch (error) {
         console.log("Error fetching roomtype data", error);
       }
