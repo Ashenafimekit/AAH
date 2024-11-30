@@ -1,25 +1,39 @@
 import { useState, useRef } from "react";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import axios from 'axios';
 
 const BookingForm = () => {
   const [fullName, setFullName] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const [numberOfRoom, setNumberOfRoom] = useState(1);
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
 
   const checkInRef = useRef(null);
   const checkOutRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({
       fullName,
       checkInDate,
       checkOutDate,
-      numberOfRoom,
+      mobile,
+      email,
     });
+
+    try {
+      const formData = await axios.post('http://localhost:3000/book', {
+        fullName,
+        checkInDate,
+        checkOutDate,
+        mobile,
+        email,
+      });
+      console.log(formData);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   };
 
   const toggleDatePicker = (ref) => {
@@ -93,7 +107,7 @@ const BookingForm = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
         <div className="relative flex-1">
           <label
