@@ -87,14 +87,9 @@ const getRoomSummaryByType = async () => {
               $cond: [{ $eq: ['$_id.status', 'available'] }, '$count', 0],
             },
           },
-          taken: {
+          booked: {
             $sum: {
-              $cond: [{ $eq: ['$_id.status', 'taken'] }, '$count', 0],
-            },
-          },
-          pending: {
-            $sum: {
-              $cond: [{ $eq: ['$_id.status', 'pending'] }, '$count', 0],
+              $cond: [{ $eq: ['$_id.status', 'booked'] }, '$count', 0],
             },
           },
         },
@@ -105,8 +100,7 @@ const getRoomSummaryByType = async () => {
           roomType: '$_id',
           total: 1,
           available: 1,
-          taken: 1,
-          pending: 1,
+          booked: 1,
         },
       },
     ]);
@@ -115,8 +109,7 @@ const getRoomSummaryByType = async () => {
       acc[item.roomType] = {
         total: item.total,
         available: item.available,
-        taken: item.taken,
-        pending: item.pending,
+        booked: item.booked,
       };
       return acc;
     }, {});

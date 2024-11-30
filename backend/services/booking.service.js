@@ -36,6 +36,15 @@ const sendBookingUpdates = (newBooking) => {
 
 const createBooking = async (bookingData) => {
   try {
+    if (bookingData.roomNo) {
+      const room = await Room.findOne({ roomNo: bookingData.roomNo });
+      if (!room) {
+        throw new ApiError(
+          404,
+          'Room number does not exist. Please select another room',
+        );
+      }
+    }
     const checkInDate = new Date(bookingData.checkInDate);
     const checkOutDate = new Date(bookingData.checkOutDate);
     const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
@@ -52,9 +61,10 @@ const createBooking = async (bookingData) => {
     );
     bookingData.formattedCheckInDate = formattedCheckInDate;
     bookingData.formattedCheckOutDate = formattedCheckOutDate;
-    bookingData.durationOfStayInDays = durationOfStayInDays;
+    bookingData.duration = durationOfStayInDays;
 
     const newBooking = await Booking.create(bookingData);
+    logger.info(newBooking);
     sendBookingUpdates(newBooking);
     return newBooking;
   } catch (error) {
@@ -93,13 +103,30 @@ const getBooking = async (bookingId) => {
 
 const updateBooking = async (bookingId, updateData) => {
   try {
-    const booking = await Booking.findByIdAndUpdate(bookingId, updateData, {
-      new: true,
-    });
+    const booking = await Booking.findById(bookingId);
     if (!booking) {
       throw new ApiError(404, 'Booking not found');
     }
-    return booking;
+    const room = await Room.findOne({ roomNo: updateData.roomNo });
+    if (!room) {
+      throw new ApiError(404, 'Room not found');
+    }
+    if (room.status === 'booked') {
+      throw new ApiError(404, 'Room is already booked please select another');
+    } else {
+      room.status = 'booked';
+      await room.save();
+    }
+    booking.status = 'confirmed';
+    await booking.save();
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      bookingId,
+      updateData,
+      {
+        new: true,
+      },
+    );
+    return updatedBooking;
   } catch (error) {
     if (error instanceof ApiError) {
       throw error;

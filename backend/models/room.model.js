@@ -5,9 +5,9 @@ const roomSchema = new Schema({
     type: String,
     enum: ['Single', 'King', 'Twin'],
   },
-  roomNumber: {
+  roomNo: {
     type: Number,
-    requried: true,
+    requried: false,
   },
   numberOfBeds: {
     type: Number,
@@ -23,7 +23,7 @@ const roomSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['available', 'taken', 'pending'],
+    enum: ['available', 'booked'],
     default: 'available',
     required: true,
   },
