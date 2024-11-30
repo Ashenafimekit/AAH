@@ -11,7 +11,7 @@ export default {
       screens: {
         'sm': '640px',
         'md': '780px',
-        'lg': '1140px',
+        'lg': '1024px',
         'xl': '1280px',
       },
       textShadow: {

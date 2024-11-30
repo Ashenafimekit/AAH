@@ -6,7 +6,7 @@ import Contact_Page from "./Pages/Contact_Page";
 import Gallery_Page from "./Pages/Gallery_Page";
 import Room_Page from "./Pages/Room_Page";
 import Service_Page from "./Pages/Service_Page";
-import Body from "./Components/roomClicked/Body";
+import RoomClicked_page from "./Pages/RoomClicked_page"
 import Admin_Page from "./Pages/Admin_Page";
 import AdminContact_page from "./Pages/AdminContact_page";
 import AdminBooking_Page from "./Pages/AdminBooking_Page";
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/gallery" element={<Gallery_Page />} />
           <Route path="/room" element={<Room_Page />} />
           <Route path="/service" element={<Service_Page />} />
-          <Route path="/room-detail" element={<Body />} />
+          <Route path="/room-detail/:roomType" element={<RoomClicked_page />} />
           <Route path="/admin" element={<Login_page />} />
           <Route path="/adminPage" element={<Admin_Page key={window.location.pathname} />} />
           <Route path="/admin-contact" element={<AdminContact_page />} />

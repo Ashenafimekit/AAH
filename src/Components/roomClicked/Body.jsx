@@ -5,28 +5,11 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import LibraryBooksRoundedIcon from "@mui/icons-material/LibraryBooksRounded";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import IndeterminateCheckBoxRoundedIcon from "@mui/icons-material/IndeterminateCheckBoxRounded";
-import { TextField, InputAdornment } from "@mui/material";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import BookingForm from "./BookingForm";
 
-function Body() {
+function Body({roomTypeF}) {
   const [selectedTab, setSelectedTab] = useState("Features");
   const [isView, setView] = useState([false, false, true, true, true]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [dates, setDates] = useState({
-    checkIn: "",
-    checkOut: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDates((prevDates) => ({
-      ...prevDates,
-      [name]: value,
-    }));
-  };
 
   const togglePolicies = (index) => {
     setView((prev) => prev.map((view, i) => (i === index ? !view : view)));
