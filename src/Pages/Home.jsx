@@ -6,13 +6,15 @@ import HomePageService from "../Components/HomePageService";
 import Testimonial from "../Components/Testimonial";
 import HomePageContact from "../Components/HomePageContact";
 import Footer from "../Components/Footer";
+import Carousel from "../Components/Carousel";
 
 const Home = () => {
   return (
     <div className="flex flex-col gap-5">
         <Header/>
         <HomePageRoom/>
-        <Carousel_Comp/>
+        {/* <Carousel_Comp/> */}
+        <Carousel/>
         <HomePageService/>
         <Testimonial/>
         <HomePageContact/>

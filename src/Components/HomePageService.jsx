@@ -7,7 +7,7 @@ const HomePageService = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="bg-[#D9D9D9] p-4 rounded-lg">
-        <h1 className="font-bold text-2xl sm:text-3xl text-center">
+        <h1 className="font-bold text-2xl text-center">
           Our Services
         </h1>
       </div>
