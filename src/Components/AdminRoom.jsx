@@ -24,8 +24,10 @@ const AdminRoom = () => {
   });
 
   React.useEffect(() => {
-    if (roomType !== "Twin") {
+    if (roomType === "Twin") {
       setNumberOfBeds(2);
+    } else if(roomType === "Single") {
+      setNumberOfBeds(1);
     }
   }, [roomType]);
 
