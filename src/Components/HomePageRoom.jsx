@@ -26,7 +26,7 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <Link to="/room-detail">
+          <Link to={`/room-detail/Single`}>
             <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
               See More
             </button>
@@ -44,7 +44,7 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <Link to="/room-detail">
+          <Link to={`/room-detail/King`}>
             <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
               See More
             </button>
@@ -62,7 +62,7 @@ const HomePageRoom = () => {
             impedit dolores maiores esse molestiae dolor nemo suscipit nulla
             sapiente quae?
           </p>
-          <Link to="/room-detail">
+          <Link to={`/room-detail/Twin`}>
             <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
               See More
             </button>

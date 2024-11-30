@@ -70,7 +70,7 @@ const Login_page = () => {
 
   return (
     <div className="w-full h-screen bg-[#f0f9ff] flex justify-center items-center">
-      <div className="bg-white shadow-lg w-4/12 flex flex-col p-8 rounded-sm">
+      <div className="bg-white shadow-lg w-9/12 sm:w-6/12 lg:w-4/12 flex flex-col p-8 rounded-sm">
         <form onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold mb-4 text-center">Log in</h1>
           <div className="flex flex-col mb-4">
