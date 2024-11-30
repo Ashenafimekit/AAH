@@ -31,17 +31,10 @@ const RoomTypeComp = ({ bedroom, roomType, roomTypeSummary, onSetAlert }) => {
             </h2>
           </div>
 
-          <div className="flex justify-between items-center p-2 rounded-md bg-yellow-50">
-            <h2 className="text-gray-700">Pending</h2>
-            <h2 className="text-yellow-700 font-semibold">
-              {roomTypeSummary?.pending || 0}
-            </h2>
-          </div>
-
           <div className="flex justify-between items-center p-2 rounded-md bg-red-50">
-            <h2 className="text-gray-700">Taken</h2>
+            <h2 className="text-gray-700">Booked</h2>
             <h2 className="text-red-700 font-semibold">
-              {roomTypeSummary?.taken || 0}
+              {roomTypeSummary?.booked || 0}
             </h2>
           </div>
         </div>

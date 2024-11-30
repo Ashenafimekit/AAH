@@ -74,8 +74,8 @@ const AdminBookList = () => {
     { field: "nationality", headerName: "Nationality", width: 100 },
 
     {
-      field: "Edit",
-      headerName: "Edit",
+      field: "Confirm",
+      headerName: "Confirm",
       width: 60, // Reduce width to match smaller button
       renderCell: (params) => <ModalButton row={params.row} />,
     },
@@ -134,7 +134,6 @@ const AdminBookList = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("edited data : ", EditedData);
       try {
         await axios.put(`${apiUrl}/book/update/${row._id}`, EditedData);
       } catch (error) {
@@ -148,7 +147,7 @@ const AdminBookList = () => {
           sx={{ backgroundColor: "green", color: "white", textAlign: "center", padding: "1px 1px",fontSize:"12px" }}
           onClick={handleOpen}
         >
-          Edit
+          Confirm
         </Button>
         <Modal
           open={open}
@@ -158,7 +157,7 @@ const AdminBookList = () => {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Customer Data
+              Confirm Customer Data
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <form
