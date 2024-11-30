@@ -4,19 +4,23 @@ import AdminBooking from "./AdminBooking";
 import AdminBookList from "./AdminBookList";
 import "../css/adminBookingTab.css";
 
-const { TabPane } = Tabs;
+const items = [
+  {
+    key: '1',
+    label: 'Book',
+    children: <AdminBooking/>,
+  },
+  {
+    key: '2',
+    label: 'Booking List',
+    children: <AdminBookList/>,
+  },
+];
 
 const AdminBookingTab = () => {
   return (
     <div className="w-full">
-      <Tabs defaultActiveKey="2" centered className="">
-        <TabPane tab="Book" key="1">
-          <AdminBooking />
-        </TabPane>
-        <TabPane tab="Booking List" key="2">
-          <AdminBookList />
-        </TabPane>
-      </Tabs>
+      <Tabs defaultActiveKey="1" items={items} centered />
     </div>
   );
 };

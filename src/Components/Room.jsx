@@ -17,7 +17,7 @@ const Room = () => {
           rooms’ sea-view windows and terraces.
         </p>
       </div>
-      <div className="flex flex-row items-center justify-center gap-5 w-3/4">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-3/4">
         <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
           <div className="">
             <img
