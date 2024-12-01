@@ -122,6 +122,7 @@ const AdminRoom = () => {
           message={alert.message}
           type={alert.type}
           onClose={() => setAlert(null)}
+          onHandleClose={()=>setAlert(null)}
         />
       )}
 
