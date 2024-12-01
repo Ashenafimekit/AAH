@@ -31,6 +31,8 @@ const AdminBooking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("check ", formData)
+
     try {
       await axios.post(`${apiUrl}/book`, formData).then((res) => {
         console.log(res.data.status);
@@ -132,7 +134,7 @@ const AdminBooking = () => {
                   name="checkInDate"
                   value={formData.checkInDate}
                   onChange={handleChange}
-                  className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                  className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50 text-center"
                 />
                 <div className="absolute inset-y-0 -left-1 top-8 flex items-center pl-3 pointer-events-none cursor-pointer">
                   <CalendarMonthOutlinedIcon className="text-gray-400" />
@@ -151,7 +153,7 @@ const AdminBooking = () => {
                   name="checkOutDate"
                   value={formData.checkOutDate}
                   onChange={handleChange}
-                  className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                  className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50 text-center"
                 />
                 <div className="absolute inset-y-0 -left-1 top-8 flex items-center pl-3 pointer-events-none cursor-pointer">
                   <CalendarMonthOutlinedIcon className="text-gray-400" />
@@ -169,10 +171,10 @@ const AdminBooking = () => {
               </label>
               <input
                 type="number"
-                id="roomNumber"
-                name="roomNumber"
+                id="roomNo"
+                name="roomNo"
                 placeholder="Enter Room Number"
-                value={formData.roomNumber}
+                value={formData.roomNo}
                 onChange={handleChange}
                 className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
               />

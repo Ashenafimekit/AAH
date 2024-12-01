@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const AdminBookList = () => {
@@ -16,28 +17,13 @@ const AdminBookList = () => {
       try {
         const response = await axios.get(`${apiUrl}/book/list`);
         setFormData(response.data.lists);
-        //console.log("incoming booked data : ", formData);
+        console.log("incoming booked data : ", formData);
       } catch (error) {
         console.log("Error : ", error);
       }
     };
 
     fetchData();
-
-    const eventSource = new EventSource(`${apiUrl}/events`);
-    eventSource.onmessage = (event) => {
-      const newBooking = JSON.parse(event.data);
-      setFormData((prevData) => [...prevData, newBooking]);
-    };
-
-    eventSource.onerror = (error) => {
-      console.log("Error : ", error);
-      eventSource.close();
-    };
-
-    return () => {
-      eventSource.close();
-    };
   }, []);
 
   const handleDelete = async (data) => {
@@ -45,16 +31,15 @@ const AdminBookList = () => {
 
     try {
       await axios.delete(`${apiUrl}/book/delete/${data._id}`, data);
-      console.log("deleted data : ", data);
+      setFormData((prevFormData) =>
+        prevFormData.filter((guest) => guest._id !== data._id)
+      );
+      // console.log("deleted data : ", data);
       //window.location.reload();
     } catch (error) {
       console.log("Error : ", error);
       <EditBookedData />;
     }
-  };
-
-  const handleEdit = (data) => {
-    console.log("customer data : ", data);
   };
 
   const columns = [
@@ -72,17 +57,20 @@ const AdminBookList = () => {
     { field: "tinNo", headerName: "Tin No.", width: 150 },
     { field: "mobile", headerName: "Phone", width: 150 },
     { field: "nationality", headerName: "Nationality", width: 100 },
+    { field: "status", headerName: "Status", width: 80 },
 
     {
-      field: "Confirm",
-      headerName: "Confirm",
-      width: 60, // Reduce width to match smaller button
-      renderCell: (params) => <ModalButton row={params.row} />,
+      field: "edit",
+      headerName: "Edit",
+      width: 60,
+      renderCell: (params) => (
+        <ModalButton row={params.row} setFormData={setFormData} />
+      ),
     },
     {
       field: "Delete",
       headerName: "Delete",
-      width: 60, // Reduce width for consistency
+      width: 60,
       renderCell: (params) => (
         <button
           className="bg-red-600 text-white text-xs px-2 py-1 rounded-sm"
@@ -101,13 +89,13 @@ const AdminBookList = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 500,
+    width: 800,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
   };
 
-  const ModalButton = ({ row }) => {
+  const ModalButton = ({ row, setFormData }) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -135,7 +123,17 @@ const AdminBookList = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        await axios.put(`${apiUrl}/book/update/${row._id}`, EditedData);
+        await axios
+          .put(`${apiUrl}/book/update/${row._id}`, EditedData)
+          .then((res) => {
+            //console.log("updated data : ", res.data.updatedData);
+            const updatedGuest = res.data.updatedData;
+            setFormData((prevFormData) =>
+              prevFormData.map((guest) =>
+                guest._id === updatedGuest._id ? updatedGuest : guest
+              )
+            );
+          });
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -144,10 +142,16 @@ const AdminBookList = () => {
     return (
       <div>
         <Button
-          sx={{ backgroundColor: "green", color: "white", textAlign: "center", padding: "1px 1px",fontSize:"12px" }}
+          sx={{
+            backgroundColor: "green",
+            color: "white",
+            textAlign: "center",
+            padding: "1px 1px",
+            fontSize: "12px",
+          }}
           onClick={handleOpen}
         >
-          Confirm
+          Edit
         </Button>
         <Modal
           open={open}
@@ -160,108 +164,203 @@ const AdminBookList = () => {
               Confirm Customer Data
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col items-center justify-center gap-5 border border-black px-10 py-4 rounded-lg w-full bg-blueBlack"
-              >
-                <div className="flex flex-row items-center justify-center gap-3">
-                  <div className="flex flex-col gap-2 text-lg text-white">
-                    <label className="">Full Name </label>
-                    <label className="">Room Type </label>
-                    <label className="">Check in Date </label>
-                    <label className="">Check Out Date </label>
-                    <label className="">Duration of Stay </label>
-                    <label className="">Passport/Id </label>
-                    <label className="">Room Number</label>
-                    <label className="">Tin Number</label>
-                    <label className="">Mobile</label>
-                    <label className="">Nationality</label>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={EditedData.fullName}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <select
-                      value={EditedData.roomType}
-                      name="roomType"
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    >
-                      <option value="Single">SINGLE</option>
-                      <option value="king">KING</option>
-                      <option value="Twin">TWIN</option>
-                    </select>
-                    <input
-                      type="text"
-                      name="checkInDate"
-                      value={EditedData.checkInDate}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="text"
-                      name="checkOutDate"
-                      value={EditedData.checkOutDate}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="number"
-                      name="duration"
-                      value={EditedData.duration}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="text"
-                      name="id"
-                      value={EditedData.id}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="number"
-                      name="roomNo"
-                      value={EditedData.roomNo}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="text"
-                      name="tinNo"
-                      value={EditedData.tinNo}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="text"
-                      name="mobile"
-                      value={EditedData.mobile}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                    <input
-                      type="text"
-                      name="nationality"
-                      value={EditedData.nationality}
-                      onChange={handleChange}
-                      className="border border-black rounded-md w-52 text-center font-semibold h-8"
-                    />
-                  </div>
-                </div>
-                <div className="">
-                  <button
-                    type="submit"
-                    className="bg-golden px-8 py-2 rounded-lg font-bold"
+              <div className="h-[85vh] w-full">
+                <div className="flex flex-col border mx-8 h-full w-full">
+                  <h1 className="text-2xl text-center uppercase font-semibold flex justify-center">
+                    Edit Guest Data
+                  </h1>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="bg-blueBlack rounded-md w-full max-w-2xl h-11/12 flex flex-col justify-start items-center mx-auto mt-2 py-2 overflow-y-auto"
                   >
-                    Update
-                  </button>
+                    <div className="w-full max-w-lg">
+                      {/* Full Name */}
+                      <div className="flex flex-col">
+                        <label
+                          htmlFor="fullName"
+                          className="text-white text-lg font-normal mb-1"
+                        >
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          placeholder="Enter full name"
+                          value={EditedData.fullName}
+                          onChange={handleChange}
+                          className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                        />
+                      </div>
+
+                      {/* Room Type */}
+                      <div className="flex flex-col mt-2">
+                        <label
+                          htmlFor="roomType"
+                          className="text-white text-lg font-normal mb-1"
+                        >
+                          Room Type
+                        </label>
+                        <select
+                          id="roomType"
+                          name="roomType"
+                          value={EditedData.roomType}
+                          onChange={handleChange}
+                          className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                        >
+                          <option value="SINGLE">Single</option>
+                          <option value="DOUBLE">Double</option>
+                          <option value="TRIPLE">Triple</option>
+                        </select>
+                      </div>
+
+                      {/* Date Inputs (Check-in and Check-out) */}
+                      <div className="flex flex-row space-x-4 mt-2 relative">
+                        <div className="flex flex-col w-1/2">
+                          <label
+                            htmlFor="checkInDate"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Check-in Date
+                          </label>
+                          <input
+                            type="date"
+                            id="checkInDate"
+                            name="checkInDate"
+                            value={EditedData.formattedCheckInDate}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50 text-center"
+                          />
+                          <div className="absolute inset-y-0 -left-1 top-8 flex items-center pl-3 pointer-events-none cursor-pointer">
+                            <CalendarMonthOutlinedIcon className="text-gray-400" />
+                          </div>
+                        </div>
+                        <div className="flex flex-col w-1/2 relative">
+                          <label
+                            htmlFor="checkOutDate"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Check-out Date
+                          </label>
+                          <input
+                            type="date"
+                            id="checkOutDate"
+                            name="checkOutDate"
+                            value={EditedData.formattedCheckOutDate}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50 text-center"
+                          />
+                          <div className="absolute inset-y-0 -left-1 top-8 flex items-center pl-3 pointer-events-none cursor-pointer">
+                            <CalendarMonthOutlinedIcon className="text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Room Number */}
+                      <div className="flex flex-col mt-2">
+                        <label
+                          htmlFor="roomNumber"
+                          className="text-white text-lg font-normal mb-1"
+                        >
+                          Room Number
+                        </label>
+                        <input
+                          type="number"
+                          id="roomNo"
+                          name="roomNo"
+                          placeholder="Enter Room Number"
+                          value={EditedData.roomNo}
+                          onChange={handleChange}
+                          className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                        />
+                      </div>
+
+                      {/* Phone Number & Tin Number */}
+                      <div className="flex flex-row space-x-4 mt-2">
+                        <div className="flex flex-col w-1/2">
+                          <label
+                            htmlFor="mobile"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Phone Number
+                          </label>
+                          <input
+                            type="text"
+                            id="mobile"
+                            placeholder="Enter phone number"
+                            name="mobile"
+                            value={EditedData.mobile}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                          />
+                        </div>
+                        <div className="flex flex-col w-1/2">
+                          <label
+                            htmlFor="tinNo"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Tin Number
+                          </label>
+                          <input
+                            type="text"
+                            id="tinNo"
+                            name="tinNo"
+                            value={EditedData.tinNo}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Passport/ID Number & Nationality */}
+                      <div className="flex flex-row space-x-4 mt-2">
+                        <div className="flex flex-col w-1/2">
+                          <label
+                            htmlFor="id"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Passport/Id Number
+                          </label>
+                          <input
+                            type="text"
+                            id="id"
+                            name="id"
+                            placeholder="Enter Passport/ID"
+                            value={EditedData.id}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                          />
+                        </div>
+                        <div className="flex flex-col w-1/2">
+                          <label
+                            htmlFor="nationality"
+                            className="text-white text-lg font-normal mb-1"
+                          >
+                            Nationality
+                          </label>
+                          <input
+                            type="text"
+                            id="nationality"
+                            name="nationality"
+                            placeholder="Enter nationality"
+                            value={EditedData.nationality}
+                            onChange={handleChange}
+                            className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                          />
+                        </div>
+                      </div>
+
+                      <button
+                        type="submit"
+                        // onClick={handleClose}
+                        className="bg-blue-500 text-white text-lg py-2 px-6 rounded-md mt-6 w-full hover:bg-blue-600"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </form>
                 </div>
-              </form>
+              </div>
             </Typography>
           </Box>
         </Modal>
