@@ -31,14 +31,6 @@ const bookingSchema = new Schema({
   },
   roomNo: {
     type: Number,
-    required: true,
-  },
-  Adults: {
-    type: Number,
-    required: false,
-  },
-  children: {
-    type: Number,
     required: false,
   },
   notes: {
@@ -63,7 +55,7 @@ const bookingSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'confirmed', 'checkedIn', 'checkedOut'],
+    enum: ['pending', 'confirmed', 'cancelled'],
     default: 'pending',
     required: true,
   },

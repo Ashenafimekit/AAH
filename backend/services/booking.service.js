@@ -36,6 +36,27 @@ const sendBookingUpdates = (newBooking) => {
 
 const createBooking = async (bookingData) => {
   try {
+    const { roomType, roomNo } = bookingData;
+    if (roomType && roomNo) {
+      const roomTypeData = await Room.findOne({ roomType });
+      if (!roomTypeData) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Room type does not exist');
+      }
+      const room = roomTypeData.rooms.find(
+        (room) => room.roomNo === Number(roomNo),
+      );
+      if (!room) {
+        throw new ApiError(
+          httpStatus.NOT_FOUND,
+          'Room number does not exist in this room type',
+        );
+      }
+      if (room.status === 'booked') {
+        throw new ApiError(404, 'Room is already booked please select another');
+      }
+      room.status = 'booked';
+      await roomTypeData.save();
+    }
     const checkInDate = new Date(bookingData.checkInDate);
     const checkOutDate = new Date(bookingData.checkOutDate);
     const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');
@@ -52,9 +73,10 @@ const createBooking = async (bookingData) => {
     );
     bookingData.formattedCheckInDate = formattedCheckInDate;
     bookingData.formattedCheckOutDate = formattedCheckOutDate;
-    bookingData.durationOfStayInDays = durationOfStayInDays;
+    bookingData.duration = durationOfStayInDays;
 
     const newBooking = await Booking.create(bookingData);
+    logger.info(newBooking);
     sendBookingUpdates(newBooking);
     return newBooking;
   } catch (error) {
@@ -106,13 +128,40 @@ const getBooking = async (bookingId) => {
 
 const updateBooking = async (bookingId, updateData) => {
   try {
-    const booking = await Booking.findByIdAndUpdate(bookingId, updateData, {
-      new: true,
-    });
+    const booking = await Booking.findById(bookingId);
     if (!booking) {
-      throw new ApiError(404, 'Booking not found');
+      throw new ApiError(httpStatus.NOT_FOUND, 'Booking not found');
     }
-    return booking;
+    const roomTypeData = await Room.findOne({ roomType: booking.roomType });
+    if (!roomTypeData) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Room type does not exist');
+    }
+    const room = roomTypeData.rooms.find(
+      (room) => room.roomNo === Number(updateData.roomNo),
+    );
+    if (!room) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Room not found');
+    }
+    if (room.status === 'booked') {
+      throw new ApiError(
+        httpStatus.NOT_FOUND,
+        'Room is already booked please select another',
+      );
+    }
+    room.status = 'booked';
+    await roomTypeData.save();
+
+    booking.status = 'confirmed';
+    await booking.save();
+
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      bookingId,
+      updateData,
+      {
+        new: true,
+      },
+    );
+    return updatedBooking;
   } catch (error) {
     if (error instanceof ApiError) {
       throw error;

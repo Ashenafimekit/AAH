@@ -10,10 +10,33 @@ import logger from '../config/logger.js';
  * @throws {ApiError} If room creation fails.
  */
 const createRoom = async (roomBody) => {
+  const { roomType, roomNo, numberOfBeds, amenities, price } = roomBody;
   try {
-    const room = await Room.create(roomBody);
-    return room;
+    let roomTypeData = await Room.findOne({ roomType });
+    if (!roomTypeData) {
+      roomTypeData = Room.create({
+        roomType,
+        rooms: [{ roomNo, status: 'available' }],
+        numberOfBeds,
+        amenities,
+        price,
+      });
+    } else {
+      if (roomTypeData.rooms.some((room) => room.roomNo === Number(roomNo))) {
+        logger.info('Room number already exists');
+        throw new ApiError(
+          httpStatus.BAD_REQUEST,
+          'Room number already exists',
+        );
+      }
+      roomTypeData.rooms.push({ roomNo, status: 'available' });
+      await roomTypeData.save();
+    }
+    return roomTypeData;
   } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
     throw new ApiError(httpStatus.BAD_REQUEST, 'Room creation failed');
   }
 };
@@ -73,8 +96,11 @@ const getRoomSummaryByType = async () => {
   try {
     const summary = await Room.aggregate([
       {
+        $unwind: '$rooms',
+      },
+      {
         $group: {
-          _id: { roomType: '$roomType', status: '$status' },
+          _id: { roomType: '$roomType', status: '$rooms.status' },
           count: { $sum: 1 },
         },
       },
@@ -87,14 +113,9 @@ const getRoomSummaryByType = async () => {
               $cond: [{ $eq: ['$_id.status', 'available'] }, '$count', 0],
             },
           },
-          taken: {
+          booked: {
             $sum: {
-              $cond: [{ $eq: ['$_id.status', 'taken'] }, '$count', 0],
-            },
-          },
-          pending: {
-            $sum: {
-              $cond: [{ $eq: ['$_id.status', 'pending'] }, '$count', 0],
+              $cond: [{ $eq: ['$_id.status', 'booked'] }, '$count', 0],
             },
           },
         },
@@ -105,8 +126,7 @@ const getRoomSummaryByType = async () => {
           roomType: '$_id',
           total: 1,
           available: 1,
-          taken: 1,
-          pending: 1,
+          booked: 1,
         },
       },
     ]);
@@ -115,8 +135,7 @@ const getRoomSummaryByType = async () => {
       acc[item.roomType] = {
         total: item.total,
         available: item.available,
-        taken: item.taken,
-        pending: item.pending,
+        booked: item.booked,
       };
       return acc;
     }, {});

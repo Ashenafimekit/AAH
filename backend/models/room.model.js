@@ -4,11 +4,22 @@ const roomSchema = new Schema({
   roomType: {
     type: String,
     enum: ['Single', 'King', 'Twin'],
+    required: true,
   },
-  roomNumber: {
-    type: Number,
-    requried: true,
-  },
+  rooms: [
+    {
+      roomNo: {
+        type: Number,
+        requried: false,
+      },
+      status: {
+        type: String,
+        enum: ['available', 'booked'],
+        default: 'available',
+        required: true,
+      },
+    },
+  ],
   numberOfBeds: {
     type: Number,
     required: true,
@@ -19,12 +30,6 @@ const roomSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true,
-  },
-  status: {
-    type: String,
-    enum: ['available', 'taken', 'pending'],
-    default: 'available',
     required: true,
   },
 });
