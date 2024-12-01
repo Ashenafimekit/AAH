@@ -58,7 +58,7 @@ const BookingForm = () => {
     try {
       const response = await axios.post("http://localhost:3000/book", formData);
       if (response.data.success) {
-        setAlert({ type: "success", message: "Booking successful" });
+        setAlert({ type: "success", message: "Booked successfully" });
         setFormData({
           fullName: "",
           checkInDate: "",
