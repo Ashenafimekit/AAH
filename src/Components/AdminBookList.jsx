@@ -16,7 +16,6 @@ const AdminBookList = () => {
       try {
         const response = await axios.get(`${apiUrl}/book/list`);
         setFormData(response.data.lists);
-        //console.log("incoming booked data : ", formData);
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -46,15 +45,10 @@ const AdminBookList = () => {
     try {
       await axios.delete(`${apiUrl}/book/delete/${data._id}`, data);
       console.log("deleted data : ", data);
-      //window.location.reload();
     } catch (error) {
       console.log("Error : ", error);
       <EditBookedData />;
     }
-  };
-
-  const handleEdit = (data) => {
-    console.log("customer data : ", data);
   };
 
   const columns = [

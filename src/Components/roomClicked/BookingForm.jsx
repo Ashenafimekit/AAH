@@ -90,6 +90,7 @@ const BookingForm = () => {
           type={alert.type}
           message={alert.message}
           onClose={() => setAlert(null)}
+          onHandleClose={() => setAlert(null)}
         />
       )}
       <h2 className="text-2xl text-tealBlack font-semibold text-center mb-4">
