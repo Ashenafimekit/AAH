@@ -4,8 +4,6 @@ import "../../index.css";
 import ContactForm from "./ContactForm";
 
 function Body() {
- 
-
   return (
     <div className="flex flex-col items-center mt-5 ">
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px] mx-auto">
@@ -22,8 +20,8 @@ function Body() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-5">
-          <div className="flex flex-auto justify-center p-2 px-8 lg:p-2">
+        <div className="flex flex-col md:flex-row gap-5 w-full">
+          <div className="flex flex-auto justify-center p-2 px-8 lg:p-2 w-1/2">
             <div className="text-[#0d2026] leading-relaxed flex flex-col mt-8">
               <address className="not-italic">
                 <p className="text-shadow-small text-md md:text-2xl lg:text-2xl tracking-wide">
@@ -52,7 +50,9 @@ function Body() {
               </div>
             </div>
           </div>
-          <ContactForm/>
+          <div className="w-1/2 flex items-center justify-center">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ const ContactForm = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 md:gap-10 w-full ">
       <p className={`text-center -mb-5 ${status ? "text-green-500" : "text-red-500"}`}>{message}</p>
-      <h1 className="text-center font-bold text-2xl">Contact Us</h1>
+      <h1 className="text-center font-bold text-2xl -mb-6">Contact Us</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center md:items-start justify-center gap-1 w-3/4   "

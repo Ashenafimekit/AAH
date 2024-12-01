@@ -4,7 +4,8 @@ import EditModal from "./EditModal";
 import "../index.css";
 import axios from "axios";
 import Alert from "./Alert";
-import RoomTypeComp from './RoomtypeComp'
+import RoomTypeEdit from './RoomtypeEdit'
+
 
 const AdminRoom = () => {
   const [showAddRoomModal, setShowAddRoomModal] = React.useState(false);
@@ -22,6 +23,7 @@ const AdminRoom = () => {
     currentAmenity: "",
     amenities: [],
   });
+  const [showSingleModal, setShowSingleModal] = useState(null)
 
   React.useEffect(() => {
     if (roomType === "Twin") {
