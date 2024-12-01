@@ -43,6 +43,15 @@ const createBooking = async (bookingData) => {
           404,
           'Room number does not exist. Please select another room',
         );
+      } else {
+        if (room.status === 'booked') {
+          throw new ApiError(
+            404,
+            'Room is already booked please select another',
+          );
+        }
+        room.status = 'booked';
+        await room.save();
       }
     }
     const checkInDate = new Date(bookingData.checkInDate);
