@@ -18,6 +18,11 @@ export const getBookings = catchAsync(async (req, res) => {
   res.status(httpstatus.OK).json({ success: true, lists: bookings });
 });
 
+export const getBookingHistory = catchAsync(async (req, res) => {
+  const history = await bookingService.getBookingHistory();
+  res.status(httpstatus.OK).json({ success: true, bookingHistory: history });
+});
+
 export const getBooking = catchAsync(async (req, res) => {
   const booking = await bookingService.getBooking(req.params.bookingId);
   res.status(httpstatus.OK).json({ success: true, list: booking });
@@ -46,6 +51,6 @@ export const updateBookingStatus = catchAsync(async (req, res) => {
 });
 
 export const deleteBooking = catchAsync(async (req, res) => {
-  await bookingService.deleteBooking(req.params.bookingId);
-  res.status(httpstatus.NO_CONTENT).send();
+  const booking = await bookingService.deleteBooking(req.params.bookingId);
+  res.status(httpstatus.OK).json({ success: true, updatedData: booking });
 });

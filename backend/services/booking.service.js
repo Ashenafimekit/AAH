@@ -68,8 +68,21 @@ const createBooking = async (bookingData) => {
 
 const getBookings = async () => {
   try {
-    const bookings = await Booking.find();
-    return bookings;
+    const currentDate = new Date();
+    const currentBooking = await Booking.find({
+      checkOutDate: { $gt: currentDate },
+    });
+    return currentBooking;
+  } catch (error) {
+    throw new ApiError(httpStatus.NOT_FOUND, error.message);
+  }
+};
+
+const getBookingHistory = async () => {
+  try {
+    const currentDate = new Date();
+    const history = await Booking.find({ checkOutDate: { $lt: currentDate } });
+    return history;
   } catch (error) {
     throw new ApiError(httpStatus.NOT_FOUND, error.message);
   }
@@ -135,6 +148,7 @@ const deleteBooking = async (bookingId) => {
     if (!booking) {
       throw new ApiError(404, 'Booking not found');
     }
+    return booking;
   } catch (error) {
     if (error instanceof ApiError) {
       throw error;
@@ -152,4 +166,5 @@ export default {
   deleteBooking,
   updateBookingStatus,
   sendNewBookingCreatedEvent,
+  getBookingHistory,
 };
