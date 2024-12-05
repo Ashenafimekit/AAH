@@ -6,6 +6,7 @@ import logger from './config/logger.js';
 import { handlebars } from './loader/handlebars.js';
 import ApiError from './utils/ApiError.js';
 import httpStatus from 'http-status';
+import { createAdmin } from './controllers/user.controller.js';
 
 function exitHandler(server) {
   if (server) {
@@ -28,6 +29,8 @@ const startServer = async () => {
   const app = express();
   await loader(app);
   await handlebars(app);
+  await createAdmin();
+
   const server = http.createServer(app).listen(config.port, () => {
     logger.info(`Server is running on port ${config.port}`);
   });

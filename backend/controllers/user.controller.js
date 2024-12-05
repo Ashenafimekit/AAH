@@ -5,10 +5,11 @@ import config from '../config/config.js';
 import mongoose from 'mongoose';
 import logger from '../config/logger.js';
 
-const createAdmin = async () => {
-  const connection = await mongoose.connect(
-    'mongodb://localhost:27017/arabAli',
-  );
+export const createAdmin = async () => {
+  const existingAdmin = await User.findOne({ email: 'admin@example.com' });
+  if (existingAdmin) {
+    return;
+  }
   const email = 'admin@example.com';
   const password = 'admin123';
   const hashedPassword = await bcrypt.hash(password, 10);
