@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Tabs, Button } from "antd";
+import { useState, useEffect, useRef } from "react";
+import { Tabs, Button, Spin } from "antd";
 import axios from "axios";
 
 const { TabPane } = Tabs;
@@ -13,16 +13,20 @@ const Gallery = () => {
 
   const limit = 9;
 
+  const isMounted = useRef(false);
+
   const fetchImages = async (category, page) => {
     setLoading(true);
+    const validPage = Math.max(1, page);
     try {
       const response = await axios.get("http://localhost:3000/gallery", {
-        params: { category, page, limit },
+        params: { category, page: validPage, limit },
       });
       console.log(response.data);
       setImages(response.data.images);
-      setTotalPages(response.data.totalPages);
-      setPage(response.data.currentPage);
+      setTotalPages(response.data.pagination.totalPages);
+      setPage(response.data.pagination.currentPage);
+      console.log(typeof page);
     } catch (error) {
       console.error("Error fetching images:", error);
     } finally {
@@ -31,6 +35,10 @@ const Gallery = () => {
   };
 
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     fetchImages(category, page);
   }, [category, page]);
 
@@ -50,9 +58,11 @@ const Gallery = () => {
         <TabPane tab="restaurant" key="restaurant" />
       </Tabs>
 
-      <div className="max-w-[1200px] flex mx-auto justify-center">
+      <div className="max-w-[1200px] flex flex-col mx-auto justify-center">
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex justify-center items-center">
+            <Spin size="large" />
+          </div>
         ) : images.length === 0 ? (
           <p className="mt-4 text-xl font-normal text-gray-600 ">
             No images available.
@@ -70,14 +80,22 @@ const Gallery = () => {
           </div>
         )}
 
-        <div className="bg-gray-200">
-          {page > 1 && (
-            <Button onClick={() => setPage(page - 1)}>Previous</Button>
-          )}
-          {page < totalPages && (
-            <Button onClick={() => setPage(page + 1)}>Next</Button>
-          )}
-        </div>
+        {parseInt(totalPages) > 1 && (
+          <div className="flex justify-between p-5">
+            <Button
+              onClick={() => setPage(parseInt(page) - 1)}
+              disabled={parseInt(page) === 1}
+            >
+              Previous
+            </Button>
+            <Button
+              onClick={() => setPage(parseInt(page) + 1)}
+              disabled={parseInt(page) === totalPages}
+            >
+              Next
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
