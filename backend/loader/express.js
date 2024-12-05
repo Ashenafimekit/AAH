@@ -9,6 +9,7 @@ import bookingRouter from '../routes/booking.route.js';
 import testimonialRouter from '../routes/testimonial.route.js';
 import contactRouter from '../routes/contact.route.js';
 import userRouter from '../routes/user.route.js';
+import imageRouter from '../routes/image.routes.js';
 
 export default async (app) => {
   app.use(express.json());
@@ -26,6 +27,7 @@ export default async (app) => {
   app.use(bookingRouter);
   app.use(testimonialRouter);
   app.use(contactRouter);
+  app.use(imageRouter);
 
   app.use((req, res, next) => {
     next(new ApiError(httpstatus.NOT_FOUND, 'Not found'));
