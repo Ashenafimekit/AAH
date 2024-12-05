@@ -32,6 +32,11 @@ const AdminNavigation = () => {
              CONTACT
           </h1>
         </Link>
+        <Link to='/admin-gallery'>
+          <h1 className="text-center text-xl text-white hover:text-golden">
+            GALLERY
+          </h1>
+        </Link>
       </div>
     </div>
   );
