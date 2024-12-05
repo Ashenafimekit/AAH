@@ -19,7 +19,7 @@ const imageSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ['gym', 'food', 'resturant', 'room'],
+    enum: ['gym', 'food', 'restaurant', 'room'],
     required: true,
   },
 });

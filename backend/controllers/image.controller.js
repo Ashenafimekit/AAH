@@ -12,7 +12,7 @@ export const uploadImage = catchAsync(async (req, res) => {
   const images = await imageService.uploadImage(req.files, req.body.category);
   logger.info('uploaded');
   res.status(httpStatus.CREATED).json({
-    sucess: true,
+    success: true,
     message: 'Images uploaded successfully',
     data: images,
   });
