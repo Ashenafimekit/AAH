@@ -49,7 +49,7 @@ const startServer = async () => {
   try {
     await startServer();
   } catch (error) {
-    // process.exit(1);
+    logger.error(error);
     throw new ApiError(
       httpStatus.INTERNAL_SERVER_ERROR,
       'internal server error',

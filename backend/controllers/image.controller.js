@@ -9,7 +9,7 @@ export const uploadImage = catchAsync(async (req, res) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'No files uploaded');
   }
   logger.info('uploading...');
-  const images = await imageService.uploadImage(req.files);
+  const images = await imageService.uploadImage(req.files, req.body.category);
   logger.info('uploaded');
   res.status(httpStatus.CREATED).json({
     sucess: true,
@@ -19,11 +19,11 @@ export const uploadImage = catchAsync(async (req, res) => {
 });
 
 export const getAllImages = catchAsync(async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
-  const result = await imageService.getAllImages(page, limit);
+  const { category, page = 1, limit = 10 } = req.query;
+  const result = await imageService.getAllImages(page, limit, category);
   res.status(httpStatus.OK).json({
     message: 'Images retrieved successfully',
-    data: result.images,
+    images: result.images,
     pagination: {
       totalImages: result.totalImages,
       totalPages: result.totalPages,

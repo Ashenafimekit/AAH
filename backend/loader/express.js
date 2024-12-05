@@ -10,10 +10,13 @@ import testimonialRouter from '../routes/testimonial.route.js';
 import contactRouter from '../routes/contact.route.js';
 import userRouter from '../routes/user.route.js';
 import imageRouter from '../routes/image.routes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default async (app) => {
   app.use(express.json());
-
   if (config.env === 'production') {
     app.use(cors({ origin: url }));
     app.options('*', cors({ origin: url }));
@@ -21,7 +24,7 @@ export default async (app) => {
     app.use(cors());
   }
 
-  //routers
+  app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
   app.use(userRouter);
   app.use(roomRouter);
   app.use(bookingRouter);
