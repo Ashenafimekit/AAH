@@ -2,12 +2,15 @@ import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError.js';
 import catchAsync from '../utils/catchAsync.js';
 import imageService from '../services/image.service.js';
+import logger from '../config/logger.js';
 
 export const uploadImage = catchAsync(async (req, res) => {
   if (!req.files || !req.files.length) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'No files uploaded');
   }
+  logger.info('uploading...');
   const images = await imageService.uploadImage(req.files);
+  logger.info('uploaded');
   res.status(httpStatus.CREATED).json({
     sucess: true,
     message: 'Images uploaded successfully',

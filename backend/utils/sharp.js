@@ -19,7 +19,11 @@ const processImage = async (input, fileName) => {
       'Error creating directory',
     );
   }
-  sharp(input).resize(600).webp({ lossless: true }).toFile(outPutPath);
+  sharp(input)
+    .resize(280, 240, { fit: sharp.fit.inside, withoutEnlargement: true })
+    .sharpen()
+    .webp({ lossless: true, quality: 100 })
+    .toFile(outPutPath);
 };
 
 export default processImage;
