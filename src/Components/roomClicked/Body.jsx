@@ -54,7 +54,7 @@ function Body({roomTypeF}) {
         </div>
 
         {/* start of content */}
-        <div className="max-w-[1100px] border px-4 md:p">
+        <div className="max-w-[1100px] border px-4 md:p flex items-center justify-center">
           <div className="w-full md:w-2/3 max-h-[500px] shadow-md ml md:ml-2 mt-10 border p-4">
             <div className="flex flex-row justify-center mx-4 sm:mx-2 md:mx-24 border">
               <div

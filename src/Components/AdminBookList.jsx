@@ -208,9 +208,9 @@ const AdminBookList = () => {
                           onChange={handleChange}
                           className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
                         >
-                          <option value="SINGLE">Single</option>
-                          <option value="DOUBLE">Double</option>
-                          <option value="TRIPLE">Triple</option>
+                          <option value="Single">Single</option>
+                          <option value="King">King</option>
+                          <option value="Twin">Twin</option>
                         </select>
                       </div>
 

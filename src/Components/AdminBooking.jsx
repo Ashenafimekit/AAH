@@ -6,7 +6,7 @@ import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined
 const AdminBooking = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    roomType: "SINGLE",
+    roomType: "",
     checkInDate: "",
     checkOutDate: "",
     id: "",
@@ -31,7 +31,7 @@ const AdminBooking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("check ", formData)
+    console.log("check ", formData);
 
     try {
       await axios.post(`${apiUrl}/book`, formData).then((res) => {
@@ -113,9 +113,9 @@ const AdminBooking = () => {
                 onChange={handleChange}
                 className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
               >
-                <option value="SINGLE">Single</option>
-                <option value="DOUBLE">Double</option>
-                <option value="TRIPLE">Triple</option>
+                <option value="Single">Single</option>
+                <option value="King">King</option>
+                <option value="Twin">Twin</option>
               </select>
             </div>
 
