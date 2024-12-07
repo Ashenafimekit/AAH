@@ -58,7 +58,7 @@ const BookingForm = () => {
     try {
       const response = await axios.post("http://localhost:3000/book", formData);
       if (response.data.success) {
-        setAlert({ type: "success", message: "Booking successful" });
+        setAlert({ type: "success", message: "Booked successfully" });
         setFormData({
           fullName: "",
           checkInDate: "",
@@ -90,6 +90,7 @@ const BookingForm = () => {
           type={alert.type}
           message={alert.message}
           onClose={() => setAlert(null)}
+          onHandleClose={() => setAlert(null)}
         />
       )}
       <h2 className="text-2xl text-tealBlack font-semibold text-center mb-4">

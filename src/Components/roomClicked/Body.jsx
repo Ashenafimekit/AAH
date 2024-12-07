@@ -7,7 +7,7 @@ import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import IndeterminateCheckBoxRoundedIcon from "@mui/icons-material/IndeterminateCheckBoxRounded";
 import BookingForm from "./BookingForm";
 
-function Body({roomTypeF}) {
+function Body({ roomTypeF }) {
   const [selectedTab, setSelectedTab] = useState("Features");
   const [isView, setView] = useState([false, false, true, true, true]);
 
@@ -19,11 +19,11 @@ function Body({roomTypeF}) {
     <div>
       <div className="w-full max-w-[100%] sm:max-w-[700px] md:max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px] mx-auto">
         <div className="flex">
-          <div className="flex flex-col px-8 lg:p-2">
-            <h2 className="text-4xl lg:text-5xl text-[#0d2026]">
+          <div className="flex flex-col px-4 lg:p-2">
+            <h2 className="text-xl sm:text-3xl text-[#0d2026]">
               WE ARE HERE FOR YOU
             </h2>
-            <p className="text-lg text-[#0d2026]">
+            <p className="text-md sm:text-lg text-[#0d2026]">
               At Luxury Hotels, we take our customers seriously. Do you have any
               enquiries, complaints or requests, please forward it to our
               support desk and we will get back to you as soon as possible.
@@ -34,19 +34,21 @@ function Body({roomTypeF}) {
         <Carusel_Comp />
         <div className="flex justify-center mt-10">
           <div className="border-t border-b border-dashed border-gray-400">
-            <div className="flex divide-x-[2px] divide-gray-700 text-gray-700">
-              <div className="flex items-center space-x-1 pr-4">
+            <div className="flex divide-x-[2px] divide-gray-700 text-gray-700 sm:text-base text-xs">
+              <div className="flex items-center sm:space-x-2 pr-2 sm:pr-6">
                 <span>max person:</span>
-                <WcIcon />
+                <WcIcon className="w-4 h-4 sm:w-6 sm:h-6" />
               </div>
-              <div className="flex items-center space-x-1 px-4">
+              <div className="flex items-center sm:space-x-2 px-2 sm:px-6">
                 <span>
-                  <strong>1</strong> king size bed
+                  <strong className="text-sm sm:text-base">1</strong> king size
+                  bed
                 </span>
               </div>
-              <div className="flex items-center space-x-1 pl-4">
+              <div className="flex items-center sm:space-x-2 pl-2 sm:pl-6">
                 <span>
-                  <strong>35-40sqm</strong> room size
+                  <strong className="text-sm sm:text-base">35-40sqm</strong>{" "}
+                  room size
                 </span>
               </div>
             </div>
@@ -94,7 +96,7 @@ function Body({roomTypeF}) {
               </div>
             </div>
 
-            <div className="flex m-10 h-full">
+            <div className="flex m-10 h-full -ml-2 sm:ml-2">
               {selectedTab === "Features" ? (
                 <div className="flex flex-row flex-wrap md:flex-nowrap justify-center gap-x-8 gap-y-2">
                   {/* Column 1 */}
@@ -103,7 +105,12 @@ function Body({roomTypeF}) {
                       .fill("24 hour room service")
                       .map((item, index) => (
                         <div className="flex items-center gap-2" key={index}>
-                          <StarRoundedIcon sx={{ fontSize: window.innerWidth < 768 ? "20px" : "24px" }} />
+                          <StarRoundedIcon
+                            sx={{
+                              fontSize:
+                                window.innerWidth < 768 ? "20px" : "24px",
+                            }}
+                          />
                           <span className="text-xl font-medium">{item}</span>
                         </div>
                       ))}
@@ -115,7 +122,12 @@ function Body({roomTypeF}) {
                       .fill("24 hour room service")
                       .map((item, index) => (
                         <div className="flex items-center gap-2" key={index}>
-                          <StarRoundedIcon sx={{ fontSize: window.innerWidth < 768 ? "20px" : "24px" }} />
+                          <StarRoundedIcon
+                            sx={{
+                              fontSize:
+                                window.innerWidth < 768 ? "20px" : "24px",
+                            }}
+                          />
                           <span className="text-xl font-medium">{item}</span>
                         </div>
                       ))}

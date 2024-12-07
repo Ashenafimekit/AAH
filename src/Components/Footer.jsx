@@ -65,7 +65,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-row  md:flex-col gap-3 text-white p-3 md:p-0">
         <h1 className="text-lg font-semibold">Our Social Medias</h1>
-        <a href="https://www.youtube.com/" className="hover:text-[#E0B973]">
+        <a href="" className="hover:text-[#E0B973]">
           <Facebook /> Facebook
         </a>
         <a href="" className="hover:text-[#E0B973]">

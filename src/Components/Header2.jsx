@@ -13,13 +13,13 @@ function Header2(props) {
   return (
     <div className="bg-[#0d2026] h-48 md:h-72">
       <div className="flex flex-row gap-5 items-start justify-between">
-        <div className="py-2 px-10 sm:py-2 sm:px-10 md:py-2 ml-20 mt-2 md:px-10 flex flex-col items-center font-bold text-[#deae54] hover:cursor-pointer">
+        <div className="py-2 sm:py-2 px-0 sm:px-10 md:py-2 ml-10 mt-2 md:px-10 flex flex-col items-center font-bold text-[#deae54] hover:cursor-pointer">
           <h1 className="text-[#deae54] text-xl">Arab Ali</h1>
           <h1 className="text-xs text-[#deae54] tracking-widest">Hotel</h1>
           <hr className="border border-[#deae54] w-14 text-xs" />
           <h1 className="text-xs text-[#deae54]">فندق عرب علي</h1>
         </div>
-        <div className="flex flex-row gap-3 items-center ml-auto mr-10">
+        <div className="flex flex-row gap-3 items-center ml-auto mr-4">
           <div className="md:hidden">
             <button
               onClick={toggleMenu}

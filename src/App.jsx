@@ -13,6 +13,7 @@ import AdminBooking_Page from "./Pages/AdminBooking_Page";
 import AdminTestimonial from "./Pages/AdminTestimonial";
 import AdminRoom_Page from "./Pages/AdminRoom_Page";
 import Login_page from "./Pages/Login_Page";
+import Admin_galleryPage from './Pages/Admin_galleryPage';
 
 const App = () => {
   return (
@@ -32,6 +33,8 @@ const App = () => {
           <Route path="/admin-booking" element={<AdminBooking_Page/>} />
           <Route path="/admin-testimonial" element={<AdminTestimonial/>} />
           <Route path="/admin-room" element={<AdminRoom_Page/>}/>
+          <Route path="/gallery" element={<Gallery_Page />} />
+          <Route path="/admin-gallery" element={<Admin_galleryPage />} />
         </Routes>
       </Router>
     </div>

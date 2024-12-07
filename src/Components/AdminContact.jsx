@@ -20,10 +20,18 @@ const AdminContact = () => {
     fetchData();
   }, []);
 
-  const handleDelete = (data) => {};
+  const handleDelete = async (data) => {
+    try {
+      axios.delete(`${apiUrl}/contact/delete`, data);
+      setData((prevData) =>
+        prevData.filter((msg) => msg._id !== data._id)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const columns = [
-    
     { field: "fullName", headerName: "Full Name", width: 150 },
     { field: "email", headerName: "Email", width: 300 },
     { field: "message", headerName: "Message", width: 400 },
@@ -40,7 +48,6 @@ const AdminContact = () => {
         </button>
       ),
     },
-
   ];
 
   const paginationModel = { page: 0, pageSize: 5 };
@@ -62,7 +69,7 @@ const AdminContact = () => {
             pageSizeOptions={[5, 10]}
             checkboxSelection
             sx={{ border: 0 }}
-            getRowId={(row) => row._id}          
+            getRowId={(row) => row._id}
           />
         </Paper>
       </div>
