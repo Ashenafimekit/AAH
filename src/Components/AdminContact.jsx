@@ -12,7 +12,7 @@ const AdminContact = () => {
       try {
         const response = await axios.get(`${apiUrl}/contact/messages`);
         setData(response.data.lists);
-        console.log("incoming data : ", response.data.lists);
+       // console.log("incoming data : ", response.data.lists);
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -21,13 +21,12 @@ const AdminContact = () => {
   }, []);
 
   const handleDelete = async (data) => {
+    //console.log("deleted data : ", data);
     try {
-      axios.delete(`${apiUrl}/contact/delete`, data);
-      setData((prevData) =>
-        prevData.filter((msg) => msg._id !== data._id)
-      );
+      await axios.delete(`${apiUrl}/contact/delete/${data._id}`, data);
+      setData((prevData) => prevData.filter((msg) => msg._id !== data._id));
     } catch (error) {
-      console.log(error);
+      console.log("Error : ",error);
     }
   };
 

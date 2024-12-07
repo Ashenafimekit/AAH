@@ -35,7 +35,6 @@ const AdminBookList = () => {
         prevFormData.filter((guest) => guest._id !== data._id)
       );
       // console.log("deleted data : ", data);
-      //window.location.reload();
     } catch (error) {
       console.log("Error : ", error);
       <EditBookedData />;
