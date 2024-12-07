@@ -36,27 +36,27 @@ const sendBookingUpdates = (newBooking) => {
 
 const createBooking = async (bookingData) => {
   try {
-    const { roomType, roomNo } = bookingData;
-    if (roomType && roomNo) {
-      const roomTypeData = await Room.findOne({ roomType });
-      if (!roomTypeData) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Room type does not exist');
-      }
-      const room = roomTypeData.rooms.find(
-        (room) => room.roomNo === Number(roomNo),
-      );
-      if (!room) {
-        throw new ApiError(
-          httpStatus.NOT_FOUND,
-          'Room number does not exist in this room type',
-        );
-      }
-      if (room.status === 'booked') {
-        throw new ApiError(404, 'Room is already booked please select another');
-      }
-      room.status = 'booked';
-      await roomTypeData.save();
-    }
+    // const { roomType, roomNo } = bookingData;
+    // if (roomType && roomNo) {
+    //   const roomTypeData = await Room.findOne({ roomType });
+    //   if (!roomTypeData) {
+    //     throw new ApiError(httpStatus.NOT_FOUND, 'Room type does not exist');
+    //   }
+    //   const room = roomTypeData.rooms.find(
+    //     (room) => room.roomNo === Number(roomNo),
+    //   );
+    //   if (!room) {
+    //     throw new ApiError(
+    //       httpStatus.NOT_FOUND,
+    //       'Room number does not exist in this room type',
+    //     );
+    //   }
+    //   if (room.status === 'booked') {
+    //     throw new ApiError(404, 'Room is already booked please select another');
+    //   }
+    //   room.status = 'booked';
+    //   await roomTypeData.save();
+    // }
     const checkInDate = new Date(bookingData.checkInDate);
     const checkOutDate = new Date(bookingData.checkOutDate);
     const formattedCheckInDate = dayjs(checkInDate).format('MM/DD/YY');

@@ -88,4 +88,24 @@ const getMessages = async () => {
   }
 };
 
-export default { createContactMessage, getMessages, sendMessage };
+const deleteMessage = async (messageId) => {
+  try {
+    const message = await Contact.findByIdAndDelete(messageId);
+    if (!message) {
+      throw new ApiError(404, 'Booking not found');
+    }
+    return message;
+  } catch (error) {
+    throw new ApiError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'Error deleteing message',
+    );
+  }
+};
+
+export default {
+  createContactMessage,
+  getMessages,
+  sendMessage,
+  deleteMessage,
+};

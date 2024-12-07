@@ -8,6 +8,7 @@ import logger from '../config/logger.js';
 export const createAdmin = async () => {
   const existingAdmin = await User.findOne({ email: 'admin@example.com' });
   if (existingAdmin) {
+    // console.log("admin already created")
     return;
   }
   const email = 'admin@example.com';
