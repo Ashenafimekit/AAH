@@ -8,6 +8,7 @@ import {
   getRoomTypes,
   getRoomSummaryByType,
   updateRoomType,
+  getPrice,
 } from '../controllers/room.controller.js';
 
 const router = Router();
@@ -20,5 +21,6 @@ router.get('/room/:roomId', getRoom);
 router.put('/room/update/:roomId', updateRoom);
 router.put('/update/:roomType', updateRoomType);
 router.delete('/room/delete/:roomId', deleteRoom);
+router.get('/room/getPrice', getPrice);
 
 export default router;

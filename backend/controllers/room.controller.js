@@ -46,3 +46,8 @@ export const deleteRoom = catchAsync(async (req, res) => {
     .status(httpstatus.NO_CONTENT)
     .json({ success: true, message: 'Room deleted Successfully' });
 });
+
+export const getPrice = catchAsync(async (req, res) => {
+  const price = await roomService.getPrice();
+  res.status(httpstatus.OK).json({ success: true, roomPrice: price });
+});
