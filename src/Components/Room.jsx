@@ -8,21 +8,40 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 const Room = () => {
   const [roomPrice, setRoomPrice] = useState([]);
+  const [singleRoomPrice, setSingleRoomPrice] = useState(0);
+  const [kingRoomPrice, setKingRoomPrice] = useState(0);
+  const [twinRoomPrice, setTwinRoomPrice] = useState(0);
 
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        await axios.get(`${apiUrl}/room/getPrice`).then((res) => {
-          setRoomPrice(res.data.price);
-          console.log("room price : ", roomPrice);
+        const response = await axios.get(`${apiUrl}/room/getPrice`);
+        const roomDetails = response.data.roomDetail;
+
+        // Update room prices based on room type
+        roomDetails.forEach((room) => {
+          if (room.roomType === "Single") {
+            setSingleRoomPrice(room.price);
+            console.log("single room price : ", room.price);
+          } else if (room.roomType === "King") {
+            setKingRoomPrice(room.price);
+            console.log("king room price : ", room.price);
+          } else if (room.roomType === "Twin") {
+            setTwinRoomPrice(room.price);
+            console.log("twin room price : ", room.price);
+          }
         });
+
+        setRoomPrice(roomDetails);
+        console.log("room price array: ", roomDetails);
       } catch (error) {
         console.log("Error : ", error);
       }
     };
 
     fetchPrice();
-  });
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="w-3/5 flex flex-col gap-3 items-center justify-center">
@@ -46,7 +65,7 @@ const Room = () => {
           </div>
           <div>
             <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
-              <p>1800ETB</p>
+              <p>{singleRoomPrice}ETB</p>
             </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
@@ -72,7 +91,7 @@ const Room = () => {
           </div>
           <div>
             <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
-              <p>2500ETB</p>
+              <p>{kingRoomPrice}ETB</p>
             </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
@@ -98,7 +117,7 @@ const Room = () => {
           </div>
           <div>
             <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
-              <p>3000ETB</p>
+              <p>{twinRoomPrice}ETB</p>
             </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">

@@ -37,7 +37,6 @@ const AdminBookList = () => {
       // console.log("deleted data : ", data);
     } catch (error) {
       console.log("Error : ", error);
-      <EditBookedData />;
     }
   };
 
