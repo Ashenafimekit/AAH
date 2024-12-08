@@ -17,3 +17,8 @@ export const getContactMessages = catchAsync(async (req, res) => {
   const messages = await contactService.getMessages();
   res.status(httpstatus.OK).json({ success: true, lists: messages });
 });
+
+export const deleteMessage = catchAsync(async (req, res) => {
+  const messages = await contactService.deleteMessage(req.params.messageId);
+  res.status(httpstatus.OK).json({ success: true, updatedMessage: messages });
+});
