@@ -25,7 +25,7 @@ export const approveTestimonial = catchAsync(async (req, res) => {
   const testimonial = await testimonialService.approveTestimonial(
     req.params.testimonialId,
   );
-  res.status(httpstatus.OK).json({ success: true, testimonial });
+  res.status(httpstatus.OK).json({ success: true, testimonial: testimonial });
 });
 
 export const cancelTestimonial = catchAsync(async (req, res) => {

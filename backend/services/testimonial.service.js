@@ -36,7 +36,7 @@ const approveTestimonial = async (testimonialId) => {
   try {
     const testimonial = await Testimonial.findByIdAndUpdate(
       testimonialId,
-      { approved: true },
+      { status: 'approved' },
       { new: true },
     );
     if (!testimonial) {
