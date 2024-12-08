@@ -24,10 +24,9 @@ const ProtectedRoute = ({ children }) => {
         };
 
         checkAuth();
-    }, []); // Only run this on component mount (no need to rerun on every auth change)
+    }, []);
 
     if (isAuthenticated === null) {
-        // Show a loading screen while the auth check is still running
         return <p>Loading...</p>;
     }
 
@@ -37,7 +36,6 @@ const ProtectedRoute = ({ children }) => {
         return null;
     }
 
-    // Render the children once authentication is confirmed
     return children;
 };
 
