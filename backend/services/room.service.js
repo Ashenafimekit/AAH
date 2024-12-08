@@ -10,26 +10,54 @@ import logger from '../config/logger.js';
  * @throws {ApiError} If room creation fails.
  */
 const createRoom = async (roomBody) => {
-  const { roomType, roomNo, numberOfBeds, amenities, price } = roomBody;
+  const {
+    roomType,
+    roomNos = [],
+    numberOfRooms = 1,
+    numberOfBeds,
+    amenities,
+    price,
+  } = roomBody;
   try {
     let roomTypeData = await Room.findOne({ roomType });
+    if (roomNos.length && roomNos.length !== numberOfRooms) {
+      throw new ApiError(
+        httpStatus.BAD_REQUEST,
+        'Room numbers must match the number of rooms specified',
+      );
+    }
+
+    const roomNumbers = roomNos.length
+      ? roomNos
+      : Array.from({ length: numberOfRooms }, (_, i) => i + 100);
+
     if (!roomTypeData) {
       roomTypeData = Room.create({
         roomType,
-        rooms: [{ roomNo, status: 'available' }],
+        rooms: roomNumbers.map((roomNo) => ({ roomNo, status: 'available' })),
         numberOfBeds,
         amenities,
         price,
       });
     } else {
-      if (roomTypeData.rooms.some((room) => room.roomNo === Number(roomNo))) {
-        logger.info('Room number already exists');
+      const existingRoomNumbers = roomTypeData.rooms.map((room) => room.roomNo);
+      const duplicateRoomNumbers = roomNumbers.filter((roomNo) =>
+        existingRoomNumbers.includes(roomNo),
+      );
+      if (duplicateRoomNumbers.length) {
+        logger.info('Room numbers already exist: ', duplicateRoomNumbers);
         throw new ApiError(
           httpStatus.BAD_REQUEST,
-          'Room number already exists',
+          `Room numbers already exist ${duplicateRoomNumbers.join(', ')}`,
         );
       }
-      roomTypeData.rooms.push({ roomNo, status: 'available' });
+      roomNumbers.forEach((roomNo) => {
+        roomTypeData.rooms.push({ roomNo, status: 'available' });
+      });
+      roomTypeData.price = price;
+      roomTypeData.amenities = [
+        ...new Set([...roomTypeData.amenities, ...amenities]),
+      ];
       await roomTypeData.save();
     }
     return roomTypeData;
