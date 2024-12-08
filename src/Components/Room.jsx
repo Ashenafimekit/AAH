@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bedroom from "../assets/images/bedroom.jpg";
 import bedroom2 from "../assets/images/bedroom2.jpg";
 import bedroom3 from "../assets/images/bedroom3.jpg";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Room = () => {
   const [roomPrice, setRoomPrice] = useState([]);
+
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        await axios.get(`${apiUrl}/room/getPrice`).then((res) => {
+          setRoomPrice(res.data.price);
+          console.log("room price : ", roomPrice);
+        });
+      } catch (error) {
+        console.log("Error : ", error);
+      }
+    };
+
+    fetchPrice();
+  });
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="w-3/5 flex flex-col gap-3 items-center justify-center">
@@ -29,9 +45,9 @@ const Room = () => {
             />
           </div>
           <div>
-            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+            <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
               <p>1800ETB</p>
-            </button>
+            </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
             <h1>SINGLE ROOM</h1>
@@ -55,9 +71,9 @@ const Room = () => {
             />
           </div>
           <div>
-            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+            <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
               <p>2500ETB</p>
-            </button>
+            </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
             <h1>KING ROOM</h1>
@@ -81,9 +97,9 @@ const Room = () => {
             />
           </div>
           <div>
-            <button className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
+            <span className="bg-golden p-2 rounded-b-lg absolute top-0 right-0">
               <p>3000ETB</p>
-            </button>
+            </span>
           </div>
           <div className="w-full bg-blueBlack text-center font-semibold text-white py-2">
             <h1>TWIN ROOM</h1>
