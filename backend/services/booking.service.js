@@ -126,6 +126,12 @@ const getBooking = async (bookingId) => {
   }
 };
 
+// const updateData = async (bookingId, updateData) => {
+//   try {
+//     const booking = await Booking
+
+// };
+
 const updateBooking = async (bookingId, updateData) => {
   try {
     const booking = await Booking.findById(bookingId);
