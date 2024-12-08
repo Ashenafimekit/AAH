@@ -95,7 +95,7 @@ const BookNowForm = () => {
         )}
       </div>
 
-      <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
+      <div className=" space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
         <div className="relative flex-1">
           <label
             htmlFor="checkin"

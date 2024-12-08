@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import hotel from "../assets/images/hotel.jpg";
-import bedroom from "../assets/images/bedroom.jpg"
-import reception from "../assets/images/receptionists.jpg"
+import bedroom from "../assets/images/bedroom.jpg";
+import reception from "../assets/images/receptionists.jpg";
 import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-
 
 const Header = () => {
   const location = useLocation();
@@ -15,10 +14,10 @@ const Header = () => {
   };
 
   const Images = {
-    "/" : hotel,
-    "/room" : bedroom,
-    "/service" : reception, 
-  }
+    "/": hotel,
+    "/room": bedroom,
+    "/service": reception,
+  };
 
   const currentImage = Images[location.pathname] || hotel;
 
@@ -40,15 +39,10 @@ const Header = () => {
             <h1 className="-mt-1 text-xs">فندق عرب علي</h1>
           </div>
           <div className="flex flex-row gap-3">
-            <div className="md:hidden">
-              <button onClick={toggleMenu}>
-                <MenuIcon />
-              </button>
-            </div>
             <div
               className={`md:flex md:space-x-10 md:py-5 ${
                 isOpen ? "block" : "hidden"
-              } md:flex`}
+              } md:flex `}
             >
               <h1>
                 <Link to="/">HOME</Link>
@@ -63,22 +57,33 @@ const Header = () => {
                 <Link to="/gallery">GALLERY</Link>
               </h1>
               <h1>
-                <Link to="/contact">CONTACT US</Link>
+                <Link to="/contact">CONTACT</Link>
               </h1>
               <h1>
                 <Link to="/admin">ADMIN</Link>
               </h1>
             </div>
+            <div className="md:hidden -ml-5">
+              <button onClick={toggleMenu}>
+                <MenuIcon />
+              </button>
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col  items-start mx-10 my-20 sm:mx-16 sm:my-26 md:mx-26 md:my-34 lg:mx-40 lg:my-20">
-          <h1 className=" text-lg sm:text-2xl md:text-2xl lg:text-3xl">WELCOME TO</h1>
-          <h1 className=" text-2xl sm:text-5xl md:text-7xl lg:text-9xl ">Arab Ali</h1>
-          <h1 className=" text-sm sm:text-base md:text-2xl lg:text-3xl ">HOTEL</h1>
+          <h1 className=" text-lg sm:text-2xl md:text-2xl lg:text-3xl">
+            WELCOME TO
+          </h1>
+          <h1 className=" text-2xl sm:text-5xl md:text-7xl lg:text-9xl ">
+            Arab Ali
+          </h1>
+          <h1 className=" text-sm sm:text-base md:text-2xl lg:text-3xl ">
+            HOTEL
+          </h1>
           <p className="text-md ">
-            Book your stay and enjoy Luxury redefined at the most
-            affordable rates.
+            Book your stay and enjoy Luxury redefined at the most affordable
+            rates.
           </p>
         </div>
         <div className="flex items-center justify-center -mt-10">

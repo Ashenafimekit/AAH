@@ -20,14 +20,31 @@ const AdminTestimony = () => {
     fetchData();
   }, []);
 
-  const handleApprove = (data) => {};
-  const handleDecline = async(data) => {
+  const handleApprove = async (data) => {
+    console.log("befor approved : ",data);
     try {
-      await axios.delete(`${apiUrl}/testimonial/cancel/${data._id}`,data)
-      console.log("Declined Testimony : ",data)
+      await axios
+        .put(`${apiUrl}/testimonial/approve/${data._id}`)
+        .then((res) => {
+          const newTestimony = res.data.testimonial;
+          console.log("new tesimony : ",newTestimony)
+          setData((prevData) =>
+            prevData.map((testimony) =>
+              testimony._id === newTestimony._id ? newTestimony : testimony
+            )
+          );
+        });
+    } catch (error) {
+      console.log("Error : ", error);
+    }
+  };
+  const handleDecline = async (data) => {
+    try {
+      await axios.delete(`${apiUrl}/testimonial/cancel/${data._id}`, data);
+      console.log("Declined Testimony : ", data);
       window.location.reload();
     } catch (error) {
-      console.log("Error : ", error)
+      console.log("Error : ", error);
     }
   };
 
@@ -35,6 +52,7 @@ const AdminTestimony = () => {
     { field: "fullName", headerName: "Full Name", width: 150 },
     { field: "email", headerName: "Email", width: 300 },
     { field: "message", headerName: "Message", width: 400 },
+    { field: "status", headerName: "Status", width: 100 },
     {
       field: "Approve",
       headerName: "Approve",
@@ -50,14 +68,14 @@ const AdminTestimony = () => {
     },
     {
       field: "Decline",
-      headerName: "Decline",
+      headerName: "Delete",
       width: 80,
       renderCell: (params) => (
         <button
           className="bg-red-600 text-white px-2 rounded"
           onClick={() => handleDecline(params.row)}
         >
-          Decline
+          Delete
         </button>
       ),
     },

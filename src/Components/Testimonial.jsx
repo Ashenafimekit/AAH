@@ -14,8 +14,10 @@ const Testimonial = () => {
         const response = await axios.get(
           `${apiUrl}/testimonial/lists`
         );
-        setTestimony(response.data.testimonials);
-        // console.log("incoming data : ", testimony);
+        const IncomingTestimony = response.data.testimonials
+        const approved = IncomingTestimony.filter((testimony)=>testimony.status === "approved")
+        setTestimony(approved);
+        //console.log("incoming testimony : ", testimony);
       } catch (error) {
         console.log("Error : ", error);
       }
@@ -25,7 +27,7 @@ const Testimonial = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-semibold py-4">Testimonials</h1>
+      <h1 className="bg-[#D9D9D9] p-4 rounded-lg mb-2 text-2xl font-semibold py-4">Testimonials</h1>
       <div className="w-1/2">
         <Carousel
           autoplay

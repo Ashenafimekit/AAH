@@ -43,6 +43,7 @@ const AdminRoom = () => {
         );
         const roomSummary = response.data;
         setRoomTypeSummary(roomSummary.roomSummary);
+        console.log("Room type summary : ", roomTypeSummary)
       } catch (error) {
         console.error("Error fetching room type summary", error);
       }

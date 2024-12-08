@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import bedroom from "../assets/images/bedroom.jpg";
 import bedroom2 from "../assets/images/bedroom2.jpg";
 import bedroom3 from "../assets/images/bedroom3.jpg";
+import { Link } from "react-router-dom";
+
 
 const Room = () => {
   const [roomPrice, setRoomPrice] = useState([]);
@@ -36,9 +38,11 @@ const Room = () => {
           </div>
           <div className="border-2 border-gray-500 rounded-b-lg w-full flex flex-col items-center justify-between">
             <div className="p-5">
-              <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
-                BOOK
-              </button>
+              <Link to={`/room-detail/Single`}>
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
+                  BOOK
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -60,9 +64,11 @@ const Room = () => {
           </div>
           <div className="border-2 border-gray-500 rounded-b-lg w-full flex flex-col items-center justify-between">
             <div className="p-6">
-              <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
-                BOOK
-              </button>
+              <Link to={`/room-detail/King`}>
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
+                  BOOK
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -84,9 +90,11 @@ const Room = () => {
           </div>
           <div className="border-2 border-gray-500 rounded-b-lg w-full flex flex-col items-center justify-between">
             <div className="p-5">
-              <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
-                BOOK
-              </button>
+              <Link to={`/room-detail/Twin`}>
+                <button className="bg-golden py-2 px-10 rounded-lg font-semibold ">
+                  BOOK
+                </button>
+              </Link>
             </div>
           </div>
         </div>

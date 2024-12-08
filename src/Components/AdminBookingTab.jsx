@@ -3,17 +3,24 @@ import { Tabs } from "antd";
 import AdminBooking from "./AdminBooking";
 import AdminBookList from "./AdminBookList";
 import "../css/adminBookingTab.css";
+import BookingHistory from "./BookingHistory";
+
 
 const items = [
   {
-    key: '1',
-    label: 'Book',
-    children: <AdminBooking/>,
+    key: "1",
+    label: "Book",
+    children: <AdminBooking />,
   },
   {
-    key: '2',
-    label: 'Booking List',
-    children: <AdminBookList/>,
+    key: "2",
+    label: "Current Booking",
+    children: <AdminBookList />,
+  },
+  {
+    key: "3",
+    label: "Booking History",
+    children: <BookingHistory/>,
   },
 ];
 

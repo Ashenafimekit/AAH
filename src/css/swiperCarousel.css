@@ -1,0 +1,63 @@
+.carousel-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: #f9f9f9;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #14274a;
+  font-size: 1px !important;
+}
+
+.swiper-button-next:after{
+    content: 'next';
+    font-size: 30px;
+}
+
+.swiper-button-prev:after {
+    content: 'prev';
+    font-size: 30px;
+}
+
+.swiper-pagination-bullet {
+  background: #007bff;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0056b3;
+}
+
+@media (max-width: 640px) {
+  .slide {
+    height: 250px;
+  }
+  .swiper-button-next:after{
+    content: 'next';
+    font-size: 20px;
+}
+
+.swiper-button-prev:after {
+    content: 'prev';
+    font-size: 20px;
+}
+}

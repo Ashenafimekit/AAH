@@ -1,0 +1,266 @@
+[33mcommit 2276422b34d18f1e31be511bc764e7d4a70a7af1[m[33m ([m[1;36mHEAD -> [m[1;32mFrontend_Ashe[m[33m, [m[1;31morigin/Frontend_Ashe[m[33m)[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Dec 1 18:28:14 2024 +0300
+
+    booking history
+
+[33mcommit 6e4548d0fa39839655fb506f3218624b3368df92[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Dec 1 13:18:59 2024 +0300
+
+    adjusting the height of admin booking
+
+[33mcommit d6a812a17da4ca7c5b0f95d2df16ae03c78bd8e3[m
+Merge: 73fbf0d9 94cfc68e
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Dec 1 12:20:55 2024 +0300
+
+    merging changes
+
+[33mcommit 73fbf0d9db4445fef3c6436a8ff5f3c465b846d0[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Dec 1 11:56:20 2024 +0300
+
+    fix bugs
+
+[33mcommit fc2b825e77452e720341b33aef4978d98da27a14[m
+Merge: 75786ca4 74bab90c
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sat Nov 30 23:09:32 2024 +0300
+
+    Merge branch 'dave-frontend' of https://github.com/Ashenafimekit/AAH into Frontend_Ashe
+
+[33mcommit 75786ca49edffae9be59b26a39768298ee969d79[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sat Nov 30 23:07:40 2024 +0300
+
+    changing the carousel
+
+[33mcommit 94cfc68ebe15273e0d28f79c20dbe99754d0a1a6[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sat Nov 30 17:19:31 2024 +0300
+
+    worked on admin
+
+[33mcommit 58fc9e8ed3cacd6801074294bc78cb2e95cd0062[m
+Merge: 74bab90c 49bd507c
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sat Nov 30 12:39:34 2024 +0300
+
+    Merge branch 'Frontend_Ashe' of https://github.com/Ashenafimekit/AAH into dave-frontend
+
+[33mcommit 74bab90c99c987b6be812ead5902c501ecf843d0[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sat Nov 30 12:39:10 2024 +0300
+
+    integrated booking with the backend
+
+[33mcommit e953c70b09543cde8acf3bcb5fd88994150b7007[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sat Nov 30 12:27:55 2024 +0300
+
+    rolling back to commit
+
+[33mcommit 2afbcdb1d0a0e67702fee69d17c82225fea7dd11[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sat Nov 30 09:40:17 2024 +0300
+
+    fixing number of beds problem based on roomtype
+
+[33mcommit 49bd507c0a77c420a3f6b19ec7673d861b8a6f34[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sat Nov 30 00:00:17 2024 +0300
+
+    adjust responsiveness
+
+[33mcommit 8183740b42e57cde59fb5fa368f63f842d2de88d[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Fri Nov 29 23:37:59 2024 +0300
+
+    Edit customer data
+
+[33mcommit 4c63d46572b0de2cecdcdadb24f8ae9668f62c0d[m
+Merge: 65155e37 7ff50fd2
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Fri Nov 29 15:53:57 2024 +0300
+
+    merging branches
+
+[33mcommit 65155e3757be0b0a9ad3d6d765790e2d5ab29c90[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Fri Nov 29 15:48:07 2024 +0300
+
+    little changes
+
+[33mcommit 7ff50fd2efe7cfd4a9aa69e3180edb81f010e3db[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Fri Nov 29 04:49:43 2024 +0300
+
+    feat: add Server-Sent Events for updating the booking list when a new booking is created
+
+[33mcommit a3a1dd418f24cfc53aa2b72377c849d19cdc87df[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Thu Nov 28 23:12:21 2024 +0300
+
+    display success and error message
+
+[33mcommit ba902954fbe83e5fba7a1c2954f88ec6477225c3[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Thu Nov 28 15:17:59 2024 +0300
+
+    admin page edited as well admin sign up functionality implemented
+
+[33mcommit a09a0720a096b236c54f139b23f2e8b9848942e7[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Thu Nov 28 01:30:24 2024 +0300
+
+    merging with Ashe
+
+[33mcommit 1cfa18b41358d19891596ee1fa381ce31a5320d6[m
+Merge: 3ab58b93 0a065478
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Thu Nov 28 01:29:19 2024 +0300
+
+    Merge branch 'Frontend_Ashe' of https://github.com/Ashenafimekit/AAH into dave-frontend
+
+[33mcommit 0a065478e7f6b180f18a846f7711d2c6bd3d6351[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Thu Nov 28 04:31:03 2024 +0300
+
+    dynamic price
+
+[33mcommit c74351d82234cf0aa8f1b83bfd566564eb563d2d[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Thu Nov 28 03:16:01 2024 +0300
+
+    some adjustment
+
+[33mcommit 9d32c90de55ccd830f0d57a84e7d87f870d4f2b3[m
+Merge: ef443a6a adccbb97
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 23:57:31 2024 +0300
+
+    Merge branch 'dave-frontend' of https://github.com/Ashenafimekit/AAH into Frontend_Ashe
+
+[33mcommit ef443a6a4bfc6df4e37e8585d63243c44e89554b[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 23:53:04 2024 +0300
+
+    mui table2
+
+[33mcommit 334f79a8d59c2da6a4b6f2d11daef6c298a40360[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 23:28:48 2024 +0300
+
+    mui table
+
+[33mcommit 3ab58b93d22c4a7029274e57613f137b48cf4220[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Wed Nov 27 16:35:45 2024 +0300
+
+    admin room updated, alert, edit modal, rometype edit and book now form done
+
+[33mcommit 668775c5d782e37ac8302ed9616de63adc77a62f[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 03:00:37 2024 +0300
+
+    updating
+
+[33mcommit 423d330e7f70bac1042c6071dfdd67b2eda113a2[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 02:17:50 2024 +0300
+
+    removing .env file
+
+[33mcommit e8151145cbfef6ac59ecf930428b63021202310b[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Wed Nov 27 02:12:37 2024 +0300
+
+    backend connection
+
+[33mcommit 464bcf4aba42a9acb829985ec6463cf42dc0fdfe[m
+Merge: 11d3f167 668775c5
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Wed Nov 27 02:02:04 2024 +0300
+
+    Merge branch 'Frontend_Ashe' of https://github.com/Ashenafimekit/AAH into dave-frontend
+
+[33mcommit aa31aa9057fe6c4d76a4d7cc2b26b6254c0a3310[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Tue Nov 26 22:20:14 2024 +0300
+
+    admin booking
+
+[33mcommit 78f3c8cf1e41a811bc580d17014c7f0200a3ed9e[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Tue Nov 26 16:50:44 2024 +0300
+
+    admin page booking
+
+[33mcommit 11d3f1676a9c56fd6982cb46611103edb54f025b[m
+Merge: adccbb97 78f3c8cf
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Tue Nov 26 07:20:20 2024 +0300
+
+    Merge branch 'Frontend_Ashe' of https://github.com/Ashenafimekit/AAH into dave-frontend
+
+[33mcommit 7678083f684326e1e484c08c843314f605dd6a13[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Mon Nov 25 15:17:39 2024 +0300
+
+    connection
+
+[33mcommit 19ce3143167a42a1bb4cbd3a1dd303d37f2ac213[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Mon Nov 25 14:29:28 2024 +0300
+
+    admin page1
+
+[33mcommit adccbb97c9b957bc2d71ce2c68565009f7c9bea5[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sun Nov 24 23:08:28 2024 +0300
+
+    book confirmation page implemented
+
+[33mcommit e437db4a0ab046a65f06290b698e5a49e43caae3[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sun Nov 24 22:10:51 2024 +0300
+
+    room clicked with responsiveness done
+
+[33mcommit 14e6e772c32b5f2f29542d326379adf0406232e8[m
+Merge: 4bbb6a12 b55ae27a
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Nov 24 20:46:36 2024 +0300
+
+    merging with dave
+
+[33mcommit 4bbb6a12757f4998a15965c06dbaccc218a645c3[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Nov 24 18:54:37 2024 +0300
+
+    gallery page
+
+[33mcommit b55ae27a8aae11f46f79426bb962d0c69ed6d6a3[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sun Nov 24 15:37:35 2024 +0300
+
+    booking form implemented
+
+[33mcommit 8007416adc7346e823992c93f2e12d24f6c606e7[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sun Nov 24 01:49:57 2024 +0300
+
+    contact us responsiveness updated
+
+[33mcommit cd43b4a942bc45c4b2942560ee7eb444de0c42a8[m
+Author: dawitYenew.12 <dawityenew.12@gmail.com>
+Date:   Sun Nov 24 01:40:08 2024 +0300
+
+    body for when room got clicked implemented
+
+[33mcommit 18979b9f40dbcb9613f51cfbbff510ad5ee076ba[m
+Author: Ashenafi Mekit <ashumekit502@gmail.com>
+Date:   Sun Nov 24 00:26:18 2024 +0300
+
+ 
