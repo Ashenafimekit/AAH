@@ -5,6 +5,7 @@ import "../index.css";
 import axios from "axios";
 import Alert from "./Alert";
 import RoomTypeComp from "./RoomtypeComp";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AdminRoom = () => {
   const [showAddRoomModal, setShowAddRoomModal] = React.useState(false);
@@ -39,7 +40,7 @@ const AdminRoom = () => {
     const fetchRoomTypeSummary = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/room/roomTypeSummary"
+          `${apiUrl}/room/roomTypeSummary`
         );
         const roomSummary = response.data;
         setRoomTypeSummary(roomSummary.roomSummary);
@@ -119,7 +120,7 @@ const AdminRoom = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/room/add",
+        `${apiUrl}/room/add`,
         roomData
       );
       if (response.data.success) {
