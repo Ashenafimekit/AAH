@@ -49,5 +49,5 @@ export const deleteRoom = catchAsync(async (req, res) => {
 
 export const getPrice = catchAsync(async (req, res) => {
   const price = await roomService.getPrice();
-  res.status(httpstatus.OK).json({ success: true, roomPrice: price });
+  res.status(httpstatus.OK).json({ success: true, roomDetail: price });
 });
