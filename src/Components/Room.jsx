@@ -7,22 +7,24 @@ import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Room = () => {
-  const [roomPrice, setRoomPrice] = useState([]);
+  const [priceRoom, setPriceRoom] = useState([]);
 
   useEffect(() => {
-    const fetchPrice = async () => {
-      try {
-        await axios.get(`${apiUrl}/room/getPrice`).then((res) => {
-          setRoomPrice(res.data.price);
-          console.log("room price : ", roomPrice);
-        });
-      } catch (error) {
-        console.log("Error : ", error);
-      }
-    };
-
+  const fetchPrice = async () => {
+    try {
+      await axios.get(`${apiUrl}/room/getPrice`).then((res) => {
+        // setRoomPrice(res.data.price);
+        setPriceRoom(res.data.roomPrice);
+        //console.log(res.data.price);
+        console.log(res.data.roomPrice);
+      });
+    } catch (error) {
+      console.log("Error : ", error);
+    }
+  };
     fetchPrice();
-  });
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="w-3/5 flex flex-col gap-3 items-center justify-center">
