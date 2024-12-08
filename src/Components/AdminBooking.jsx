@@ -39,7 +39,6 @@ const AdminBooking = () => {
       newErrors.mobile = "Mobile number should be 10 digits";
     if (!formData.id) newErrors.id = "Please provide an ID number";
     if (!formData.roomNo) newErrors.roomNo = "Please provide a room number";
-    if (!formData.tinNo) newErrors.tinNo = "Please provide a TIN number";
     if (!formData.nationality)
       newErrors.nationality = "Please provide nationality";
     if (

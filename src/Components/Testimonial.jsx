@@ -14,8 +14,10 @@ const Testimonial = () => {
         const response = await axios.get(
           `${apiUrl}/testimonial/lists`
         );
-        setTestimony(response.data.testimonials);
-        // console.log("incoming data : ", testimony);
+        const IncomingTestimony = response.data.testimonials
+        const approved = IncomingTestimony.filter((testimony)=>testimony.status === "approved")
+        setTestimony(approved);
+        //console.log("incoming testimony : ", testimony);
       } catch (error) {
         console.log("Error : ", error);
       }

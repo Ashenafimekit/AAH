@@ -108,6 +108,7 @@ const AdminBookList = () => {
       id: row.id,
       roomNo: row.roomNo,
       tinNo: row.tinNo,
+      status: "confirmed",
       mobile: row.mobile,
       nationality: row.nationality,
     });
@@ -121,6 +122,7 @@ const AdminBookList = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+      console.log("confirmed data : ", EditedData)
       try {
         await axios
           .put(`${apiUrl}/book/update/${row._id}`, EditedData)

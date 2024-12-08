@@ -6,6 +6,7 @@ import Alert from "../Alert";
 const BookingForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
+    roomType: "",
     checkInDate: "",
     checkOutDate: "",
     mobile: "",
@@ -30,17 +31,26 @@ const BookingForm = () => {
     const newErrors = {};
     const strictEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!formData.fullName) newErrors.fullName = "Please fill in your full name";
-    if (!formData.checkInDate) newErrors.checkInDate = "Please select a check-in date";
-    if (!formData.checkOutDate) newErrors.checkOutDate = "Please select a check-out date";
+    if (!formData.fullName)
+      newErrors.fullName = "Please fill in your full name";
+    if (!formData.checkInDate)
+      newErrors.checkInDate = "Please select a check-in date";
+    if (!formData.checkOutDate)
+      newErrors.checkOutDate = "Please select a check-out date";
     if (!formData.mobile) newErrors.mobile = "Please provide a mobile number";
-    if (formData.mobile && formData.mobile.length !== 10) newErrors.mobile = "Mobile number should be 10 digits";
+    if (formData.mobile && formData.mobile.length !== 10)
+      newErrors.mobile = "Mobile number should be 10 digits";
     if (!formData.email) newErrors.email = "Please enter an email address";
     if (formData.email && !strictEmailRegex.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (formData.checkInDate && formData.checkOutDate && formData.checkInDate > formData.checkOutDate) {
-      newErrors.checkOutDate = "Check-out date should be greater than check-in date";
+    if (
+      formData.checkInDate &&
+      formData.checkOutDate &&
+      formData.checkInDate > formData.checkOutDate
+    ) {
+      newErrors.checkOutDate =
+        "Check-out date should be greater than check-in date";
     }
 
     return newErrors;
@@ -99,26 +109,56 @@ const BookingForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Full Name */}
-        <div className="relative w-full">
-          <label htmlFor="fullName" className="block text-md font-medium text-gray-700">
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleInputChange}
-            placeholder="Enter your full name"
-            className="w-full md:w-[49%] p-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none mt-1 focus:border-golden"
-          />
-          {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+        <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex-col md:flex-row ">
+          <div className="relative flex-1 ">
+            <label
+              htmlFor="fullName"
+              className="block text-md font-medium text-gray-700"
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              placeholder="Enter your full name"
+              className="w-full p-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none mt-1 focus:border-golden"
+            />
+            {errors.fullName && (
+              <span className="text-red-500 text-sm">{errors.fullName}</span>
+            )}
+          </div>
+
+          <div className="relative flex-1">
+            <label
+              htmlFor="roomType"
+              className="block text-md font-medium text-gray-700"
+            >
+              Room Type
+            </label>
+            <select
+              id="roomType"
+              name="roomType"
+              value={formData.roomType}
+              onChange={handleInputChange}
+              className="w-full p-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none mt-1 focus:border-golden"
+            >
+              <option value="SINGLE">Single</option>
+              <option value="KING"> king</option>
+              <option value="TWIN">Twin</option>
+            </select>
+          </div>
         </div>
 
         {/* Email and Phone */}
-        <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
+        <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex-col md:flex-row">
           <div className="relative flex-1">
-            <label htmlFor="email" className="block text-md font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-md font-medium text-gray-700"
+            >
               Email
             </label>
             <input
@@ -130,11 +170,16 @@ const BookingForm = () => {
               placeholder="Enter your email"
               className="w-full p-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none mt-1 focus:border-golden"
             />
-            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+            {errors.email && (
+              <span className="text-red-500 text-sm">{errors.email}</span>
+            )}
           </div>
 
           <div className="relative flex-1">
-            <label htmlFor="mobile" className="block text-md font-medium text-gray-700">
+            <label
+              htmlFor="mobile"
+              className="block text-md font-medium text-gray-700"
+            >
               Phone number
             </label>
             <input
@@ -146,14 +191,19 @@ const BookingForm = () => {
               placeholder="Enter your phone number"
               className="w-full p-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none mt-1 focus:border-golden"
             />
-            {errors.mobile && <span className="text-red-500 text-sm">{errors.mobile}</span>}
+            {errors.mobile && (
+              <span className="text-red-500 text-sm">{errors.mobile}</span>
+            )}
           </div>
         </div>
 
         {/* Check-In and Check-Out Date */}
-        <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row">
+        <div className="flex space-y-4 md:space-y-0 md:space-x-4 flex-col md:flex-row">
           <div className="relative flex-1">
-            <label htmlFor="checkin" className="block text-md font-medium text-gray-700">
+            <label
+              htmlFor="checkin"
+              className="block text-md font-medium text-gray-700"
+            >
               Check-In Date
             </label>
             <input
@@ -165,7 +215,9 @@ const BookingForm = () => {
               onChange={handleInputChange}
               className="w-full py-3 cursor-text mt-1 pl-10 pr-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none focus:border-golden"
             />
-            {errors.checkInDate && <span className="text-red-500 text-sm">{errors.checkInDate}</span>}
+            {errors.checkInDate && (
+              <span className="text-red-500 text-sm">{errors.checkInDate}</span>
+            )}
             <div
               className="absolute cursor-pointer inset-y-0 left-0 top-6 flex items-center pl-3 pointer-events-none"
               onClick={() => toggleDatePicker(checkInRef)}
@@ -175,7 +227,10 @@ const BookingForm = () => {
           </div>
 
           <div className="relative flex-1">
-            <label htmlFor="checkout" className="block text-md font-medium text-gray-700">
+            <label
+              htmlFor="checkout"
+              className="block text-md font-medium text-gray-700"
+            >
               Check-Out Date
             </label>
             <input
@@ -187,7 +242,11 @@ const BookingForm = () => {
               onChange={handleInputChange}
               className="w-full cursor-text py-3 mt-1 pl-10 pr-3 text-md border border-gray-400 rounded-sm shadow-sm focus:outline-none focus:border-golden"
             />
-            {errors.checkOutDate && <span className="text-red-500 text-sm">{errors.checkOutDate}</span>}
+            {errors.checkOutDate && (
+              <span className="text-red-500 text-sm">
+                {errors.checkOutDate}
+              </span>
+            )}
             <div
               className="absolute inset-y-0 left-0 top-6 flex items-center pl-3 pointer-events-none cursor-pointer"
               onClick={() => toggleDatePicker(checkOutRef)}
