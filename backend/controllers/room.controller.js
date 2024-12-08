@@ -5,7 +5,9 @@ import logger from '../config/logger.js';
 
 export const createRoom = catchAsync(async (req, res) => {
   const room = await roomService.createRoom(req.body);
-  logger.info('Room created successfully');
+  req.body.numberOfRooms > 1
+    ? logger.info('Rooms created successfully')
+    : logger.info('Room created successfully');
   res.status(httpstatus.CREATED).json({ success: true, room: room });
 });
 
