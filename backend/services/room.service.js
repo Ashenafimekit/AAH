@@ -262,8 +262,11 @@ const deleteRoom = async (roomId) => {
 const getPrice = async () => {
   try {
     const price = await Room.find({}, { roomType: 1, price: 1 });
+    logger.info('price');
+    logger.info(price);
     return price;
   } catch (error) {
+    logger.error(error);
     throw new ApiError(httpStatus.BAD_REQUEST, 'unable to fetch room price');
   }
 };

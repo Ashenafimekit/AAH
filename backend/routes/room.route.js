@@ -17,10 +17,10 @@ router.post('/room/add', createRoom);
 router.get('/room/list', getRooms);
 router.get('/room/roomTypes', getRoomTypes);
 router.get('/room/roomTypeSummary', getRoomSummaryByType);
-router.get('/room/:roomId', getRoom);
-router.put('/room/update/:roomId', updateRoom);
+router.get('/room/getPrice', getPrice);
 router.put('/update/:roomType', updateRoomType);
 router.delete('/room/delete/:roomId', deleteRoom);
-router.get('/room/getPrice', getPrice);
+router.put('/room/update/:roomId', updateRoom);
+router.get('/room/:roomId', getRoom);
 
 export default router;
