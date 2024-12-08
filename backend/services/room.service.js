@@ -259,6 +259,15 @@ const deleteRoom = async (roomId) => {
   }
 };
 
+const getPrice = async () => {
+  try {
+    const price = await Room.find({}, { roomType: 1, price: 1 });
+    return price;
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'unable to fetch room price');
+  }
+};
+
 export default {
   createRoom,
   getRooms,
@@ -268,4 +277,5 @@ export default {
   getRoomTypes,
   getRoomSummaryByType,
   updateRoomType,
+  getPrice,
 };
