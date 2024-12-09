@@ -1,11 +1,11 @@
 // routes/userRoutes.js
 import express from 'express';
-import { login } from '../controllers/auth.controller.js';
-import { refreshToken } from '../controllers/auth.controller.js';
+import { login, logout, checkAuth } from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
 router.post('/login', login);
-router.post('/refresh-token', refreshToken);
+router.post('/logout', logout);
+router.post('/check-auth', checkAuth);
 
 export default router;
