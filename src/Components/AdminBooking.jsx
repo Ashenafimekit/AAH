@@ -89,7 +89,7 @@ const AdminBooking = () => {
 
   return (
     <div className="h-[85vh] w-full">
-      <div className="flex flex-col mx-8 h-full">
+      <div className="flex flex-col h-full">
         {alert && (
           <Alert
             type={alert.type}
@@ -103,11 +103,11 @@ const AdminBooking = () => {
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-blueBlack rounded-md w-full max-w-3xl h-11/12 flex flex-col justify-start items-center mx-auto mt-2 py-2 overflow-y-auto"
+          className="bg-blueBlack rounded-md w-full max-w-3xl h-11/12 flex flex-col items-center mx-auto mt-2 py-2 overflow-y-auto"
         >
-          <div className="flex flex-col space-x-4 border">
+          <div className="flex flex-col">
             {/* Full Name */}
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <label
                 htmlFor="fullName"
                 className="text-white text-lg font-normal mb-1"
@@ -121,7 +121,7 @@ const AdminBooking = () => {
                 placeholder="Enter full name"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                className="text-lg rounded-md py-1 px-3 focus:outline-none border-golden bg-blue-50"
               />
               {errors.fullName && (
                 <span className="text-red-500 text-xs">{errors.fullName}</span>
@@ -129,7 +129,7 @@ const AdminBooking = () => {
             </div>
 
             {/* Room Type */}
-            <div className="flex flex-col mt-2">
+            <div className="flex flex-col w-full mt-2">
               <label
                 htmlFor="roomType"
                 className="text-white text-lg font-normal mb-1"
@@ -141,7 +141,7 @@ const AdminBooking = () => {
                 name="roomType"
                 value={formData.roomType}
                 onChange={handleChange}
-                className="border text-lg rounded-md py-1 px-3 w-full focus:outline-none border-golden bg-blue-50"
+                className="border text-lg rounded-md py-1 px-3 focus:outline-none border-golden bg-blue-50"
               >
                 <option value="SINGLE">Single</option>
                 <option value="KING"> king</option>
@@ -248,6 +248,7 @@ const AdminBooking = () => {
                   id="tinNo"
                   name="tinNo"
                   value={formData.tinNo}
+                  placeholder="Enter Tin Number"
                   onChange={handleChange}
                   className="border text-lg rounded-md px-3 py-1 w-full focus:outline-none border-golden bg-blue-50"
                 />

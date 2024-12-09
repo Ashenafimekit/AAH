@@ -185,7 +185,7 @@ const AdminRoom = () => {
                   <select
                     value={roomType}
                     onChange={(e) => setRoomType(e.target.value)}
-                    className="w-full p-2 text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:border-golden mt-1 mb-2 relative"
+                    className="w-full p-2 text-gray-800 border-2 border-gray-200 rounded-md focus:outline-none focus:border-golden mt-1 mb-2 relative"
                   >
                     <option value="Single">Single</option>
                     <option value="King">King</option>
@@ -201,7 +201,7 @@ const AdminRoom = () => {
                         type="number"
                         value={numberOfBeds}
                         onChange={(e) => setNumberOfBeds(e.target.value)}
-                        className="w-full p-2 text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
+                        className="w-full p-2 text-gray-800 border-2 border-gray-200 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
                         placeholder="Enter number of beds"
                         min="1"
                       />
@@ -216,14 +216,14 @@ const AdminRoom = () => {
                     value={numberOfRooms}
                     onChange={(e) => setNumberOfRooms(e.target.value)}
                     placeholder="Enter number of rooms"
-                    className="w-full p-2 text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
+                    className="w-full p-2 text-gray-800 border-2 border-gray-200 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
                     min="1"
                   />
 
                   <label className="text-medium font-medium text-blueBlack">
                     Room Number
                   </label>
-                  <div className="flex items-center p-2 border border-gray-400 rounded-md mt-1 mb-2 flex-wrap space-x-2 relative hover:border-golden">
+                  <div className="flex items-center p-2 border-2 border-gray-200 rounded-md mt-1 mb-2 flex-wrap space-x-2 relative hover:border-golden">
                     <div
                       className="flex items-center space-x-2 overflow-auto max-h-20 w-full snap-x snap-mandatory scrollbar-hide"
                       style={{
@@ -278,13 +278,13 @@ const AdminRoom = () => {
                     value={roomNumber}
                     placeholder="Enter room number"
                     onChange={(e) => setRoomNumber(e.target.value)}
-                    className="w-full p-2 text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
+                    className="w-full p-2 text-gray-800 border-2 border-gray-200 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
                   /> */}
 
                   <label className="text-medium font-medium text-blueBlack">
                     Amenities
                   </label>
-                  <div className="flex items-center p-2 border border-gray-400 rounded-md mt-1 mb-2 flex-wrap space-x-2 relative hover:border-golden">
+                  <div className="flex items-center p-2 border-2 border-gray-200 rounded-md mt-1 mb-2 flex-wrap space-x-2 relative hover:border-golden">
                     <div
                       className="flex items-center space-x-2 overflow-auto max-h-20 w-full snap-x snap-mandatory scrollbar-hide"
                       style={{
@@ -340,7 +340,7 @@ const AdminRoom = () => {
                     value={price}
                     placeholder="Enter price"
                     onChange={(e) => setPrice(e.target.value)}
-                    className="w-full p-2 text-gray-800 border border-gray-400 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
+                    className="w-full p-2 text-gray-800 border-2 border-gray-200 rounded-md focus:outline-none focus:border-golden mt-1 mb-2"
                   />
                   {formError && (
                     <p className="text-red-500 text-sm">{formError}</p>
