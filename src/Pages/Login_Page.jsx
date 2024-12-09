@@ -55,6 +55,7 @@ const Login_page = () => {
         console.log(data);
         if (data.success) {
           navigate("/adminPage");
+          localStorage.setItem('isLoggedIn', 'true');
         } else {
           setGeneralError(data.message || "Invalid email or password");
           setError({ email: "", password: "" }); 

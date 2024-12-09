@@ -15,7 +15,7 @@ const AdminBookList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/book/list`);
+        const response = await axios.get(`${apiUrl}/book/list`, {withCredentials: true});
         setFormData(response.data.lists);
         console.log("incoming booked data : ", formData);
       } catch (error) {
@@ -30,7 +30,7 @@ const AdminBookList = () => {
     console.log("deleted data : ", data);
 
     try {
-      await axios.delete(`${apiUrl}/book/delete/${data._id}`, data);
+      await axios.delete(`${apiUrl}/book/delete/${data._id}`, data, {withCredentials: true});
       setFormData((prevFormData) =>
         prevFormData.filter((guest) => guest._id !== data._id)
       );

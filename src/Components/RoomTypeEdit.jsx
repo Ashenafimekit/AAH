@@ -13,7 +13,7 @@ const RoomTypeEdit = ({ roomType, alert, onSetAlert }) => {
       try {
         const response = await axios.get(
           "http://localhost:3000/room/roomTypes"
-        );
+        , { withCredentials: true });
         const data = response.data;
         console.log("Data", data);
 
@@ -73,7 +73,7 @@ const RoomTypeEdit = ({ roomType, alert, onSetAlert }) => {
           amenities: formState.amenities,
           price: formState.price,
         }
-      );
+      , { withCredentials: true });
       if (response.data.success) {
         onSetAlert({
           message: "updated successfully!",
