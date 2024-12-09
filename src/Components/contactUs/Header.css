@@ -1,0 +1,19 @@
+.header {
+    position: relative;
+    display: inline-block;
+}
+
+.header:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: -2px; 
+    width: 0;
+    background: #deae54;
+    transition: width 0.3s ease-in-out;
+}
+
+.header:hover:after {
+    width: 100%;
+}

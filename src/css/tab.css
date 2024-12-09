@@ -1,0 +1,81 @@
+
+.tab-container .ant-tabs {
+    width: 75%;
+    margin: 0 auto  ;
+  }
+  
+  .tab-container .ant-tabs-tab {
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase; 
+    color: black; 
+    background-color: #E0B973;
+    border-radius: 3px;
+  }
+  
+  .tab-container .ant-tabs-tab:hover {
+    color: black;
+  }
+  
+  .tab-container .ant-tabs-tab-active {
+    color: black; 
+  }
+
+  .tab-container .ant-tabs-nav-wrap {
+    border: none;
+  }
+
+  .tab-container .ant-tabs-nav-list {
+    background-color: #14274A;
+    padding: 15px 50px;
+  }
+  
+  /* Tab ink-bar (the underline of the active tab) */
+  .tab-container .ant-tabs-ink-bar {
+    display:none; 
+  }
+  
+/* Base styling for the tab container */
+.tab-container {
+  padding: 20px;
+}
+
+/* Centering tabs and setting font size */
+.ant-tabs-tab {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+/* Adjusting for tablets */
+@media (max-width: 768px) {
+  .tab-container {
+    padding: 10px;
+  }
+
+  .ant-tabs-tab {
+    font-size: 14px;
+  }
+}
+
+/* Adjusting for mobile screens */
+@media (max-width: 480px) {
+  .tab-container {
+    padding: 0px;
+  }
+
+  .ant-tabs-tab {
+    font-size: 10px;
+  }
+
+  /* Making tabs scrollable on smaller screens */
+  .ant-tabs-nav-list {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  /* Reducing tab height on mobile */
+  .ant-tabs-tab-btn {
+    padding: 1px 1px;
+  }
+}

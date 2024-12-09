@@ -1,0 +1,9 @@
+/* Custom CSS */
+.ant-carousel .slick-dots li button {
+    background-color: #FF5722; /* Change to your desired color */
+  }
+  
+  .ant-carousel .slick-dots li.slick-active button {
+    background-color: #3F51B5; /* Active dot color */
+  }
+  
