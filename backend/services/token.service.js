@@ -4,6 +4,9 @@ import { tokenTypes } from '../config/token.js';
 import { Token } from '../models/token.model.js';
 import dayjs from 'dayjs';
 import httpStatus from 'http-status';
+import ApiError from '../utils/ApiError.js';
+import logger from '../config/logger.js';
+import { User } from '../models/user.model.js';
 
 /**
  * Generate a JWT token.
@@ -91,12 +94,13 @@ export const getUserById = async (id) => {
 };
 
 const verifyToken = async (token, type) => {
-  const payLoad = jwt.verify(token, config.jwt.secretKey); // Decode and verify the token using the secret key
+  logger.info(token);
+  const payLoad = jwt.verify(token, config.jwt.secretKey);
   const tokenDoc = await Token.findOne({
     token,
-    user: payLoad.subject, // The 'subject' field contains the user ID
+    user: payLoad.subject,
     type,
-    blacklisted: false, // Ensure the token is not blacklisted
+    blacklisted: false,
   });
 
   if (!tokenDoc) {
@@ -105,12 +109,33 @@ const verifyToken = async (token, type) => {
   return tokenDoc;
 };
 
+const verifyAccessToken = async (accessToken) => {
+  try {
+    const payLoad = jwt.verify(accessToken, config.jwt.secretKey);
+    const user = await getUserById(payLoad.subject);
+    if (!user) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    }
+    return user;
+  } catch (error) {
+    if (error instanceof ApiError) {
+      logger.error(error);
+      throw error;
+    } else if (error.name === 'TokenExpiredError') {
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Access token expired');
+    } else {
+      logger.error(error);
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
+    }
+  }
+};
+
 export const refreshAuthToken = async (refreshToken) => {
   try {
     const refreshTokenDoc = await verifyToken(refreshToken, tokenTypes.REFRESH);
     const user = await getUserById(refreshTokenDoc.user);
     if (!user) {
-      throw new Error();
+      throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
     await refreshTokenDoc.deleteOne();
     return tokenService.generateAuthTokens(user.id);
@@ -119,4 +144,9 @@ export const refreshAuthToken = async (refreshToken) => {
   }
 };
 
-export default { generateAuthTokens, generateToken };
+export default {
+  generateAuthTokens,
+  generateToken,
+  verifyAccessToken,
+  refreshAuthToken,
+};
