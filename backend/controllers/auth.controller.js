@@ -39,6 +39,7 @@ export const login = async (req, res) => {
       sameSite: 'Strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
+    logger.info(tokens.access.token);
     logger.info('Login successful');
     return res.status(httpStatus.OK).json({
       success: true,
@@ -91,8 +92,6 @@ export const logout = async (req, res) => {
 
 export const checkAuth = async (req, res) => {
   const token = req.cookies.access_token;
-  logger.info('Checking authentication');
-  logger.info('Token:', token);
 
   if (!token) {
     return res
@@ -102,14 +101,14 @@ export const checkAuth = async (req, res) => {
 
   try {
     const user = await tokenService.verifyAccessToken(token);
-    logger.info('User Authenticated:', user);
     req.user = user;
     res.status(httpStatus.OK).json({ success: true, message: 'Authenticated' });
   } catch (error) {
     logger.error('Error verifying token', error);
-    return res
-      .status(httpStatus.UNAUTHORIZED)
-      .json({ success: false, message: 'Please Authenticate' });
+    return res.status(httpStatus.UNAUTHORIZED).json({
+      success: false,
+      message: 'Invalid token. Please Authenticate again.',
+    });
   }
 };
 

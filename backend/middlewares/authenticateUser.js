@@ -11,7 +11,6 @@ export const authenticateUser = catchAsync(async (req, res, next) => {
     if (!user) {
       return res.status(httpStatus.UNAUTHORIZED).send('Please Authenticate');
     }
-    logger.info('User authenticated');
     req.user = user;
     next();
   } catch (error) {

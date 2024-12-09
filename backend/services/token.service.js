@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError.js';
 import logger from '../config/logger.js';
+import { User } from '../models/user.model.js';
 
 /**
  * Generate a JWT token.
@@ -93,6 +94,7 @@ export const getUserById = async (id) => {
 };
 
 const verifyToken = async (token, type) => {
+  logger.info(token);
   const payLoad = jwt.verify(token, config.jwt.secretKey);
   const tokenDoc = await Token.findOne({
     token,
@@ -109,17 +111,20 @@ const verifyToken = async (token, type) => {
 
 const verifyAccessToken = async (accessToken) => {
   try {
-    const tokenDoc = await verifyToken(accessToken, tokenTypes.ACCESS);
-    const user = await getUserById(tokenDoc.user);
+    const payLoad = jwt.verify(accessToken, config.jwt.secretKey);
+    const user = await getUserById(payLoad.subject);
     if (!user) {
       throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
-    } else {
-      return user;
     }
+    return user;
   } catch (error) {
     if (error instanceof ApiError) {
+      logger.error(error);
       throw error;
+    } else if (error.name === 'TokenExpiredError') {
+      throw new ApiError(httpStatus.UNAUTHORIZED, 'Access token expired');
     } else {
+      logger.error(error);
       throw new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate');
     }
   }
