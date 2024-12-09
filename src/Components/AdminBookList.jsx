@@ -410,10 +410,16 @@ const AdminBookList = () => {
             pageSizeOptions={[5, 10]}
             checkboxSelection
             sx={{
-              border: 0,
-              "& .MuiDataGrid-columnHeaders": {
-                backgroundColor: "#ebf8ff !important",
+              '& .MuiDataGrid-columnHeaders': {
+                backgroundColor: '#1e88e5',
+                color: 'black',
               },
+              '& .MuiDataGrid-columnHeaderTitle': {
+                fontWeight: 'bold',
+              },
+              '& .MuiDataGrid-columnHeaderTitleContainer':{
+                
+              }
             }}
             getRowId={(row) => row._id}
           />

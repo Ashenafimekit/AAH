@@ -105,7 +105,7 @@ const AdminBooking = () => {
           onSubmit={handleSubmit}
           className="bg-blueBlack rounded-md w-full max-w-3xl h-11/12 flex flex-col justify-start items-center mx-auto mt-2 py-2 overflow-y-auto"
         >
-          <div className="flex flex-col space-x-4 border">
+          <div className="flex flex-col space-x-4">
             {/* Full Name */}
             <div className="flex flex-col">
               <label

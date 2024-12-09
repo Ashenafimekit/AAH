@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Tabs, Button, Spin } from "antd";
 import axios from "axios";
+import '../css/tab.css'
 
 const { TabPane } = Tabs;
 
@@ -51,7 +52,7 @@ const Gallery = () => {
     <div className="">
       <h1 className="text-4xl font-semibold text-center mb-5">Gallery</h1>
 
-      <Tabs defaultActiveKey="all" onChange={handleCategoryChange} centered>
+      <Tabs defaultActiveKey="all" onChange={handleCategoryChange} centered className="tab-container"> 
         <TabPane tab="all" key="all" />
         <TabPane tab="room" key="room" />
         <TabPane tab="gym" key="gym" />
