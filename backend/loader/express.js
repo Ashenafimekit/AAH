@@ -17,11 +17,15 @@ const __dirname = path.dirname(__filename);
 
 export default async (app) => {
   app.use(express.json());
+  const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true,
+  };
   if (config.env === 'production') {
     app.use(cors({ origin: url }));
     app.options('*', cors({ origin: url }));
   } else {
-    app.use(cors());
+    app.use(cors(corsOptions));
   }
 
   app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
