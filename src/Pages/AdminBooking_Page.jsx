@@ -1,6 +1,7 @@
 import React from "react";
 import AdminNavigation from "../Components/AdminNavigation";
 import AdminBookingTab from "../Components/AdminBookingTab";
+import Logout from "../Components/Logout";
 
 const AdminBooking_Page = () => {
   return (
@@ -9,6 +10,7 @@ const AdminBooking_Page = () => {
       <div className="w-full overflow-hidden">
         <AdminBookingTab />
       </div>
+      <Logout />
     </div>
   );
 };

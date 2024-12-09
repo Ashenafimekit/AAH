@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading, true = authenticated, false = not authenticated
-    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await axios.post("http://localhost:3000/check-auth", {}, { withCredentials: true });
+                const response = await axios.get("http://localhost:3000/check-auth", { withCredentials: true });
                 const data = response.data;
                 console.log(data);
                 if (data.success) {
@@ -20,20 +20,21 @@ const ProtectedRoute = ({ children }) => {
             } catch (error) {
                 console.error("Authentication check failed", error);
                 setIsAuthenticated(false);
+            } finally {
+                setIsLoading(false);
             }
         };
 
         checkAuth();
     }, []);
 
-    if (isAuthenticated === null) {
+    if (isLoading) {
         return <p>Loading...</p>;
     }
 
+    // If not authenticated, redirect to the login page
     if (!isAuthenticated) {
-        // If the user is not authenticated, redirect them to the login page
-        navigate("/login");
-        return null;
+        return <Navigate to="/admin" />;
     }
 
     return children;

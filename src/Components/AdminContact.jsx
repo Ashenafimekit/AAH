@@ -10,7 +10,7 @@ const AdminContact = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/contact/messages`);
+        const response = await axios.get(`${apiUrl}/contact/messages`, {withCredentials: true});
         setData(response.data.lists);
        // console.log("incoming data : ", response.data.lists);
       } catch (error) {
@@ -23,7 +23,7 @@ const AdminContact = () => {
   const handleDelete = async (data) => {
     //console.log("deleted data : ", data);
     try {
-      await axios.delete(`${apiUrl}/contact/delete/${data._id}`, data);
+      await axios.delete(`${apiUrl}/contact/delete/${data._id}`, data, {withCredentials: true});
       setData((prevData) => prevData.filter((msg) => msg._id !== data._id));
     } catch (error) {
       console.log("Error : ",error);

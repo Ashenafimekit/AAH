@@ -41,7 +41,7 @@ const AdminRoom = () => {
       try {
         const response = await axios.get(
           `${apiUrl}/room/roomTypeSummary`
-        );
+        ,{withCredentials: true});
         const roomSummary = response.data;
         setRoomTypeSummary(roomSummary.roomSummary);
       } catch (error) {
@@ -121,7 +121,7 @@ const AdminRoom = () => {
       const response = await axios.post(
         `${apiUrl}/room/add`,
         roomData
-      );
+      ,  {withCredentials: true});
       if (response.data.success) {
         roomNumberForm.roomNumbers.length > 1
           ? setAlert({ message: "Rooms added successfully!", type: "success" })
