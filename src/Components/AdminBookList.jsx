@@ -7,10 +7,17 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import ClearIcon from "@mui/icons-material/Clear";
+import Alert from "./Alert";
+import { message } from "antd";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const AdminBookList = () => {
   const [formData, setFormData] = useState([]);
+  const [alert, setAlert] = useState({
+    message: "",
+    type: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -121,7 +128,7 @@ const AdminBookList = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("confirmed data : ", EditedData)
+      console.log("confirmed data : ", EditedData);
       try {
         await axios
           .put(`${apiUrl}/book/update/${row._id}`, EditedData)
@@ -133,9 +140,19 @@ const AdminBookList = () => {
                 guest._id === updatedGuest._id ? updatedGuest : guest
               )
             );
+            if (res.data.success === true) {
+              setAlert({
+                message: "successfully updated",
+                type: "success",
+              });
+            }
           });
       } catch (error) {
         console.log("Error : ", error);
+        setAlert({
+          message: "please try again",
+          type: "error",
+        });
       }
     };
 
@@ -158,14 +175,26 @@ const AdminBookList = () => {
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          className="relative"
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Confirm Customer Data
+              <ClearIcon
+                onClick={handleClose}
+                className="absolute top-0 right-0 m-2 w-6 h-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+              />
+              {/* {alert.message != "" && (
+                <Alert
+                  message={alert.message}
+                  type={alert.type}
+                  onClose={() => setAlert({ message: "", type: "" })}
+                  onHandleClose={() => setAlert({ message: "", type: "" })}
+                />
+              )} */}
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography id="modal-modal-description" sx={{ mt: 0 }}>
               <div className="h-[85vh] w-full">
-                <div className="flex flex-col border mx-8 h-full w-full">
+                <div className="flex flex-col mx-4 h-full w-full">
                   <h1 className="text-2xl text-center uppercase font-semibold flex justify-center">
                     Edit Guest Data
                   </h1>
@@ -352,7 +381,6 @@ const AdminBookList = () => {
 
                       <button
                         type="submit"
-                        // onClick={handleClose}
                         className="bg-blue-500 text-white text-lg py-2 px-6 rounded-md mt-6 w-full hover:bg-blue-600"
                       >
                         Update

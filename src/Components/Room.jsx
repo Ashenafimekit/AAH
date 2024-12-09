@@ -22,18 +22,18 @@ const Room = () => {
         roomDetails.forEach((room) => {
           if (room.roomType === "Single") {
             setSingleRoomPrice(room.price);
-            console.log("single room price : ", room.price);
+            //console.log("single room price : ", room.price);
           } else if (room.roomType === "King") {
             setKingRoomPrice(room.price);
-            console.log("king room price : ", room.price);
+            //console.log("king room price : ", room.price);
           } else if (room.roomType === "Twin") {
             setTwinRoomPrice(room.price);
-            console.log("twin room price : ", room.price);
+            //console.log("twin room price : ", room.price);
           }
         });
 
         setRoomPrice(roomDetails);
-        console.log("room price array: ", roomDetails);
+        //console.log("room price array: ", roomDetails);
       } catch (error) {
         console.log("Error : ", error);
       }
