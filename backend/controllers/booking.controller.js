@@ -42,11 +42,9 @@ export const updateBookingStatus = catchAsync(async (req, res) => {
     req.body.status,
   );
   if (booking.status === 'cancelled') {
-    //send booking cancellation email to user
     logger.info('Booking cancelled successfully');
   }
   logger.info('Booking updated successfully');
-  //send success booking email to user
   res.status(httpstatus.OK).json({ success: true, updatedData: booking });
 });
 

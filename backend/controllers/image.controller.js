@@ -20,7 +20,6 @@ export const uploadImage = catchAsync(async (req, res) => {
 
 export const getAllImages = catchAsync(async (req, res) => {
   const { category, page = 1, limit = 10 } = req.query;
-  logger.info(page);
   const result = await imageService.getAllImages(page, limit, category);
   logger.info('image retrieved successfully');
   res.status(httpStatus.OK).json({

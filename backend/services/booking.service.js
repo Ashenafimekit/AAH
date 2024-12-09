@@ -76,7 +76,6 @@ const createBooking = async (bookingData) => {
     bookingData.duration = durationOfStayInDays;
 
     const newBooking = await Booking.create(bookingData);
-    logger.info(newBooking);
     sendBookingUpdates(newBooking);
     return newBooking;
   } catch (error) {

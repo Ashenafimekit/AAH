@@ -39,8 +39,6 @@ export const login = async (req, res) => {
       sameSite: 'Strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
-    logger.info(tokens.access.token);
-    logger.info('Login successful');
     return res.status(httpStatus.OK).json({
       success: true,
       message: 'Login successful',
