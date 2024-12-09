@@ -7,7 +7,6 @@ import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Room = () => {
-<<<<<<< HEAD
   const [roomPrice, setRoomPrice] = useState([]);
   const [singleRoomPrice, setSingleRoomPrice] = useState(0);
   const [kingRoomPrice, setKingRoomPrice] = useState(0);
@@ -40,23 +39,6 @@ const Room = () => {
       }
     };
 
-=======
-  const [priceRoom, setPriceRoom] = useState([]);
-
-  useEffect(() => {
-  const fetchPrice = async () => {
-    try {
-      await axios.get(`${apiUrl}/room/getPrice`).then((res) => {
-        // setRoomPrice(res.data.price);
-        setPriceRoom(res.data.roomPrice);
-        //console.log(res.data.price);
-        console.log(res.data.roomPrice);
-      });
-    } catch (error) {
-      console.log("Error : ", error);
-    }
-  };
->>>>>>> f064b82ab47e65bbf8dabd646ba5424e63c964da
     fetchPrice();
   }, []);
 
