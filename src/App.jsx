@@ -16,6 +16,8 @@ import LoginPage from "./Pages/Login_Page";
 import AdminGalleryPage from "./Pages/Admin_galleryPage";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import setUpStorageListner from "./utils/storageListner";
+import "aos/dist/aos.css";
+
 
 const App = () => {
   React.useEffect(() => {

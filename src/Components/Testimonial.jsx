@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel } from "antd";
-import '../css/carousel.css'
+import "../css/carousel.css";
+import AOS from "aos";
 const apiUrl = import.meta.env.VITE_API_URL;
-
 
 const Testimonial = () => {
   const [testimony, setTestimony] = useState([]);
@@ -11,11 +11,11 @@ const Testimonial = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${apiUrl}/testimonial/lists`
+        const response = await axios.get(`${apiUrl}/testimonial/lists`);
+        const IncomingTestimony = response.data.testimonials;
+        const approved = IncomingTestimony.filter(
+          (testimony) => testimony.status === "approved"
         );
-        const IncomingTestimony = response.data.testimonials
-        const approved = IncomingTestimony.filter((testimony)=>testimony.status === "approved")
         setTestimony(approved);
         //console.log("incoming testimony : ", testimony);
       } catch (error) {
@@ -25,10 +25,20 @@ const Testimonial = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      offset: 100,
+    });
+  });
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="bg-blueBlack text-white p-4 rounded-lg mb-2 text-2xl font-semibold py-4">Testimonials</h1>
-      <div className="w-1/2">
+      <h1 className="bg-blueBlack text-white p-4 rounded-lg mb-2 text-2xl font-semibold py-4">
+        Testimonials
+      </h1>
+      <div data-aos="fade-up" className="w-1/2">
         <Carousel
           autoplay
           autoplaySpeed={3000}

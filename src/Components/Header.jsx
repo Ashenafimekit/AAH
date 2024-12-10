@@ -71,7 +71,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-start mx-10 my-10 sm:mx-16 sm:my-14 md:mx-26 md:my-20 lg:mx-40 lg:my-20">
+        <div className="animate-slideInLeft flex flex-col items-start mx-10 my-10 sm:mx-16 sm:my-14 md:mx-26 md:my-20 lg:mx-40 lg:my-20">
           <h1 className=" text-lg sm:text-2xl md:text-2xl lg:text-3xl">
             WELCOME TO
           </h1>
@@ -87,7 +87,7 @@ const Header = () => {
           </p>
         </div>
         <div className="flex items-center justify-center ">
-          <button className="bg-[#E0B973] py-2 px-3 rounded-md sm:py-3 sm:px-5 sm:rounded-lg sm:-mt-10 hover:bg-blueBlack">
+          <button className="bg-golden py-2 px-3 rounded-md sm:py-3 sm:px-5 sm:rounded-lg sm:-mt-10 hover:bg-blueBlack">
             BOOK NOW
           </button>
         </div>

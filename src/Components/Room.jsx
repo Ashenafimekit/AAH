@@ -4,6 +4,8 @@ import bedroom2 from "../assets/images/bedroom2.jpg";
 import bedroom3 from "../assets/images/bedroom3.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AOS from "aos";
+import {motion} from "framer-motion"
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Room = () => {
@@ -42,6 +44,14 @@ const Room = () => {
     fetchPrice();
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      offset: 100,
+    });
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="w-3/5 flex flex-col gap-3 items-center justify-center">
@@ -55,7 +65,11 @@ const Room = () => {
         </p>
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-3/4">
-        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          data-aos="fade-up"
+          className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3"
+        >
           <div className="">
             <img
               src={bedroom}
@@ -80,8 +94,12 @@ const Room = () => {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3">
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          data-aos="fade-up"
+          className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3"
+        >
           <div className="">
             <img
               src={bedroom3}
@@ -106,8 +124,12 @@ const Room = () => {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3 ">
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          data-aos="fade-up"
+          className="card relative flex flex-col items-center justify-center rounded-lg shadow-lg w-3/4 sm:w-3/5 md:w-1/2 lg:w-1/3 "
+        >
           <div className="">
             <img
               src={bedroom2}
@@ -132,7 +154,7 @@ const Room = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

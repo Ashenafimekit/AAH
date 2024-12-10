@@ -85,7 +85,7 @@ const Footer = () => {
             value={testimony.fullName}
             onChange={handleChange}
             placeholder="Full Name"
-            className=" border-2 border-golden bg-blueBlack rounded-md px-2 text-center"
+            className=" border-2 border-golden bg-blueBlack rounded-md px-2 text-center outline-none"
           />
           <input
             type="email"
@@ -93,16 +93,16 @@ const Footer = () => {
             value={testimony.email}
             onChange={handleChange}
             placeholder="Email"
-            className=" border-2 border-golden bg-blueBlack rounded-md px-2 text-center"
+            className=" border-2 border-golden bg-blueBlack rounded-md px-2 text-center outline-none"
           />
           <textarea
             name="message"
             value={testimony.message}
             onChange={handleChange}
             placeholder="Message"
-            className="border-2 border-golden bg-blueBlack rounded-md text-center p-2"
+            className="border-2 border-golden bg-blueBlack rounded-md text-center p-2 outline-none"
           ></textarea>
-          <button type="submit" className="bg-golden p-2 rounded-lg">
+          <button type="submit" className="bg-golden p-2 rounded-lg hover:border-2">
             Submit
           </button>
         </form>

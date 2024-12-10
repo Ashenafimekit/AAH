@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Core Swiper styles
@@ -6,12 +6,20 @@ import "swiper/css/navigation"; // Navigation styles
 import "swiper/css/pagination"; // Pagination styles
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "../css/swiperCarousel.css";
+import AOS from "aos";
 
 import bd1 from "../assets/images/bedroom.jpg";
 import bd2 from "../assets/images/bedroom2.jpg";
 import bd3 from "../assets/images/bedroom3.jpg";
 
 const Carousel = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: "ease-in-out", 
+      offset: 100, 
+    });
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center gap-2">
       <div className="bg-blueBlack text-white p-4 rounded-lg">
@@ -19,7 +27,7 @@ const Carousel = () => {
           ShowCase
         </h1>
       </div>
-      <div className="carousel-container">
+      <div data-aos="fade-up" className="carousel-container">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
