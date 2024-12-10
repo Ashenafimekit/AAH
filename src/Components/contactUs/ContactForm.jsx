@@ -75,7 +75,7 @@ const ContactForm = () => {
           className="border border-golden w-full sm:w-5/6 md:w-3/4 h-28 focus:border-golden outline-none text-center"
           onChange={handleChange}
         ></textarea>
-        <button type="submit" className="bg-[#E0B973] px-8 py-2 mt-2 mb-4 hover:bg-blueBlack hover:text-white">
+        <button type="submit" className="bg-[#E0B973] px-8 py-2 mt-2 mb-4 hover:bg-[#e3b359]">
           Submit
         </button>
       </form>

@@ -8,18 +8,17 @@ import AOS from "aos";
 const HomePageService = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
-      easing: "ease-in-out", 
-      offset: 100, 
+      duration: 1000,
+      easing: "ease-in-out",
+      offset: 100,
     });
-  }, []);  return (
+  }, []);
+  return (
     <div className="flex flex-col items-center justify-center gap-5">
       <div className="bg-blueBlack text-white p-4 rounded-lg">
         <h1 className="font-bold text-2xl text-center">Our Services</h1>
       </div>
-      <div
-        className="animate-slideInBottom flex flex-col md:flex-row items-center justify-center gap-10 px-10"
-      >
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-10">
         <motion.div
           whileHover={{ scale: 1.05 }}
           data-aos="fade-up"

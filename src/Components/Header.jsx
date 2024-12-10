@@ -87,7 +87,7 @@ const Header = () => {
           </p>
         </div>
         <div className="flex items-center justify-center ">
-          <button className="bg-golden py-2 px-3 rounded-md sm:py-3 sm:px-5 sm:rounded-lg sm:-mt-10 hover:bg-blueBlack">
+          <button className="bg-golden py-2 px-3 rounded-md sm:py-3 sm:px-5 sm:rounded-lg sm:-mt-10 hover:bg-[#e3b359]">
             BOOK NOW
           </button>
         </div>

@@ -39,7 +39,7 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/Single`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-[#e3b359]">
               See More
             </button>
           </Link>
@@ -60,14 +60,14 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/King`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-[#e3b359]">
               See More
             </button>
           </Link>
         </motion.div>
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="animate-slideInBottom flex flex-col items-center justify-center gap-1 shadow-xl rounded-lg w-3/4 sm:w-1/4"
+          className="flex flex-col items-center justify-center gap-1 shadow-xl rounded-lg w-3/4 sm:w-1/4"
         >
           <img
             src={bedroom2}
@@ -81,7 +81,7 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/Twin`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-[#e3b359]">
               See More
             </button>
           </Link>
