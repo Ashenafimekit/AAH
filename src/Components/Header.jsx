@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./contactUs/Header.css";
 
-
 const Header = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -29,12 +28,12 @@ const Header = () => {
         <img
           src={currentImage}
           alt="Arab Ali Hotel image"
-          className="w-full object-cover h-[40vh] sm:h-[45vh] md:h-[55vh] lg:h-[60vh] xl:h-[65vh] 2xl:h[70vh] "
+          className="w-full object-cover h-[50vh] sm:h-[55vh] md:h-[65vh] lg:h-[75vh] xl:h-[85vh] 2xl:h[85vh] "
         />
       </div>
       <div className="absolute inset-0 text-white">
         <div className="flex flex-row gap-5 items-start justify-start pl-8 sm:pl-20 relative">
-          <div className="border-2 border-blueBlack bg-[#E0B973] py-2 px-10 sm:py-2 sm:px-10 md:py-2 md:px-10 rounded-b-2xl flex flex-col items-center font-bold text-[#14274A]">
+          <div className="bg-[#E0B973] py-2 px-10 sm:py-2 sm:px-10 md:py-2 md:px-10 rounded-b-2xl flex flex-col items-center font-bold text-[#14274A]">
             <h1>Arab Ali</h1>
             <h1 className="-mt-2 text-xs">Hotel</h1>
             <hr className="border border-[#14274A] w-12 mb-1 text-xs" />
@@ -61,10 +60,11 @@ const Header = () => {
               <h1 className="header">
                 <Link to="/contact">CONTACT</Link>
               </h1>
-              
             </div>
             <div className="md:hidden -ml-5 mr-10">
-              <button onClick={toggleMenu}>
+              <button
+                onClick={toggleMenu}
+                className={`p-1 bg-blueBlack rounded-md `}>
                 <MenuIcon />
               </button>
             </div>
@@ -87,7 +87,7 @@ const Header = () => {
           </p>
         </div>
         <div className="flex items-center justify-center ">
-          <button className="bg-[#E0B973] py-3 px-5 rounded-lg hover:bg-blueBlack">
+          <button className="bg-[#E0B973] py-2 px-3 rounded-md sm:py-3 sm:px-5 sm:rounded-lg sm:-mt-10 hover:bg-blueBlack">
             BOOK NOW
           </button>
         </div>

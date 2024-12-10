@@ -23,7 +23,7 @@ function Header2(props) {
           <div
             className={`md:flex md:space-x-10 md:py-5 ${
               isOpen ? "flex flex-col " : "hidden"
-            } md:flex text-white text-sm lg:text-lg text-opacity-90 mr-10 mt-2`}
+            } md:flex text-white text-sm lg:text-lg text-opacity-90 mr-3 mt-2`}
           >
             <h1 className="header">
               <Link to="/">HOME</Link>
