@@ -14,7 +14,7 @@ import bd3 from "../assets/images/bedroom3.jpg";
 const Carousel = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
-      <div className="bg-[#D9D9D9] p-4 rounded-lg">
+      <div className="bg-blueBlack text-white p-4 rounded-lg">
         <h1 className="text-2xl text-center font-bold">
           ShowCase
         </h1>

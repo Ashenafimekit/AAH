@@ -20,17 +20,9 @@ function Header2(props) {
           <h1 className="text-xs text-[#deae54]">فندق عرب علي</h1>
         </div>
         <div className="flex flex-row gap-3 items-center ml-auto mr-4">
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="p-1 bg-[#ebf7f0] mt-4 rounded-md"
-            >
-              <MenuIcon />
-            </button>
-          </div>
           <div
             className={`md:flex md:space-x-10 md:py-5 ${
-              isOpen ? "block" : "hidden"
+              isOpen ? "flex flex-col " : "hidden"
             } md:flex text-white text-sm lg:text-lg text-opacity-90 mr-10 mt-2`}
           >
             <h1 className="header">
@@ -46,8 +38,16 @@ function Header2(props) {
               <Link to="/gallery">GALLERY</Link>
             </h1>
             <h1 className="header">
-              <Link to="/contact">CONTACT US</Link>
+              <Link to="/contact">CONTACT</Link>
             </h1>
+          </div>
+          <div className="md:hidden -ml-5">
+            <button
+              onClick={toggleMenu}
+              className={`p-1 bg-[#ebf7f0] rounded-md  ${isOpen ? "" : "mt-4"}`}
+            >
+              <MenuIcon />
+            </button>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import bedroom from "../assets/images/bedroom.jpg";
 import reception from "../assets/images/receptionists.jpg";
 import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import "./contactUs/Header.css";
+
 
 const Header = () => {
   const location = useLocation();
@@ -44,22 +46,22 @@ const Header = () => {
                 isOpen ? "block" : "hidden"
               } md:flex `}
             >
-              <h1>
+              <h1 className="header">
                 <Link to="/">HOME</Link>
               </h1>
-              <h1>
+              <h1 className="header">
                 <Link to="/room">ROOM</Link>
               </h1>
-              <h1>
+              <h1 className="header">
                 <Link to="/service">SERVICE</Link>
               </h1>
-              <h1>
+              <h1 className="header">
                 <Link to="/gallery">GALLERY</Link>
               </h1>
-              <h1>
+              <h1 className="header">
                 <Link to="/contact">CONTACT</Link>
               </h1>
-              <h1>
+              <h1 className="header">
                 <Link to="/admin">ADMIN</Link>
               </h1>
             </div>
@@ -87,7 +89,7 @@ const Header = () => {
           </p>
         </div>
         <div className="flex items-center justify-center -mt-10">
-          <button className="bg-[#E0B973] py-3 px-5 rounded-lg">
+          <button className="bg-[#E0B973] py-3 px-5 rounded-lg hover:bg-blueBlack">
             BOOK NOW
           </button>
         </div>

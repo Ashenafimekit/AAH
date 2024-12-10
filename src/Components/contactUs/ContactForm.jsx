@@ -47,17 +47,17 @@ const ContactForm = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 md:gap-10 w-full ">
       <p className={`text-center -mb-5 ${status ? "text-green-500" : "text-red-500"}`}>{message}</p>
-      <h1 className="text-center font-bold text-2xl -mb-6">Contact Us</h1>
+      <h1 className="font-bold text-2xl -mb-6">Contact Us</h1>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center md:items-start justify-center gap-1 w-3/4   "
+        className="flex flex-col items-start justify-center gap-1 w-full sm:w-3/4   "
       >
         <label>Full Name</label>
         <input
           type="text"
           name="fullName"
           value={formData.fullName}
-          className="border-2 border-gray-200 w-3/4  focus:border-golden outline-none text-center"
+          className="border-2 border-gray-200 w-full sm:w-5/6 md:w-3/4  focus:border-golden outline-none text-center"
           onChange={handleChange}
         />
         <label>Email</label>
@@ -65,14 +65,14 @@ const ContactForm = () => {
           type="email"
           name="email"
           value={formData.email}
-          className="border-2 border-gray-200 w-3/4  focus:border-golden outline-none text-center"
+          className="border-2 border-gray-200 w-full sm:w-5/6 md:w-3/4  focus:border-golden outline-none text-center"
           onChange={handleChange}
         />
         <label>Message</label>
         <textarea
           name="message"
           value={formData.message}
-          className="border-2 border-gray-200 w-3/4 h-28 focus:border-golden outline-none text-center"
+          className="border-2 border-gray-200 w-full sm:w-5/6 md:w-3/4 h-28 focus:border-golden outline-none text-center"
           onChange={handleChange}
         ></textarea>
         <button type="submit" className="bg-[#E0B973] px-8 py-2 mt-2 mb-4 ">

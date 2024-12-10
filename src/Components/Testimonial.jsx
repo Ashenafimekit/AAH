@@ -27,7 +27,7 @@ const Testimonial = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="bg-[#D9D9D9] p-4 rounded-lg mb-2 text-2xl font-semibold py-4">Testimonials</h1>
+      <h1 className="bg-blueBlack text-white p-4 rounded-lg mb-2 text-2xl font-semibold py-4">Testimonials</h1>
       <div className="w-1/2">
         <Carousel
           autoplay

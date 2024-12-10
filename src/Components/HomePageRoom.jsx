@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const HomePageRoom = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-5">
-      <div className="bg-[#D9D9D9] p-4 rounded-lg">
+      <div className="bg-blueBlack text-white p-4 rounded-lg">
         <h1 className="font-bold text-2xl text-center">
           Our Room Types
         </h1>
@@ -27,7 +27,7 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/Single`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
               See More
             </button>
           </Link>
@@ -45,7 +45,7 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/King`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
               See More
             </button>
           </Link>
@@ -63,7 +63,7 @@ const HomePageRoom = () => {
             sapiente quae?
           </p>
           <Link to={`/room-detail/Twin`}>
-            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4">
+            <button className="bg-golden p-2 text-black font-semibold rounded-lg mb-4 hover:bg-blueBlack hover:text-white">
               See More
             </button>
           </Link>
