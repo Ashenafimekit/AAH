@@ -6,7 +6,7 @@ import bd3 from '../assets/images/bedroom3.jpg'
 
 const Carousel_Comp = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-5 py- shadow-lg ">
+    <div className="w-full flex flex-col items-center justify-center gap-5 shadow-lg ">
       <div className="font-bold text-2xl">
         <h2>Showcase</h2>
       </div>

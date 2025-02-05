@@ -10,7 +10,7 @@ const AdminTestimony = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/testimonial/lists`);
+        const response = await axios.get(`${apiUrl}/testimonial/lists`, {withCredentials: true});
         setData(response.data.testimonials);
         console.log("incoming data : ", response.data.testimonials);
       } catch (error) {
@@ -40,7 +40,7 @@ const AdminTestimony = () => {
   };
   const handleDecline = async (data) => {
     try {
-      await axios.delete(`${apiUrl}/testimonial/cancel/${data._id}`, data);
+      await axios.delete(`${apiUrl}/testimonial/cancel/${data._id}`, data, {withCredentials: true});
       console.log("Declined Testimony : ", data);
       window.location.reload();
     } catch (error) {

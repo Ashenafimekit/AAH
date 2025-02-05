@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ContactForm from "./contactUs/ContactForm";
+import AOS from "aos";
 
 const HomePageContact = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      offset: 100,
+    });
+  }, []);
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="flex flex-col md:flex-row items-start justify-center w-3/4 border border-gray-400 shadow-lg rounded-lg">
+      <div data-aos="fade-up" className="flex flex-col md:flex-row items-start justify-center w-3/4 border border-gray-400 shadow-lg rounded-lg">
         <div className="w-full md:w-1/2">
           <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
             <iframe
@@ -18,7 +26,7 @@ const HomePageContact = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 mt-5">
-          <ContactForm/>
+          <ContactForm />
         </div>
       </div>
     </div>

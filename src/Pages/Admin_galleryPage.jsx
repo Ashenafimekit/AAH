@@ -1,5 +1,6 @@
 import AdminNavigation from "../Components/AdminNavigation";
 import AdminGallery from "../Components/AdminGallery";
+import Logout from "../Components/Logout";
 
 const Admin_galleryPage = () => {
   return (
@@ -8,6 +9,7 @@ const Admin_galleryPage = () => {
       <div className="w-full">
         <AdminGallery />
       </div>
+      <Logout />
     </div>
   );
 };

@@ -44,14 +44,18 @@ const Login_page = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
+        console.log('hello');
         const response = await axios.post("http://localhost:3000/login", {
           email,
           password,
+        }, {
+          withCredentials: true,
         });
         const data = response.data;
-        if (data.accessToken) {
-          localStorage.setItem("accessToken", data.accessToken);
+        console.log(data);
+        if (data.success) {
           navigate("/adminPage");
+          localStorage.setItem('isLoggedIn', 'true');
         } else {
           setGeneralError(data.message || "Invalid email or password");
           setError({ email: "", password: "" }); 

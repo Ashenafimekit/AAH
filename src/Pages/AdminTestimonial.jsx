@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminNavigation from '../Components/AdminNavigation'
 import AdminTestimony from '../Components/AdminTestimony'
+import Logout from '../Components/Logout'
 
 const AdminTestimonial = () => {
   return (
@@ -9,7 +10,7 @@ const AdminTestimonial = () => {
       <div className="w-full overflow-hidden">
         <AdminTestimony/>
       </div>
-      
+      <Logout/>
     </div>
   )
 }

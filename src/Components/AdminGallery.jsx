@@ -119,7 +119,7 @@ const AdminGallery = () => {
         <div className="mt-2">
           <button
             onClick={handleSubmit}
-            className="bg-golden py-2 px-4 rounded-md text-lg text-gray-100 hover:bg-yellow-500"
+            className="bg-golden py-2 px-4 rounded-md text-lg text-gray-100 hover:bg-[#e3b359]"
             disabled={uploading}
           >
             {uploading ? "Uploading..." : "Upload Files"}

@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminNavigation from '../Components/AdminNavigation'
 import AdminDashboard from '../Components/AdminContact'
+import Logout from '../Components/Logout'
 
 const AdminDashboard_page = () => {
   return (
@@ -8,8 +9,8 @@ const AdminDashboard_page = () => {
         <AdminNavigation/>
         <div className='w-full'>
             <AdminDashboard/>
-        </div>
-
+        </div>  
+        <Logout/>
     </div>
   )
 }
