@@ -1,7 +1,7 @@
 import React from "react";
 import Header2 from "../Components/Header2";
 import Footer from "../Components/Footer";
-import Body from "../Components/RoomClicked/Body";
+import Body from "../Components/roomClicked/Body";
 import { useParams } from "react-router-dom";
 
 const RoomClicked_Page = () => {
